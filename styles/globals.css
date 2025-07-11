@@ -92,3 +92,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Ocultar controles de Three.js */
+#info {
+  display: none !important;
+}
