@@ -9,10 +9,26 @@ function Interactive3DScene() {
 
   return (
     <div className="w-full h-full relative">
-      {/* Overlay con información de la empresa */}
+      {/* Overlay con información de la empresa e interactividad */}
       <div className="absolute inset-0 z-10 pointer-events-none">
+        {/* Partículas interactivas */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-blue-400/30 rounded-full animate-pulse"
+              style={{
+                left: `${20 + i * 15}%`,
+                top: `${30 + (i % 3) * 20}%`,
+                animationDelay: `${i * 0.5}s`,
+                animationDuration: `${2 + i * 0.3}s`
+              }}
+            />
+          ))}
+        </div>
+
         <div className="absolute top-8 left-8 pointer-events-auto">
-          <div className="bg-black/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20">
+          <div className="bg-black/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 hover:bg-black/70">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               Sky Solutions
             </h1>
