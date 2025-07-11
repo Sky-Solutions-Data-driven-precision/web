@@ -150,6 +150,6 @@
 }
 
 /* Ocultar controles de Three.js */
-iframe[src*="threejs.org"] #info {
+#info {
   display: none !important;
 }
