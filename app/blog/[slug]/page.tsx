@@ -4,6 +4,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Calendar, User, Clock, ArrowLeft, Share2, BookOpen, Tag } from "lucide-react"
 
+// Genera las rutas estáticas para el export
+export function generateStaticParams() {
+  // Lista de slugs de blog posts que existen
+  const blogSlugs = [
+    'agricultura-precision-2024',
+    'inspeccion-eolicos-ia',
+    'topografia-construccion',
+    'seguridad-industrial-drones',
+    'investigacion-cientifica-drones',
+    'regulaciones-anac-2024',
+    'tendencias-drones-2024',
+    'ndvi-analisis-cultivos',
+    'sensores-multiespectrales-guia',
+    'roi-agricultura-precision'
+  ]
+
+  return blogSlugs.map((slug) => ({
+    slug: slug,
+  }))
+}
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   // En una implementación real, esto vendría de una base de datos o CMS
   const post = {
