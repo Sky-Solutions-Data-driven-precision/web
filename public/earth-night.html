@@ -36,7 +36,7 @@
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         let camera, scene, renderer, controls;
-        let earth, clouds, cityLights;
+        let earth, clouds;
 
         init();
         animate();
@@ -48,7 +48,7 @@
 
             // Scene - OSCURO PARA NIGHT MODE
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x000011); // Muy oscuro
+            scene.background = new THREE.Color(0x000008); // Más oscuro
 
             // Renderer
             renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -66,46 +66,36 @@
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.5;
 
-            // Lighting - TENUE PARA NOCHE
-            const ambientLight = new THREE.AmbientLight(0x404080, 0.2); // Azul muy tenue
+            // Lighting - MUY TENUE PARA VER LAS LUCES
+            const ambientLight = new THREE.AmbientLight(0x101030, 0.03); // Casi negro
             scene.add(ambientLight);
 
-            // Luna como fuente de luz principal
-            const moonLight = new THREE.DirectionalLight(0xaaaacc, 0.4);
-            moonLight.position.set(-5, 3, 5);
+            // Luna como fuente de luz principal - MUY TENUE
+            const moonLight = new THREE.DirectionalLight(0x6666aa, 0.1);
+            moonLight.position.set(-3, 2, 4);
             scene.add(moonLight);
 
-            // Luz de relleno muy tenue
-            const fillLight = new THREE.DirectionalLight(0x404080, 0.1);
-            fillLight.position.set(5, -3, -5);
-            scene.add(fillLight);
+            // NO luz de relleno para mantener las sombras oscuras
 
-            // Earth - versión nocturna
+            // Earth - versión nocturna con luces visibles
             const earthGeometry = new THREE.SphereGeometry(100, 64, 64);
             const textureLoader = new THREE.TextureLoader();
             
-            // Cargar texturas de día y noche
-            const earthDayTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-            const earthNightTexture = textureLoader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg');
+            // Intentar cargar múltiples fuentes de texturas
+            console.log('Cargando texturas...');
             
-            // Shader personalizado para combinar día/noche
-            const earthMaterial = new THREE.MeshLambertMaterial({
-                map: earthDayTexture,
-                emissive: 0x222222,
-                emissiveMap: earthNightTexture, // Luces de ciudades
-                emissiveIntensity: 0.3
-            });
+            const earthDayTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
+            
+            // Cargar textura de luces con fallbacks
+            loadNightLights(textureLoader, earthDayTexture, earthGeometry);
 
-            earth = new THREE.Mesh(earthGeometry, earthMaterial);
-            scene.add(earth);
-
-            // Clouds - más sutiles en la noche
+            // Clouds - muy sutiles en la noche
             const cloudsGeometry = new THREE.SphereGeometry(102, 64, 64);
             const cloudsTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png');
             const cloudsMaterial = new THREE.MeshLambertMaterial({
                 map: cloudsTexture,
                 transparent: true,
-                opacity: 0.15 // Muy sutiles en la noche
+                opacity: 0.08 // Muy sutiles para no opacar las luces
             });
 
             clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
@@ -117,13 +107,76 @@
             window.addEventListener('resize', onWindowResize);
         }
 
+        function loadNightLights(textureLoader, earthDayTexture, earthGeometry) {
+            // Lista de URLs de texturas de luces nocturnas para probar
+            const lightUrls = [
+                'https://threejs.org/examples/textures/planets/earth_lights_2048.png',
+                'https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg'
+            ];
+
+            let currentIndex = 0;
+
+            function tryLoadLight(index) {
+                if (index >= lightUrls.length) {
+                    // Si todas fallan, crear Tierra sin luces
+                    console.log('No se pudieron cargar las luces, usando versión oscura');
+                    createEarthWithoutLights(earthDayTexture, earthGeometry);
+                    return;
+                }
+
+                console.log(`Intentando cargar luces desde: ${lightUrls[index]}`);
+                
+                textureLoader.load(
+                    lightUrls[index],
+                    function(nightTexture) {
+                        console.log('¡Luces nocturnas cargadas exitosamente!');
+                        createEarthWithLights(earthDayTexture, nightTexture, earthGeometry);
+                    },
+                    function(progress) {
+                        console.log('Progreso:', Math.round(progress.loaded / progress.total * 100) + '%');
+                    },
+                    function(error) {
+                        console.log(`Error cargando desde ${lightUrls[index]}:`, error);
+                        tryLoadLight(index + 1);
+                    }
+                );
+            }
+
+            tryLoadLight(0);
+        }
+
+        function createEarthWithLights(dayTexture, nightTexture, geometry) {
+            const earthMaterial = new THREE.MeshLambertMaterial({
+                map: dayTexture,
+                emissive: 0x000000,      // Sin emisión base
+                emissiveMap: nightTexture, // Mapa de luces
+                emissiveIntensity: 4.0    // MUY INTENSO para ver las luces
+            });
+
+            earth = new THREE.Mesh(geometry, earthMaterial);
+            scene.add(earth);
+            console.log('Tierra con luces creada');
+        }
+
+        function createEarthWithoutLights(dayTexture, geometry) {
+            const earthMaterial = new THREE.MeshLambertMaterial({
+                map: dayTexture,
+                emissive: 0x001133,      // Emisión azul muy tenue
+                emissiveIntensity: 0.05
+            });
+
+            earth = new THREE.Mesh(geometry, earthMaterial);
+            scene.add(earth);
+            console.log('Tierra sin luces creada');
+        }
+
         function createNightStarField() {
             // Muchas estrellas brillantes para noche
             const starGroups = [
-                { count: 8000, size: 1, distance: 1500, color: 0xffffff, opacity: 0.8 },
-                { count: 3000, size: 2, distance: 1200, color: 0xaaaaff, opacity: 0.7 },
-                { count: 2000, size: 3, distance: 1000, color: 0xffffaa, opacity: 0.6 },
-                { count: 1000, size: 4, distance: 800, color: 0xffaaaa, opacity: 0.5 }
+                { count: 8000, size: 1, distance: 1500, color: 0xffffff, opacity: 0.9 },
+                { count: 3000, size: 2, distance: 1200, color: 0xaaaaff, opacity: 0.8 },
+                { count: 2000, size: 3, distance: 1000, color: 0xffffaa, opacity: 0.7 },
+                { count: 1000, size: 4, distance: 800, color: 0xffaaaa, opacity: 0.6 }
             ];
 
             starGroups.forEach(group => {
@@ -156,9 +209,9 @@
         function createNebula() {
             const nebulaGeometry = new THREE.PlaneGeometry(2000, 2000);
             const nebulaMaterial = new THREE.MeshBasicMaterial({
-                color: 0x220033,
+                color: 0x110022,
                 transparent: true,
-                opacity: 0.05,
+                opacity: 0.03,
                 side: THREE.DoubleSide
             });
 
