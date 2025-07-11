@@ -10,7 +10,7 @@ function Interactive3DScene() {
   return (
     <div className="w-full h-full relative">
       {/* Overlay con información de la empresa e interactividad */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 z-5 pointer-events-none">
         {/* Partículas interactivas */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(6)].map((_, i) => (
@@ -27,7 +27,7 @@ function Interactive3DScene() {
           ))}
         </div>
 
-        <div className="absolute top-8 left-8 pointer-events-auto">
+        <div className="absolute top-8 left-8 pointer-events-auto z-20">
           <div className="bg-black/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 hover:bg-black/70">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               Sky Solutions
@@ -42,7 +42,7 @@ function Interactive3DScene() {
         </div>
 
         {/* Indicadores técnicos */}
-        <div className="absolute bottom-8 right-8 pointer-events-auto">
+        <div className="absolute bottom-8 right-8 pointer-events-auto z-20">
           <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 border border-blue-500/20">
             <div className="flex items-center gap-3 text-sm text-blue-300">
               <div className="flex items-center gap-2">
@@ -58,8 +58,9 @@ function Interactive3DScene() {
           </div>
         </div>
 
-        {/* Gradiente de borde */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none" />
+        {/* Gradiente de borde - solo en los bordes */}
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
       </div>
 
       {/* Spinner de carga */}
@@ -94,7 +95,7 @@ function Interactive3DScene() {
       {/* Iframe 3D */}
       <iframe
         src="https://threejs.org/examples/webgl_interactive_raycasting_points.html"
-        className="w-full h-full border-0"
+        className="w-full h-full border-0 relative z-10"
         style={{ 
           filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
           background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
