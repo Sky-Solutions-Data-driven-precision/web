@@ -92,60 +92,78 @@ function Interactive3DScene() {
         </div>
       )}
 
-      {/* Iframe 3D con captura de eventos de scroll */}
+      {/* Iframe 3D */}
       <iframe
         src="https://threejs.org/examples/webgpu_tsl_earth.html"
         className="w-full h-full border-0 relative z-10"
         style={{ 
           filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)',
+          pointerEvents: 'none' // Bloquea TODA interacción por defecto
         }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
         title="Visualización 3D interactiva - Earth WebGPU"
         allow="accelerometer; gyroscope; magnetometer; pointer-lock"
         sandbox="allow-scripts allow-same-origin allow-pointer-lock"
-        ref={(iframe) => {
-          if (iframe) {
-            // Capturar eventos de wheel y pasarlos al documento padre
-            iframe.addEventListener('wheel', (e) => {
-              e.preventDefault()
-              // Pasar el evento de scroll al documento padre
-              window.parent.document.dispatchEvent(new WheelEvent('wheel', {
-                deltaY: e.deltaY,
-                deltaX: e.deltaX,
-                bubbles: true
-              }))
-            }, { passive: false })
-          }
-        }}
       />
 
-      {/* Overlay transparente para capturar scroll cuando está sobre el iframe */}
-      <div 
-        className="absolute inset-0 z-15 pointer-events-auto"
-        onWheel={(e) => {
-          // Permitir que el scroll pase al documento padre
-          e.preventDefault()
-          window.scrollBy(0, e.deltaY)
-        }}
+      {/* Iframe 3D - completamente bloqueado por defecto */}
+      <iframe
+        src="https://threejs.org/examples/webgpu_tsl_earth.html"
+        className="w-full h-full border-0 relative z-10"
         style={{ 
-          background: 'transparent',
-          cursor: 'grab'
+          filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)',
+          pointerEvents: 'none' // Bloquea toda interacción - solo visual
         }}
-        onMouseDown={(e) => {
-          // Permitir click y arrastrar - desactivar el overlay temporalmente
-          const overlay = e.currentTarget
-          overlay.style.pointerEvents = 'none'
-          
-          const handleMouseUp = () => {
-            overlay.style.pointerEvents = 'auto'
-            document.removeEventListener('mouseup', handleMouseUp)
-          }
-          
-          document.addEventListener('mouseup', handleMouseUp)
-        }}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
+        title="Visualización 3D Earth - Solo visual"
+        allow="accelerometer; gyroscope; magnetometer"
+        sandbox="allow-scripts allow-same-origin"
       />
+
+      {/* Botón para activar interacción */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto">
+        <button 
+          className="bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 group"
+          onClick={(e) => {
+            const iframe = e.currentTarget.parentElement?.previousElementSibling as HTMLIFrameElement
+            if (iframe) {
+              iframe.style.pointerEvents = 'auto'
+              e.currentTarget.style.display = 'none'
+              
+              // Auto-ocultar después de 5 segundos de inactividad
+              let timeout: NodeJS.Timeout
+              const resetInteraction = () => {
+                clearTimeout(timeout)
+                timeout = setTimeout(() => {
+                  iframe.style.pointerEvents = 'none'
+                  e.currentTarget.style.display = 'block'
+                }, 5000)
+              }
+              
+              iframe.addEventListener('mouseenter', resetInteraction)
+              iframe.addEventListener('mousemove', resetInteraction)
+              iframe.addEventListener('click', resetInteraction)
+            }
+          }}
+        >
+          <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Instrucciones */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
+        <div className="bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+          <div className="text-white/80 text-sm text-center">
+            Click en el centro para interactuar con el planeta
+          </div>
+        </div>
+      </div>
 
       {/* Overlay para ocultar controles - responsive y con indicador de scroll */}
       <div className="absolute top-2 right-2 w-64 h-80 md:w-72 md:h-96 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none rounded-lg">
