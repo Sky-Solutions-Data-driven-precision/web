@@ -98,8 +98,7 @@ function Interactive3DScene() {
         className="w-full h-full border-0 relative z-10"
         style={{ 
           filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)',
-          pointerEvents: 'none' // Bloquea TODA interacción por defecto
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
         }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
@@ -108,95 +107,8 @@ function Interactive3DScene() {
         sandbox="allow-scripts allow-same-origin allow-pointer-lock"
       />
 
-      {/* Iframe 3D - completamente bloqueado por defecto */}
-      <iframe
-        src="https://threejs.org/examples/webgpu_tsl_earth.html"
-        className="w-full h-full border-0 relative z-10"
-        style={{ 
-          filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)',
-          pointerEvents: 'none' // Bloquea toda interacción - solo visual
-        }}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setHasError(true)}
-        title="Visualización 3D Earth - Solo visual"
-        allow="accelerometer; gyroscope; magnetometer"
-        sandbox="allow-scripts allow-same-origin"
-      />
-
-      {/* Botón para activar interacción */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto">
-        <button 
-          className="bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 group"
-          onClick={(e) => {
-            const iframe = e.currentTarget.parentElement?.previousElementSibling as HTMLIFrameElement
-            if (iframe) {
-              iframe.style.pointerEvents = 'auto'
-              e.currentTarget.style.display = 'none'
-              
-              // Auto-ocultar después de 5 segundos de inactividad
-              let timeout: NodeJS.Timeout
-              const resetInteraction = () => {
-                clearTimeout(timeout)
-                timeout = setTimeout(() => {
-                  iframe.style.pointerEvents = 'none'
-                  e.currentTarget.style.display = 'block'
-                }, 5000)
-              }
-              
-              iframe.addEventListener('mouseenter', resetInteraction)
-              iframe.addEventListener('mousemove', resetInteraction)
-              iframe.addEventListener('click', resetInteraction)
-            }
-          }}
-        >
-          <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Instrucciones */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
-        <div className="bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-          <div className="text-white/80 text-sm text-center">
-            Click en el centro para interactuar con el planeta
-          </div>
-        </div>
-      </div>
-
-      {/* Overlay para ocultar controles - responsive y con indicador de scroll */}
-      <div className="absolute top-2 right-2 w-64 h-80 md:w-72 md:h-96 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none rounded-lg">
-        {/* Indicador de interactividad - solo visible en desktop */}
-        <div className="hidden md:block absolute bottom-4 left-4 pointer-events-none">
-          <div className="bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
-            </svg>
-          </div>
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-white/60 whitespace-nowrap">
-            Click y arrastra
-          </div>
-          <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2 text-xs text-white/40 whitespace-nowrap">
-            Scroll = página
-          </div>
-        </div>
-      </div>
-
-      {/* Indicador de scroll para móviles */}
-      <div className="md:hidden absolute bottom-20 left-1/2 transform -translate-x-1/2 z-30 pointer-events-none">
-        <div className="bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-          <div className="flex items-center gap-2 text-white/80 text-sm">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
-            </svg>
-            <span>Arrastra para rotar</span>
-          </div>
-        </div>
-        <div className="text-center mt-2">
-          <div className="text-xs text-white/50">El scroll mueve la página</div>
-        </div>
-      </div>
+      {/* Overlay para ocultar controles - posicionado exactamente sobre los controles */}
+      <div className="absolute top-2 right-2 w-72 h-96 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none rounded-lg"></div>
     </div>
   )
 }
