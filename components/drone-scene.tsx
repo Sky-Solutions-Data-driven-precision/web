@@ -92,7 +92,7 @@ function Interactive3DScene() {
         </div>
       )}
 
-      {/* Iframe 3D con CSS para ocultar controles */}
+      {/* Iframe 3D */}
       <iframe
         src="https://threejs.org/examples/webgpu_tsl_earth.html"
         className="w-full h-full border-0 relative z-10"
@@ -100,31 +100,15 @@ function Interactive3DScene() {
           filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
           background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
         }}
-        onLoad={(e) => {
-          setIsLoaded(true)
-          // Intentar ocultar controles del iframe
-          try {
-            const iframe = e.target as HTMLIFrameElement
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document
-            if (iframeDoc) {
-              const style = iframeDoc.createElement('style')
-              style.textContent = `
-                .dg.ac { display: none !important; }
-                .dg { display: none !important; }
-                #info { display: none !important; }
-                .controls { display: none !important; }
-              `
-              iframeDoc.head.appendChild(style)
-            }
-          } catch (error) {
-            console.log('No se pueden ocultar controles por CORS')
-          }
-        }}
+        onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
         title="Visualización 3D interactiva - Earth WebGPU"
         allow="accelerometer; gyroscope; magnetometer; pointer-lock"
         sandbox="allow-scripts allow-same-origin allow-pointer-lock"
       />
+
+      {/* Overlay para ocultar controles - posicionado exactamente sobre los controles */}
+      <div className="absolute top-2 right-2 w-72 h-96 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none rounded-lg"></div>
     </div>
   )
 }
