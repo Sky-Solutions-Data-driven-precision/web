@@ -93,17 +93,17 @@ function Interactive3DScene() {
 
       {/* Iframe 3D */}
       <iframe
-        src="https://www.newnaw.com/pub/js/webglglobe/worldelevation/"
+        src="https://threejs.org/examples/webgl_interactive_raycasting_points.html"
         className="w-full h-full border-0"
         style={{ 
-          filter: 'hue-rotate(200deg) saturate(1.2) brightness(0.9)',
+          filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
           background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
         }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
-        title="Visualización 3D interactiva"
-        allow="accelerometer; gyroscope; magnetometer"
-        sandbox="allow-scripts allow-same-origin"
+        title="Visualización 3D interactiva - raycasting points"
+        allow="accelerometer; gyroscope; magnetometer; pointer-lock"
+        sandbox="allow-scripts allow-same-origin allow-pointer-lock"
       />
     </div>
   )
