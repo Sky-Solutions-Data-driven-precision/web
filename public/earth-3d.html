@@ -116,26 +116,6 @@
 
 <body>
 
-    <!-- Sky Solutions Branding -->
-    <div id="skyBranding">
-        <h1>Sky Solutions</h1>
-        <p class="subtitle">data-driven precision</p>
-        <p class="description">tecnología de drones profesional</p>
-    </div>
-
-    <!-- Indicadores técnicos -->
-    <div id="techIndicators">
-        <div class="indicator">
-            <div class="indicator-dot active"></div>
-            <span>sistema activo</span>
-        </div>
-        <div class="separator"></div>
-        <div class="indicator">
-            <div class="indicator-dot view"></div>
-            <span>vista 3D</span>
-        </div>
-    </div>
-
     <script type="importmap">
         {
             "imports": {
@@ -183,7 +163,7 @@
             controls.autoRotateSpeed = 0.5;
 
             // Lighting
-            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            const ambientLight = new THREE.AmbientLight(0x666666, 0.8);
             scene.add(ambientLight);
 
             const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -229,9 +209,9 @@
             // Atmosphere
             const atmosphereGeometry = new THREE.SphereGeometry(105, 64, 64);
             const atmosphereMaterial = new THREE.MeshLambertMaterial({
-                color: 0x4FC3F7,
+                color: 0x87CEEB,
                 transparent: true,
-                opacity: 0.1
+                opacity: 0.05
             });
 
             atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
