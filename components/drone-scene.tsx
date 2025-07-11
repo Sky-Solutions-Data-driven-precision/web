@@ -94,7 +94,7 @@ function Interactive3DScene() {
 
       {/* Iframe 3D */}
       <iframe
-        src="https://threejs.org/examples/webgl_interactive_raycasting_points.html"
+        src="https://threejs.org/examples/webgpu_tsl_earth.html"
         className="w-full h-full border-0 relative z-10"
         style={{ 
           filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
@@ -102,7 +102,7 @@ function Interactive3DScene() {
         }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
-        title="Visualización 3D interactiva - raycasting points"
+        title="Visualización 3D interactiva - Earth WebGPU"
         allow="accelerometer; gyroscope; magnetometer; pointer-lock"
         sandbox="allow-scripts allow-same-origin allow-pointer-lock"
       />
