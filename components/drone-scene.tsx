@@ -39,8 +39,8 @@ function Interactive3DScene() {
         <div className="absolute top-8 left-8 pointer-events-auto z-20">
           <div className={`backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 hover:bg-black/70 ${
             theme === 'light' 
-              ? 'bg-white/70 border-blue-200/40 hover:border-blue-400/60 text-gray-900' 
-              : 'bg-black/60 border-blue-500/20 hover:border-blue-400/40 text-white'
+             ? 'bg-blue-900/70 border-blue-400/40 hover:border-blue-300/60 text-white'
+             : 'bg-black/60 border-blue-500/20 hover:border-blue-400/40 text-white'
           }`}>
             <h1 className={`text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent`}>
               Sky Solutions

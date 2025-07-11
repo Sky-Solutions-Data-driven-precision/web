@@ -148,3 +148,8 @@
     background: linear-gradient(135deg, #4a90e2, #1c3e7f, #4a90e2);
   }
 }
+
+/* Ocultar controles de Three.js */
+iframe[src*="threejs.org"] #info {
+  display: none !important;
+}
