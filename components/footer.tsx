@@ -19,9 +19,9 @@ export function Footer() {
             <Image
               src={theme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
               alt="Sky Solutions"
-              width={150}
-              height={50}
-              className="h-12 w-auto"
+              width={200}
+              height={70}
+              className="h-16 w-auto"
             />
             <p className="text-muted-foreground">{t("footer.description")}</p>
             <div className="flex space-x-4">
@@ -95,7 +95,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span>Buenos Aires, Argentina</span>
+                <span>Córdoba, Argentina</span>
               </div>
             </div>
           </div>
