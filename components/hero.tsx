@@ -14,16 +14,20 @@ export function Hero() {
         <DroneScene />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center">
+      {/* Content - Solo los elementos específicos tienen pointer-events */}
+      <div className="relative z-10 container mx-auto px-4 text-center pointer-events-none">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">Sky Solutions</h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 drop-shadow-md font-light">{t("hero.slogan")}</p>
-          <p className="text-lg md:text-xl mb-12 text-white/80 drop-shadow-md max-w-2xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg pointer-events-none">
+            Sky Solutions
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-white/90 drop-shadow-md font-light pointer-events-none">
+            {t("hero.slogan")}
+          </p>
+          <p className="text-lg md:text-xl mb-12 text-white/80 drop-shadow-md max-w-2xl mx-auto pointer-events-none">
             {t("hero.description")}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto">
             <Button
               size="lg"
               className="glow-border text-white hover:text-white px-8 py-4 text-lg font-semibold transition-all duration-300"
@@ -41,8 +45,9 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-5" />
+      {/* Gradiente overlay - solo en bordes */}
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/20 to-transparent z-5 pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent z-5 pointer-events-none" />
     </section>
   )
 }
