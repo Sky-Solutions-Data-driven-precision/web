@@ -138,7 +138,7 @@
         function init() {
             // Camera - POSICIÓN MÁS CERCA
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-            camera.position.set(0, 0, 250); // Cambiado de 500 a 250 para estar más cerca
+            camera.position.set(0, 0, 350); // Cambiado de 500 a 350 para estar más cerca
 
             // Scene
             scene = new THREE.Scene();
@@ -156,7 +156,7 @@
             controls.dampingFactor = 0.05;
             controls.enableZoom = true;
             controls.minDistance = 150; // Cambiado de 200 a 150
-            controls.maxDistance = 400; // Cambiado de 800 a 400
+            controls.maxDistance = 800; // Cambiado de 800 a 400
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.5;
 
