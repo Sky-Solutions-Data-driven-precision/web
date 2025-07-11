@@ -97,7 +97,6 @@ function Interactive3DScene() {
         src="/earth-3d.html"
         className="w-full h-full border-0 relative z-10"
         style={{ 
-          filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
           background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
         }}
         onLoad={() => setIsLoaded(true)}
