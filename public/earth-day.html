@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sky Solutions - Earth 3D</title>
+    <title>Sky Solutions - Earth 3D Day</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style>
         body {
             margin: 0;
-            background-color: #000;
+            background-color: #1a2332; /* Más claro para light mode */
             color: #fff;
             font-family: Monospace;
             font-size: 13px;
@@ -15,102 +15,8 @@
             overflow: hidden;
         }
 
-        /* Ocultar todos los controles originales */
-        #info {
-            display: none !important;
-        }
-
-        .lil-gui {
-            display: none !important;
-        }
-
-        /* Sky Solutions branding personalizado */
-        #skyBranding {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            pointer-events: none;
-        }
-
-        #skyBranding h1 {
-            margin: 0 0 8px 0;
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        #skyBranding .subtitle {
-            margin: 0;
-            color: #93c5fd;
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        #skyBranding .description {
-            margin: 4px 0 0 0;
-            color: #bfdbfe;
-            font-size: 11px;
-        }
-
-        /* Indicadores técnicos */
-        #techIndicators {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-size: 12px;
-            pointer-events: none;
-        }
-
-        .indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #93c5fd;
-        }
-
-        .indicator-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .indicator-dot.active {
-            background-color: #10b981;
-        }
-
-        .indicator-dot.view {
-            background-color: #3b82f6;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .separator {
-            width: 1px;
-            height: 16px;
-            background-color: rgba(59, 130, 246, 0.3);
-        }
+        #info { display: none !important; }
+        .lil-gui { display: none !important; }
     </style>
 </head>
 
@@ -130,19 +36,19 @@
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         let camera, scene, renderer, controls;
-        let earth, clouds;
+        let earth, clouds, atmosphere;
 
         init();
         animate();
 
         function init() {
-            // Camera - POSICIÓN MÁS CERCA
+            // Camera
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-            camera.position.set(0, 0, 350); // Cambiado de 500 a 350 para estar más cerca
+            camera.position.set(0, 0, 390);
 
-            // Scene
+            // Scene - MÁS CLARO PARA LIGHT MODE
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x000011); // Azul muy oscuro en lugar de negro puro
+            scene.background = new THREE.Color(0x1a2847); // Azul más claro
 
             // Renderer
             renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -150,73 +56,84 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
-            // Controls - AJUSTADOS PARA LA NUEVA DISTANCIA
+            // Controls
             controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
             controls.enableZoom = true;
-            controls.minDistance = 150; // Cambiado de 200 a 150
-            controls.maxDistance = 800; // Cambiado de 800 a 400
+            controls.minDistance = 150;
+            controls.maxDistance = 800;
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.5;
 
-            // Lighting - SIN TINTE VERDE
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Luz blanca pura
+            // Lighting - MÁS BRILLANTE PARA DÍA
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7); // Más intensa
             scene.add(ambientLight);
 
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Más intensa
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Sol más brillante
             directionalLight.position.set(5, 3, 5);
             scene.add(directionalLight);
 
-            // Luz adicional para eliminar sombras verdes
-            const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            // Luz de relleno más brillante
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.6);
             fillLight.position.set(-5, -3, -5);
             scene.add(fillLight);
 
+            // Luz adicional desde arriba (como sol de mediodía)
+            const topLight = new THREE.DirectionalLight(0xffffaa, 0.3);
+            topLight.position.set(0, 10, 0);
+            scene.add(topLight);
+
             // Earth
             const earthGeometry = new THREE.SphereGeometry(100, 64, 64);
-            
             const textureLoader = new THREE.TextureLoader();
             
-            // Earth texture
             const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
             
             const earthMaterial = new THREE.MeshPhongMaterial({
                 map: earthTexture,
-                shininess: 5, // Menos brillo
-                specular: new THREE.Color(0x111111) // Especular muy oscuro
+                shininess: 15, // Más brillo para día
+                specular: new THREE.Color(0x333333) // Especular más visible
             });
 
             earth = new THREE.Mesh(earthGeometry, earthMaterial);
             scene.add(earth);
 
-            // Clouds - con menos opacidad
+            // Clouds - más visibles en el día
             const cloudsGeometry = new THREE.SphereGeometry(102, 64, 64);
             const cloudsTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png');
             const cloudsMaterial = new THREE.MeshLambertMaterial({
                 map: cloudsTexture,
                 transparent: true,
-                opacity: 0.2 // Reducido de 0.4 a 0.2
+                opacity: 0.3 // Más visibles para día
             });
 
             clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
             scene.add(clouds);
 
-            // NO ATMOSPHERE - Eliminada completamente para evitar tinte verde
+            // Atmósfera sutil para día
+            const atmosphereGeometry = new THREE.SphereGeometry(105, 64, 64);
+            const atmosphereMaterial = new THREE.MeshLambertMaterial({
+                color: 0x87CEEB, // Azul cielo
+                transparent: true,
+                opacity: 0.03 // Muy sutil
+            });
 
-            // Stars - REDONDAS Y MÁS BONITAS
-            createStarField();
+            atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+            scene.add(atmosphere);
 
-            // Window resize
+            // Stars - menos visibles en día, más sutiles
+            createDayStarField();
+
             window.addEventListener('resize', onWindowResize);
         }
 
-        function createStarField() {
-            // Crear múltiples grupos de estrellas para mejor efecto
+        function createDayStarField() {
+            // Estrellas más sutiles para día
             const starGroups = [
-                { count: 5000, size: 1, distance: 1500, color: 0xffffff },
-                { count: 2000, size: 2, distance: 1200, color: 0xaaaaff },
-                { count: 1000, size: 3, distance: 1000, color: 0xffffaa }
+                { count: 2000, size: 0.5, distance: 1500, color: 0xffffff, opacity: 0.3 },
+                { count: 1000, size: 1, distance: 1200, color: 0xffffdd, opacity: 0.2 },
+                { count: 500, size: 1.5, distance: 1000, color: 0xffffff, opacity: 0.4 }
             ];
 
             starGroups.forEach(group => {
@@ -229,14 +146,12 @@
 
                 starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
                 
-                // Material para estrellas redondas
                 const starsMaterial = new THREE.PointsMaterial({ 
                     color: group.color,
                     size: group.size,
-                    sizeAttenuation: false, // Tamaño constante independiente de la distancia
+                    sizeAttenuation: false,
                     transparent: true,
-                    opacity: 0.8,
-                    // Para hacer las estrellas redondas
+                    opacity: group.opacity, // Más sutiles
                     map: createStarTexture()
                 });
                 
@@ -246,13 +161,11 @@
         }
 
         function createStarTexture() {
-            // Crear una textura circular para las estrellas
             const canvas = document.createElement('canvas');
             canvas.width = 32;
             canvas.height = 32;
             const context = canvas.getContext('2d');
             
-            // Crear gradiente radial para estrella redonda
             const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
             gradient.addColorStop(0, 'rgba(255,255,255,1)');
             gradient.addColorStop(0.5, 'rgba(255,255,255,0.5)');
@@ -261,8 +174,7 @@
             context.fillStyle = gradient;
             context.fillRect(0, 0, 32, 32);
             
-            const texture = new THREE.CanvasTexture(canvas);
-            return texture;
+            return new THREE.CanvasTexture(canvas);
         }
 
         function onWindowResize() {
@@ -274,7 +186,6 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            // Rotación suave
             if (earth) {
                 earth.rotation.y += 0.002;
             }
