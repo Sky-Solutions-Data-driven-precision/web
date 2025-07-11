@@ -8,8 +8,11 @@ function LoadingFallback() {
   return (
     <div className="w-full h-full bg-gradient-to-br from-slate-900 to-blue-900 flex items-center justify-center">
       <div className="text-center">
-        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p className="text-white/70">Cargando visualización 3D...</p>
+        <div className="relative">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="absolute inset-0 w-16 h-16 border-4 border-blue-300 border-b-transparent rounded-full animate-spin mx-auto" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
+        </div>
+        <p className="text-white/70 animate-pulse">cargando visualización 3D...</p>
       </div>
     </div>
   )
@@ -39,25 +42,39 @@ function StaticFallback() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
+            
+            {/* Anillos de animación */}
+            <div className="absolute inset-0 w-32 h-32 mx-auto">
+              <div className="absolute inset-0 border-2 border-blue-400/30 rounded-3xl animate-ping"></div>
+              <div className="absolute inset-2 border border-blue-300/20 rounded-3xl animate-pulse"></div>
+            </div>
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
             Sky Solutions
           </h1>
           <p className="text-2xl text-blue-200 font-light mb-2 tracking-wide">
-            Data-driven precision
+            data-driven precision
           </p>
-          <p className="text-blue-300/80">
-            Tecnología de drones profesional
+          <p className="text-blue-300/80 mb-6">
+            tecnología de drones profesional
           </p>
+          
+          {/* Indicador de carga */}
+          <div className="flex items-center justify-center gap-2 text-blue-400/60 text-sm">
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            <span className="ml-2">preparando experiencia 3D</span>
+          </div>
         </div>
       </div>
 
       {/* Efectos de luz de fondo */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-indigo-500/5 rounded-full blur-2xl" />
-        <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-blue-400/5 rounded-full blur-xl" />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 -translate-x-1/2 -translate-y-1/2 bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-indigo-500/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-blue-400/5 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
     </div>
   )
@@ -65,28 +82,48 @@ function StaticFallback() {
 
 // Importar dinámicamente el componente 3D para evitar errores de SSR
 const DynamicDroneCanvas = dynamic(() => import("./drone-canvas"), {
-  ssr: false, // Desactivar SSR para este componente
+  ssr: false,
   loading: () => <LoadingFallback />,
 })
 
 export function DroneScene() {
   const [isClient, setIsClient] = useState(false)
+  const [isReady, setIsReady] = useState(false)
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     setIsClient(true)
+    
+    // Esperar un poco más para asegurar que todo esté completamente cargado
+    const timer = setTimeout(() => {
+      setIsReady(true)
+    }, 200)
+    
+    return () => clearTimeout(timer)
   }, [])
 
-  // Fallback estático para SSR
-  if (!isClient) {
+  // Fallback estático para SSR y carga inicial
+  if (!isClient || !isReady) {
     return <StaticFallback />
   }
 
-  // Intentar cargar el componente 3D
+  // Si hay error, mostrar fallback estático
+  if (hasError) {
+    return <StaticFallback />
+  }
+
+  // Intentar cargar el componente 3D con manejo de errores
   try {
-    return <DynamicDroneCanvas />
+    return (
+      <div className="w-full h-full">
+        <DynamicDroneCanvas />
+      </div>
+    )
   } catch (error) {
     console.warn("Error loading 3D scene:", error)
-    // Si hay error, volver al fallback estático
+    setHasError(true)
     return <StaticFallback />
   }
 }

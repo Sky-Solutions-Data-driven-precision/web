@@ -3,7 +3,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { OrbitControls, Environment, Float, Stars } from "@react-three/drei"
 import { useRef, useEffect, useState, Suspense } from "react"
-import type * as THREE from "three"
+import * as THREE from "three"
 
 function DroneModel() {
   const meshRef = useRef<THREE.Group>(null)
@@ -12,10 +12,13 @@ function DroneModel() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     setMounted(true)
+    let isActive = true
     
     const handleMouseMove = (event: MouseEvent) => {
-      if (!mounted) return
+      if (!isActive || !mounted) return
       setMousePosition({
         x: (event.clientX / window.innerWidth) * 2 - 1,
         y: -(event.clientY / window.innerHeight) * 2 + 1,
@@ -23,20 +26,17 @@ function DroneModel() {
     }
 
     const handleScroll = () => {
-      if (!mounted) return
+      if (!isActive || !mounted) return
       setScrollY(window.scrollY)
     }
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener("mousemove", handleMouseMove, { passive: true })
-      window.addEventListener("scroll", handleScroll, { passive: true })
-    }
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
+    window.addEventListener("scroll", handleScroll, { passive: true })
 
     return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener("mousemove", handleMouseMove)
-        window.removeEventListener("scroll", handleScroll)
-      }
+      isActive = false
+      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [mounted])
 
@@ -171,24 +171,24 @@ function ParticleField() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     setMounted(true)
+    let isActive = true
     
     const handleMouseMove = (event: MouseEvent) => {
-      if (!mounted) return
+      if (!isActive || !mounted) return
       setMousePosition({
         x: (event.clientX / window.innerWidth) * 2 - 1,
         y: -(event.clientY / window.innerHeight) * 2 + 1,
       })
     }
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener("mousemove", handleMouseMove, { passive: true })
-    }
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
     
     return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener("mousemove", handleMouseMove)
-      }
+      isActive = false
+      window.removeEventListener("mousemove", handleMouseMove)
     }
   }, [mounted])
 
@@ -252,11 +252,15 @@ function SceneSetup() {
   const { scene, gl } = useThree()
   
   useEffect(() => {
-    if (gl && typeof window !== 'undefined') {
+    if (!gl || !scene || typeof window === 'undefined') return
+    
+    try {
       gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       gl.shadowMap.enabled = true
       gl.shadowMap.type = THREE.PCFSoftShadowMap
       scene.fog = new THREE.Fog(0x0a0a1a, 15, 50)
+    } catch (error) {
+      console.warn("Error setting up scene:", error)
     }
   }, [gl, scene])
 
@@ -271,7 +275,7 @@ function LoadingFallback() {
           <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <div className="absolute inset-0 w-16 h-16 border-4 border-blue-300 border-b-transparent rounded-full animate-spin mx-auto" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
         </div>
-        <p className="text-white/70 animate-pulse">Cargando visualización 3D...</p>
+        <p className="text-white/70 animate-pulse">cargando visualización 3D...</p>
       </div>
     </div>
   )
@@ -282,7 +286,13 @@ export default function DroneCanvas() {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    if (typeof window === 'undefined') return
+    
+    const timer = setTimeout(() => {
+      setMounted(true)
+    }, 100)
+    
+    return () => clearTimeout(timer)
   }, [])
 
   if (!mounted) {
@@ -299,7 +309,7 @@ export default function DroneCanvas() {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-white mb-2">Sky Solutions</h3>
-          <p className="text-white/70">Tecnología de drones profesional</p>
+          <p className="text-white/70">tecnología de drones profesional</p>
         </div>
       </div>
     )
@@ -311,11 +321,18 @@ export default function DroneCanvas() {
         <Canvas 
           camera={{ position: [0, 2, 10], fov: 60 }}
           onCreated={({ gl }) => {
-            if (typeof window !== 'undefined') {
-              gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            try {
+              if (typeof window !== 'undefined') {
+                gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+              }
+            } catch (error) {
+              console.warn("Error in Canvas onCreated:", error)
             }
           }}
-          onError={() => setError(true)}
+          onError={(error) => {
+            console.error("Canvas error:", error)
+            setError(true)
+          }}
         >
           <SceneSetup />
           
