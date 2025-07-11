@@ -1,11 +1,20 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { DroneScene } from "@/components/drone-scene"
 import { useTranslations } from "@/hooks/use-translations"
+import { ChevronDown } from "lucide-react"
 
 export function Hero() {
   const { t } = useTranslations()
+
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services-section')
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -28,19 +37,28 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto">
-            <Button
-              size="lg"
-              className="glow-border text-white hover:text-white px-8 py-4 text-lg font-semibold transition-all duration-300"
-            >
-              {t("hero.cta.primary")}
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="dynamic-border border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-semibold bg-transparent"
-            >
-              {t("hero.cta.secondary")}
-            </Button>
+            <Link href="/contacto">
+              <Button
+                size="lg"
+                className="glow-border text-white hover:text-white px-8 py-4 text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
+              >
+                {t("hero.cta.primary")}
+              </Button>
+            </Link>
+            <div className="flex flex-col items-center gap-2">
+              <Button
+                onClick={scrollToServices}
+                size="lg"
+                variant="outline"
+                className="dynamic-border border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-semibold bg-transparent w-full sm:w-auto"
+              >
+                {t("hero.cta.secondary")}
+              </Button>
+              <ChevronDown 
+                className="h-6 w-6 text-white animate-bounce cursor-pointer" 
+                onClick={scrollToServices}
+              />
+            </div>
           </div>
         </div>
       </div>
