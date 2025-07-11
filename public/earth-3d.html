@@ -130,109 +130,139 @@
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         let camera, scene, renderer, controls;
-        let earth, clouds, atmosphere;
+        let earth, clouds;
 
         init();
         animate();
 
         function init() {
-            // Camera
+            // Camera - POSICIÓN MÁS CERCA
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-            camera.position.set(0, 0, 500);
+            camera.position.set(0, 0, 250); // Cambiado de 500 a 250 para estar más cerca
 
             // Scene
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x000000);
+            scene.background = new THREE.Color(0x000011); // Azul muy oscuro en lugar de negro puro
 
             // Renderer
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.shadowMap.enabled = true;
-            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             document.body.appendChild(renderer.domElement);
 
-            // Controls - más suaves y limitados
+            // Controls - AJUSTADOS PARA LA NUEVA DISTANCIA
             controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
             controls.enableZoom = true;
-            controls.minDistance = 200;
-            controls.maxDistance = 800;
+            controls.minDistance = 150; // Cambiado de 200 a 150
+            controls.maxDistance = 400; // Cambiado de 800 a 400
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.5;
 
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0x666666, 0.8);
+            // Lighting - SIN TINTE VERDE
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Luz blanca pura
             scene.add(ambientLight);
 
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2); // Más intensa
             directionalLight.position.set(5, 3, 5);
-            directionalLight.castShadow = true;
             scene.add(directionalLight);
+
+            // Luz adicional para eliminar sombras verdes
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            fillLight.position.set(-5, -3, -5);
+            scene.add(fillLight);
 
             // Earth
             const earthGeometry = new THREE.SphereGeometry(100, 64, 64);
             
             const textureLoader = new THREE.TextureLoader();
             
-            // Earth texture - usando una textura básica por ahora
+            // Earth texture
             const earthTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-            const earthBumpMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg');
-            const earthSpecMap = textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg');
-
+            
             const earthMaterial = new THREE.MeshPhongMaterial({
                 map: earthTexture,
-                bumpMap: earthBumpMap,
-                bumpScale: 0.05,
-                specularMap: earthSpecMap,
-                specular: new THREE.Color('grey')
+                shininess: 5, // Menos brillo
+                specular: new THREE.Color(0x111111) // Especular muy oscuro
             });
 
             earth = new THREE.Mesh(earthGeometry, earthMaterial);
-            earth.receiveShadow = true;
-            earth.castShadow = true;
             scene.add(earth);
 
-            // Clouds
+            // Clouds - con menos opacidad
             const cloudsGeometry = new THREE.SphereGeometry(102, 64, 64);
             const cloudsTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png');
             const cloudsMaterial = new THREE.MeshLambertMaterial({
                 map: cloudsTexture,
                 transparent: true,
-                opacity: 0.4
+                opacity: 0.2 // Reducido de 0.4 a 0.2
             });
 
             clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
             scene.add(clouds);
 
-            // Atmosphere
-            const atmosphereGeometry = new THREE.SphereGeometry(105, 64, 64);
-            const atmosphereMaterial = new THREE.MeshLambertMaterial({
-                color: 0x87CEEB,
-                transparent: true,
-                opacity: 0.05
-            });
+            // NO ATMOSPHERE - Eliminada completamente para evitar tinte verde
 
-            atmosphere = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
-            scene.add(atmosphere);
-
-            // Stars
-            const starsGeometry = new THREE.BufferGeometry();
-            const starsCount = 10000;
-            const starsPositions = new Float32Array(starsCount * 3);
-
-            for (let i = 0; i < starsCount * 3; i++) {
-                starsPositions[i] = (Math.random() - 0.5) * 2000;
-            }
-
-            starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
-            const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
-            const stars = new THREE.Points(starsGeometry, starsMaterial);
-            scene.add(stars);
+            // Stars - REDONDAS Y MÁS BONITAS
+            createStarField();
 
             // Window resize
             window.addEventListener('resize', onWindowResize);
+        }
+
+        function createStarField() {
+            // Crear múltiples grupos de estrellas para mejor efecto
+            const starGroups = [
+                { count: 5000, size: 1, distance: 1500, color: 0xffffff },
+                { count: 2000, size: 2, distance: 1200, color: 0xaaaaff },
+                { count: 1000, size: 3, distance: 1000, color: 0xffffaa }
+            ];
+
+            starGroups.forEach(group => {
+                const starsGeometry = new THREE.BufferGeometry();
+                const starsPositions = new Float32Array(group.count * 3);
+
+                for (let i = 0; i < group.count * 3; i++) {
+                    starsPositions[i] = (Math.random() - 0.5) * group.distance;
+                }
+
+                starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
+                
+                // Material para estrellas redondas
+                const starsMaterial = new THREE.PointsMaterial({ 
+                    color: group.color,
+                    size: group.size,
+                    sizeAttenuation: false, // Tamaño constante independiente de la distancia
+                    transparent: true,
+                    opacity: 0.8,
+                    // Para hacer las estrellas redondas
+                    map: createStarTexture()
+                });
+                
+                const stars = new THREE.Points(starsGeometry, starsMaterial);
+                scene.add(stars);
+            });
+        }
+
+        function createStarTexture() {
+            // Crear una textura circular para las estrellas
+            const canvas = document.createElement('canvas');
+            canvas.width = 32;
+            canvas.height = 32;
+            const context = canvas.getContext('2d');
+            
+            // Crear gradiente radial para estrella redonda
+            const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+            gradient.addColorStop(0, 'rgba(255,255,255,1)');
+            gradient.addColorStop(0.5, 'rgba(255,255,255,0.5)');
+            gradient.addColorStop(1, 'rgba(255,255,255,0)');
+            
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 32, 32);
+            
+            const texture = new THREE.CanvasTexture(canvas);
+            return texture;
         }
 
         function onWindowResize() {
