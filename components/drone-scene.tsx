@@ -107,8 +107,32 @@ function Interactive3DScene() {
         sandbox="allow-scripts allow-same-origin allow-pointer-lock"
       />
 
-      {/* Overlay para ocultar controles - posicionado exactamente sobre los controles */}
-      <div className="absolute top-2 right-2 w-72 h-96 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none rounded-lg"></div>
+      {/* Overlay para ocultar controles - responsive y con indicador de scroll */}
+      <div className="absolute top-2 right-2 w-64 h-80 md:w-72 md:h-96 bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none rounded-lg">
+        {/* Indicador de interactividad - solo visible en desktop */}
+        <div className="hidden md:block absolute bottom-4 left-4 pointer-events-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20 hover:bg-white/20 transition-all duration-300 group cursor-pointer">
+            <svg className="w-5 h-5 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+          </div>
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-white/60 whitespace-nowrap">
+            Arrastra para rotar
+          </div>
+        </div>
+      </div>
+
+      {/* Indicador de scroll para móviles */}
+      <div className="md:hidden absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
+        <div className="bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+          <div className="flex items-center gap-2 text-white/80 text-sm">
+            <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span>Toca para interactuar</span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
