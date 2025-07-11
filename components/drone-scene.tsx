@@ -94,7 +94,7 @@ function Interactive3DScene() {
 
       {/* Iframe 3D */}
       <iframe
-        src="https://threejs.org/examples/webgpu_tsl_earth.html"
+        src="/earth-3d.html"
         className="w-full h-full border-0 relative z-10"
         style={{ 
           filter: 'hue-rotate(240deg) saturate(1.3) brightness(0.8)',
