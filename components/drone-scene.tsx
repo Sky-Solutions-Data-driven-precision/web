@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
+import { useTranslations } from "@/hooks/use-translations"
 
 export function DroneScene() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
   const { theme } = useTheme()
+  const { t } = useTranslations()
 
   // Seleccionar la versión según el tema
   const earthSrc = theme === 'light' ? '/earth-day.html' : '/earth-night.html'
@@ -32,59 +34,6 @@ export function DroneScene() {
             />
           ))}
         </div>
-
-        {/* Información de la empresa 
-
-        <div className="absolute top-8 left-8 pointer-events-auto z-20">
-          <div className={`backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 ${
-            theme === 'light' 
-              ? 'bg-white/80 border-blue-200/50 hover:border-blue-400/70 text-gray-900' 
-              : 'bg-slate-800/40 border-blue-500/20 hover:border-blue-400/40 text-white hover:bg-slate-800/60'
-          }`}>
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-              Sky Solutions
-            </h1>
-            <p className={`font-light mb-1 ${
-              theme === 'light' ? 'text-blue-700' : 'text-blue-200'
-            }`}>
-              data-driven precision
-            </p>
-            <p className={`text-sm ${
-              theme === 'light' ? 'text-blue-600/80' : 'text-blue-300/80'
-            }`}>
-              tecnología de drones profesional
-            </p>
-          </div>
-        </div>
-
-        */}
-
-        {/* Indicadores técnicos - adaptados al tema 
-        <div className="absolute bottom-8 right-8 pointer-events-auto z-20">
-          <div className={`backdrop-blur-sm rounded-xl p-4 border ${
-            theme === 'light'
-              ? 'bg-white/80 border-blue-200/50'
-              : 'bg-slate-800/40 border-blue-500/20'
-          }`}>
-            <div className={`flex items-center gap-3 text-sm ${
-              theme === 'light' ? 'text-blue-700' : 'text-blue-300'
-            }`}>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span>sistema activo</span>
-              </div>
-              <div className={`w-px h-4 ${
-                theme === 'light' ? 'bg-blue-300/50' : 'bg-blue-500/30'
-              }`}></div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                <span>vista 3D</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        */}
 
         {/* Indicador de interactividad - arriba del mundo */}
         <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
@@ -126,27 +75,8 @@ export function DroneScene() {
             </div>
           </div>
         </div>
-        <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
-          <div className={`backdrop-blur-sm rounded-xl p-2 md:p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
-            theme === 'light'
-              ? 'bg-white/80 border-blue-200/50 hover:border-blue-400/70'
-              : 'bg-slate-800/40 border-blue-500/20 hover:border-blue-400/40'
-          }`}>
-            <div className={`flex flex-col items-center gap-1 md:gap-2 text-xs ${
-              theme === 'light' ? 'text-blue-700' : 'text-blue-300'
-            }`}>
-              <div className="flex flex-col items-center">
-                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
-                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-              </div>
-              <span className="font-medium text-[10px] md:text-xs">{t("scroll.here")}</span>
-              <span className="opacity-80 text-[9px] md:text-xs hidden sm:block">{t("scroll.navigate")}</span>
-            </div>
-          </div>
-        </div>
 
-       {/* Zona de scroll de página - centrada verticalmente */}
+        {/* Zona de scroll de página - centrada verticalmente */}
         <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
           <div className={`backdrop-blur-sm rounded-xl p-2 md:p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
             theme === 'light'
