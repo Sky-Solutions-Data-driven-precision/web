@@ -89,15 +89,26 @@
             const earthNightTexture = textureLoader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg');
             
             // Shader personalizado para combinar día/noche
-            const earthMaterial = new THREE.MeshLambertMaterial({
+           const earthMaterial = new THREE.MeshBasicMaterial({
                 map: earthDayTexture,
-                emissive: 0x222222,
-                emissiveMap: earthNightTexture, // Luces de ciudades
-                emissiveIntensity: 1
+                transparent: true,
+                opacity: 0.7
             });
 
             earth = new THREE.Mesh(earthGeometry, earthMaterial);
             scene.add(earth);
+
+            // Crear mesh separado para las luces de ciudades
+            const cityLightsMaterial = new THREE.MeshBasicMaterial({
+                map: earthNightTexture,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending // Para que se vean brillantes
+            });
+
+            const cityLights = new THREE.Mesh(earthGeometry, cityLightsMaterial);
+            cityLights.scale.setScalar(1.001); // Ligeramente más grande para evitar z-fighting
+            scene.add(cityLights);
 
             // Clouds - más sutiles en la noche
             const cloudsGeometry = new THREE.SphereGeometry(102, 64, 64);
@@ -205,6 +216,9 @@
             }
             if (clouds) {
                 clouds.rotation.y += 0.0015;
+            }
+            if (cityLights) {
+                cityLights.rotation.y += 0.002; // Mismo ritmo que la Tierra
             }
 
             controls.update();
