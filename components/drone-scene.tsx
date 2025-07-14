@@ -85,12 +85,12 @@ function Interactive3DScene() {
         <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b pointer-events-none ${
           theme === 'light' 
             ? 'from-white/20 to-transparent' 
-            : 'from-black/20 to-transparent'
+            : 'from-black/10 to-transparent'
         }`} />
         <div className={`absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t pointer-events-none ${
           theme === 'light' 
             ? 'from-white/30 to-transparent' 
-            : 'from-black/30 to-transparent'
+            : 'from-black/15 to-transparent'
         }`} />
       </div>
 
