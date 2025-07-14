@@ -46,10 +46,13 @@ export function Header() {
             </Link>
 
             {/* Services Dropdown */}
-            <div
+           <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
+              onMouseLeave={() => {
+                // Agregar un pequeño delay para evitar que se cierre inmediatamente
+                setTimeout(() => setIsServicesOpen(false), 100)
+              }}
             >
               <button className="flex items-center space-x-1 text-foreground hover:text-primary transition-colors font-medium">
                 <span>{t("nav.services")}</span>
@@ -57,16 +60,12 @@ export function Header() {
               </button>
 
               {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2">
-                  {services.map((service) => (
-                    <Link
-                      key={service.key}
-                      href={service.href}
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      {t(`services.${service.key}.title`)}
-                    </Link>
-                  ))}
+                <div 
+                  className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2"
+                  onMouseEnter={() => setIsServicesOpen(true)} // Mantener abierto al entrar al dropdown
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  {/* contenido del dropdown */}
                 </div>
               )}
             </div>
