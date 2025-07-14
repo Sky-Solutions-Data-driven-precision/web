@@ -151,7 +151,7 @@ function Interactive3DScene() {
         style={{ 
           background: theme === 'light' 
             ? 'linear-gradient(135deg, #f0f9ff 0%, #3b82f6 100%)'
-            : 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)'
+            : 'linear-gradient(135deg, #334155 0%, #3b82f6 100%)'
         }}
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
