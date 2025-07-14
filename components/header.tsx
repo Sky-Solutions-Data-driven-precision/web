@@ -46,7 +46,7 @@ export function Header() {
             </Link>
 
             {/* Services Dropdown */}
-           <div
+            <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => {
@@ -61,11 +61,19 @@ export function Header() {
 
               {isServicesOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2"
-                  onMouseEnter={() => setIsServicesOpen(true)} // Mantener abierto al entrar al dropdown
+                  className="absolute top-full left-0 mt-0 w-64 bg-background border border-border rounded-lg shadow-lg py-2"
+                  onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setIsServicesOpen(false)}
                 >
-                  {/* contenido del dropdown */}
+                  {services.map((service) => (
+                    <Link
+                      key={service.key}
+                      href={service.href}
+                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                    >
+                      {t(`services.${service.key}.title`)}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
