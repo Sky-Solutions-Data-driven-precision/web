@@ -24,8 +24,12 @@ const translations = {
       title: "Nuestros Servicios",
       description: "Ofrecemos soluciones especializadas con drones para diferentes sectores industriales",
       agriculture: {
-        title: "Agricultura y Ganadería",
+        title: "Agricultura",
         description: "Monitoreo de cultivos, análisis de suelos y optimización de recursos agrícolas",
+      },
+      livestock: {
+        title: "Ganadería",
+        description: "Supervisión de ganado, control de pasturas y gestión de campos ganaderos",
       },
       wind: {
         title: "Inspecciones de Eólicos",
@@ -121,8 +125,12 @@ const translations = {
       title: "Our Services",
       description: "We offer specialized drone solutions for different industrial sectors",
       agriculture: {
-        title: "Agriculture & Livestock",
+        title: "Agriculture",
         description: "Crop monitoring, soil analysis and agricultural resource optimization",
+      },
+      livestock: {
+        title: "Livestock",
+        description: "Livestock supervision, pasture control and livestock farm management",
       },
       wind: {
         title: "Wind Turbine Inspections",
