@@ -33,6 +33,8 @@ export function DroneScene() {
           ))}
         </div>
 
+        {/* Información de la empresa 
+
         <div className="absolute top-8 left-8 pointer-events-auto z-20">
           <div className={`backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 ${
             theme === 'light' 
@@ -54,6 +56,8 @@ export function DroneScene() {
             </p>
           </div>
         </div>
+
+        */}
 
         {/* Indicadores técnicos - adaptados al tema 
         <div className="absolute bottom-8 right-8 pointer-events-auto z-20">
