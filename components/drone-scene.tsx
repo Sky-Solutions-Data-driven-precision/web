@@ -86,6 +86,27 @@ export function DroneScene() {
 
         */}
 
+        {/* Zona de scroll de página */}
+        <div className="absolute bottom-8 left-8 pointer-events-auto z-20">
+          <div className={`backdrop-blur-sm rounded-xl p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
+            theme === 'light'
+              ? 'bg-white/80 border-blue-200/50 hover:border-blue-400/70'
+              : 'bg-slate-800/40 border-blue-500/20 hover:border-blue-400/40'
+          }`}>
+            <div className={`flex flex-col items-center gap-2 text-xs ${
+              theme === 'light' ? 'text-blue-700' : 'text-blue-300'
+            }`}>
+              <div className="flex flex-col items-center">
+                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+              <span className="font-medium">scroll aquí</span>
+              <span className="opacity-80">para navegar</span>
+            </div>
+          </div>
+        </div>
+
         {/* Gradientes de borde más suaves */}
         <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b pointer-events-none ${
           theme === 'light' 
