@@ -13,6 +13,14 @@ export function DroneScene() {
   // Seleccionar la versión según el tema
   const earthSrc = theme === 'light' ? '/earth-day.html' : '/earth-night.html'
 
+  // Función para hacer scroll a servicios
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services-section')
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="w-full h-full relative">
       {/* Overlay con información de la empresa e interactividad */}
