@@ -94,7 +94,7 @@ function Interactive3DScene() {
         }`} />
       </div>
 
-      {/* Spinner de carga - adaptado al tema */}
+      {/* Spinner de carga - adaptado al tema 
       {!isLoaded && !hasError && (
         <div className={`absolute inset-0 z-20 flex items-center justify-center ${
           theme === 'light'
@@ -112,6 +112,8 @@ function Interactive3DScene() {
           </div>
         </div>
       )}
+
+      */}
 
       {/* Fallback en caso de error - adaptado al tema */}
       {hasError && (
