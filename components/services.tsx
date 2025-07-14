@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Wheat, Wind, Microscope, Map, Shield } from "lucide-react"
+import { Wheat, Cow, Wind, Microscope, Map, Shield } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations"
 import Link from "next/link"
 
@@ -26,7 +26,7 @@ export function Services() {
     },
     {
       key: "livestock",
-      icon: Wheat, // Podrías cambiar por otro icono como Cow o similar
+      icon: Cow, // Podrías cambiar por otro icono como Cow o similar
       href: "/servicios/agricultura", // Mismo destino que agricultura
       colors: {
         bg: "bg-gradient-to-br from-emerald-500/10 to-emerald-600/5",
