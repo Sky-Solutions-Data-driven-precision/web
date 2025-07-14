@@ -86,14 +86,11 @@
             
             // Cargar texturas de día y noche
             const earthDayTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-            const earthNightTexture = textureLoader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg');
+           // const earthNightTexture = textureLoader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg');
             
             // Shader personalizado para combinar día/noche
-            const earthMaterial = new THREE.MeshLambertMaterial({
-                map: earthDayTexture,
-                emissive: 0x222222,
-                emissiveMap: earthNightTexture, // Luces de ciudades
-                emissiveIntensity: 1.3
+           const earthMaterial = new THREE.MeshLambertMaterial({
+                map: earthDayTexture // Solo la textura de día
             });
 
             earth = new THREE.Mesh(earthGeometry, earthMaterial);

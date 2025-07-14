@@ -55,7 +55,7 @@ export function DroneScene() {
           </div>
         </div>
 
-        {/* Indicadores técnicos - adaptados al tema */}
+        {/* Indicadores técnicos - adaptados al tema 
         <div className="absolute bottom-8 right-8 pointer-events-auto z-20">
           <div className={`backdrop-blur-sm rounded-xl p-4 border ${
             theme === 'light'
@@ -79,6 +79,8 @@ export function DroneScene() {
             </div>
           </div>
         </div>
+
+        */}
 
         {/* Gradientes de borde más suaves */}
         <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b pointer-events-none ${
@@ -111,7 +113,7 @@ export function DroneScene() {
             }`}>Sky Solutions</h3>
             <p className={`mb-1 ${
               theme === 'light' ? 'text-blue-700' : 'text-blue-200'
-            }`}>data-driven precision</p>
+            }`}>Data-driven precision</p>
             <p className={`${
               theme === 'light' ? 'text-blue-600/80' : 'text-blue-300/80'
             }`}>tecnología de drones profesional</p>
