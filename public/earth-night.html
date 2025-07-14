@@ -67,11 +67,11 @@
             controls.autoRotateSpeed = 0.5;
 
             // Lighting - TENUE PARA NOCHE
-            const ambientLight = new THREE.AmbientLight(0x404080, 0.2); // Azul muy tenue
+            const ambientLight = new THREE.AmbientLight(0x404080, 0.4); // Azul muy tenue
             scene.add(ambientLight);
 
             // Luna como fuente de luz principal
-            const moonLight = new THREE.DirectionalLight(0xaaaacc, 0.4);
+            const moonLight = new THREE.DirectionalLight(0xaaaacc, 0.6);
             moonLight.position.set(-5, 3, 5);
             scene.add(moonLight);
 
