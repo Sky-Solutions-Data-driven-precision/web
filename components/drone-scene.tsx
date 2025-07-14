@@ -44,7 +44,7 @@ export function DroneScene() {
         </div>
 
         {/* Indicador de interactividad - arriba del mundo */}
-        <div className="absolute top-1/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+        <div className="absolute top-[30%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
           <div className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-dashed animate-spin ${
             theme === 'light'
               ? 'border-blue-400/60'
@@ -85,7 +85,7 @@ export function DroneScene() {
         </div>
 
        {/* Zona de scroll de página - centrada verticalmente */}
-        <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
+        <div className="absolute left-4 md:left-8 top-1/3 md:top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
           <div 
             className={`backdrop-blur-sm rounded-xl p-2 md:p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
               theme === 'light'
