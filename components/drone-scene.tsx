@@ -86,14 +86,53 @@ export function DroneScene() {
 
         */}
 
-        {/* Zona de scroll de página */}
-        <div className="absolute bottom-8 left-8 pointer-events-auto z-20">
-          <div className={`backdrop-blur-sm rounded-xl p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
+        {/* Indicador de interactividad - arriba del mundo */}
+        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+          <div className={`relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-dashed animate-spin ${
+            theme === 'light'
+              ? 'border-blue-400/60'
+              : 'border-blue-300/60'
+          }`} style={{ animationDuration: '8s' }}>
+            {/* Puntos en el círculo */}
+            <div className={`absolute w-2 h-2 rounded-full top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+              theme === 'light' ? 'bg-blue-500' : 'bg-blue-400'
+            }`}></div>
+            <div className={`absolute w-1.5 h-1.5 rounded-full top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 ${
+              theme === 'light' ? 'bg-blue-400' : 'bg-blue-300'
+            }`}></div>
+            <div className={`absolute w-1 h-1 rounded-full bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 ${
+              theme === 'light' ? 'bg-blue-300' : 'bg-blue-200'
+            }`}></div>
+            <div className={`absolute w-1.5 h-1.5 rounded-full top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 ${
+              theme === 'light' ? 'bg-blue-400' : 'bg-blue-300'
+            }`}></div>
+            
+            {/* Icono central */}
+            <div className={`absolute inset-0 flex items-center justify-center text-sm md:text-base ${
+              theme === 'light' ? 'text-blue-600' : 'text-blue-300'
+            }`}>
+              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2M7 4h10M7 4l-2 16h14l-2-16M12 8v8m-3-4h6" />
+              </svg>
+            </div>
+          </div>
+          
+          {/* Texto explicativo */}
+          <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-center ${
+            theme === 'light' ? 'text-blue-600' : 'text-blue-300'
+          }`}>
+            <div className="text-[10px] md:text-xs font-medium opacity-80">
+              {t("interaction.dragToRotate")}
+            </div>
+          </div>
+        </div>
+        <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
+          <div className={`backdrop-blur-sm rounded-xl p-2 md:p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
             theme === 'light'
               ? 'bg-white/80 border-blue-200/50 hover:border-blue-400/70'
               : 'bg-slate-800/40 border-blue-500/20 hover:border-blue-400/40'
           }`}>
-            <div className={`flex flex-col items-center gap-2 text-xs ${
+            <div className={`flex flex-col items-center gap-1 md:gap-2 text-xs ${
               theme === 'light' ? 'text-blue-700' : 'text-blue-300'
             }`}>
               <div className="flex flex-col items-center">
@@ -101,8 +140,29 @@ export function DroneScene() {
                 <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                 <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
               </div>
-              <span className="font-medium">scroll aquí</span>
-              <span className="opacity-80">para navegar</span>
+              <span className="font-medium text-[10px] md:text-xs">{t("scroll.here")}</span>
+              <span className="opacity-80 text-[9px] md:text-xs hidden sm:block">{t("scroll.navigate")}</span>
+            </div>
+          </div>
+        </div>
+
+       {/* Zona de scroll de página - centrada verticalmente */}
+        <div className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
+          <div className={`backdrop-blur-sm rounded-xl p-2 md:p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
+            theme === 'light'
+              ? 'bg-white/80 border-blue-200/50 hover:border-blue-400/70'
+              : 'bg-slate-800/40 border-blue-500/20 hover:border-blue-400/40'
+          }`}>
+            <div className={`flex flex-col items-center gap-1 md:gap-2 text-xs ${
+              theme === 'light' ? 'text-blue-700' : 'text-blue-300'
+            }`}>
+              <div className="flex flex-col items-center">
+                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-1 h-1 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+              </div>
+              <span className="font-medium text-[10px] md:text-xs">{t("scroll.here")}</span>
+              <span className="opacity-80 text-[9px] md:text-xs hidden sm:block">{t("scroll.navigate")}</span>
             </div>
           </div>
         </div>

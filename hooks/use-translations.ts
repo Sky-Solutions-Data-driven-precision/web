@@ -92,6 +92,13 @@ const translations = {
     common: {
       learnMore: "Conocer Más",
     },
+    scroll: {
+      here: "scroll aquí",
+      navigate: "para navegar",
+    },
+    interaction: {
+      dragToRotate: "arrastra para rotar",
+    },
   },
   en: {
     nav: {
@@ -181,6 +188,13 @@ const translations = {
     },
     common: {
       learnMore: "Learn More",
+    },
+    scroll: {
+      here: "scroll here",
+      navigate: "to navigate",
+    },
+    interaction: {
+      dragToRotate: "drag to rotate",
     },
   },
 }
