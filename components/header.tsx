@@ -13,7 +13,7 @@ import { useTranslations } from "@/hooks/use-translations"
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const { t } = useTranslations()
 
   const services = [
@@ -30,8 +30,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image
-              src={theme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
+           <Image
+              src={resolvedTheme === "light" ? "/images/logo-light.png" : "/images/logo-dark.png"}
               alt="Sky Solutions"
               width={180}
               height={60}
