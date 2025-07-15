@@ -1,63 +1,84 @@
 export function DroneSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
-        }}
-      />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
-      
-      {/* Content */}
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Tecnología que trasciende límites
-        </h2>
-        
-        <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
-          Combinamos innovación, precisión y experiencia para llevar tus proyectos al siguiente nivel
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+    <section className="relative min-h-screen flex items-center dark:bg-black bg-white overflow-hidden">
+      {/* Content Container */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Content */}
+          <div className="dark:text-white text-black">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Tecnología que trasciende límites
+            </h2>
+            
+            <p className="text-xl md:text-2xl mb-8 dark:text-gray-300 text-gray-600 leading-relaxed">
+              Combinamos innovación, precisión y experiencia para llevar tus proyectos al siguiente nivel
+            </p>
+            
+            <div className="space-y-6 mb-8">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 dark:bg-white/20 bg-black/10 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 dark:text-white text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Velocidad</h3>
+                  <p className="dark:text-gray-400 text-gray-600">Respuesta rápida para proyectos urgentes</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 dark:bg-white/20 bg-black/10 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 dark:text-white text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Precisión</h3>
+                  <p className="dark:text-gray-400 text-gray-600">Cada detalle cuenta en nuestro trabajo</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 dark:bg-white/20 bg-black/10 rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 dark:text-white text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Innovación</h3>
+                  <p className="dark:text-gray-400 text-gray-600">Soluciones creativas para desafíos únicos</p>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Velocidad</h3>
-            <p className="text-gray-300">Respuesta rápida para proyectos urgentes</p>
+            
+            <button className="dark:bg-white dark:text-black bg-black text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300">
+              Descubrir más
+            </button>
           </div>
           
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+          {/* Right Image with Mask */}
+          <div className="relative">
+            <div className="relative overflow-hidden">
+              {/* Mask Shape */}
+              <div 
+                className="w-full h-[600px] bg-cover bg-center relative"
+                style={{
+                  backgroundImage: "url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+                  clipPath: "polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)"
+                }}
+              >
+                {/* Subtle overlay for better integration */}
+                <div className="absolute inset-0 dark:bg-black/30 bg-white/20"></div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-10 right-10 w-20 h-20 dark:bg-white/10 bg-black/5 rounded-full"></div>
+              <div className="absolute bottom-20 left-10 w-12 h-12 dark:bg-white/20 bg-black/10 rounded-full"></div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Precisión</h3>
-            <p className="text-gray-300">Cada detalle cuenta en nuestro trabajo</p>
           </div>
           
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Innovación</h3>
-            <p className="text-gray-300">Soluciones creativas para desafíos únicos</p>
-          </div>
-        </div>
-        
-        <div className="mt-12">
-          <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
-            Descubrir más
-          </button>
         </div>
       </div>
     </section>
