@@ -6,10 +6,10 @@ export function Stats() {
   const { t } = useTranslations()
 
   const stats = [
-    { key: "projects", value: "500+" },
-    { key: "clients", value: "150+" },
-    { key: "experience", value: "8+" },
-    { key: "coverage", value: "100K+" },
+    { key: "certificacion", value: "A/B/C" },
+    { key: "datos", value: "AWS" },
+    { key: "procesamiento", value: "IA" },
+    { key: "conexion", value: "99.9%" },
   ]
 
   return (

@@ -10,6 +10,7 @@ export default function HomePage() {
       <Hero />
       <Stats />
       <Services />
+      <AISection />
       <About />
       <CTA />
     </main>

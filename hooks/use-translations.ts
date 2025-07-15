@@ -49,10 +49,10 @@ const translations = {
       },
     },
     stats: {
-      projects: "Proyectos Completados",
-      clients: "Clientes Satisfechos",
-      experience: "Años de Experiencia",
-      coverage: "Hectáreas Relevadas",
+      certificacion: "Certificados por ANAC",
+      datos: "Almcenamiento en la nube",
+      procesamiento: "Procesamiento de datos para tu rendimiento",
+      conexion: "Conexión rural con Starlink",
     },
     about: {
       title: "Por qué elegir Sky Solutions",
