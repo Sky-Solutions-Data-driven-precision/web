@@ -11,6 +11,7 @@ export default function HomePage() {
       <Hero />
       <Stats />
       <Services />
+      <DroneSection />
       <AISection />
       <About />
       <CTA />
