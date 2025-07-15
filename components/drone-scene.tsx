@@ -44,7 +44,7 @@ export function DroneScene() {
         </div>
 
         {/* Indicador de interactividad - arriba del mundo */}
-        <div className="absolute top-[28%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+        <div className="absolute top-[32%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
           <div className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-dashed animate-spin ${
             theme === 'light'
               ? 'border-blue-400/60'
