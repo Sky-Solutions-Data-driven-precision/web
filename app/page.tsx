@@ -4,6 +4,7 @@ import { About } from "@/components/about"
 import { Stats } from "@/components/stats"
 import { CTA } from "@/components/cta"
 import { AISection } from "@/components/ai-section"
+import { DroneSection } from "@/components/drone-section"
 
 export default function HomePage() {
   return (
