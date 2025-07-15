@@ -67,16 +67,16 @@
             controls.autoRotateSpeed = 0.5;
 
             // Lighting - TENUE PARA NOCHE
-            const ambientLight = new THREE.AmbientLight(0x404080, 0.4); // Azul muy tenue
+            const ambientLight = new THREE.AmbientLight(0x6699cc, 0.8); // Azul más claro e intenso
             scene.add(ambientLight);
 
             // Luna como fuente de luz principal
-            const moonLight = new THREE.DirectionalLight(0xaaaacc, 0.6);
+            const moonLight = new THREE.DirectionalLight(0xccddff, 1.2);
             moonLight.position.set(-5, 3, 5);
             scene.add(moonLight);
 
             // Luz de relleno muy tenue
-            const fillLight = new THREE.DirectionalLight(0x404080, 0.1);
+            const fillLight = new THREE.DirectionalLight(0x6699cc, 0.4);
             fillLight.position.set(5, -3, -5);
             scene.add(fillLight);
 
@@ -86,7 +86,7 @@
             
             // Cargar texturas de día y noche
             const earthDayTexture = textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg');
-           // const earthNightTexture = textureLoader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg');
+            const earthNightTexture = textureLoader.load('https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg');
             
             // Shader personalizado para combinar día/noche
            const earthMaterial = new THREE.MeshLambertMaterial({
@@ -94,6 +94,7 @@
             });
 
             earth = new THREE.Mesh(earthGeometry, earthMaterial);
+            earth.rotation.y = Math.PI * 1.5;
             scene.add(earth);
 
             // Clouds - más sutiles en la noche
