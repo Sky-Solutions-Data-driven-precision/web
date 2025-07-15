@@ -7,7 +7,7 @@ import { useTranslations } from "@/hooks/use-translations"
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const { t } = useTranslations()
 
   return (
@@ -17,11 +17,11 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <Image
-              src={theme === "dark" ? "/images/logo-dark.png" : "/images/logo-light.png"}
+              src={resolvedTheme === "light" ? "/images/logo-light.png" : "/images/logo-dark.png"}
               alt="Sky Solutions"
-              width={200}
-              height={70}
-              className="h-16 w-auto"
+              width={180}
+              height={60}
+              className="h-14 w-auto"
             />
             <p className="text-muted-foreground">{t("footer.description")}</p>
             <div className="flex space-x-4">
