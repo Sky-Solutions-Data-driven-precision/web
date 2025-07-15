@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -17,8 +18,13 @@ export interface BlogPost {
   image?: string
 }
 
+// Configurar marked para mejores estilos
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+})
+
 export function getAllPosts(): BlogPost[] {
-  // Verificar si la carpeta existe
   if (!fs.existsSync(postsDirectory)) {
     return []
   }
@@ -32,9 +38,12 @@ export function getAllPosts(): BlogPost[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data, content } = matter(fileContents)
 
+      // Convertir Markdown a HTML
+      const htmlContent = marked(content)
+
       return {
         slug,
-        content,
+        content: htmlContent,
         ...data,
       } as BlogPost
     })
@@ -56,9 +65,12 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
+    // Convertir Markdown a HTML
+    const htmlContent = marked(content)
+
     return {
       slug,
-      content,
+      content: htmlContent,
       ...data,
     } as BlogPost
   } catch (error) {
