@@ -12,6 +12,7 @@ export interface BlogPost {
   content: string
   category: string
   author: string
+  authorBio?: string
   date: string
   readTime: string
   tags: string[]
