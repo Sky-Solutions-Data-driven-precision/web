@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Wheat, TreePine, Wind, Microscope, Map, Shield } from "lucide-react"
+import { Wheat, Leaf, Wind, Microscope, Map, Shield } from "lucide-react"
 import { useTranslations } from "@/hooks/use-translations"
 import Link from "next/link"
 
@@ -26,16 +26,16 @@ export function Services() {
     },
     {
       key: "livestock",
-      icon: TreePine, // Podrías cambiar por otro icono como Cow o similar
-      href: "/servicios/agricultura", // Mismo destino que agricultura
+      icon: Leaf,
+      href: "/servicios/agricultura",
       colors: {
-        bg: "bg-gradient-to-br from-emerald-500/10 to-emerald-600/5",
-        iconBg: "bg-gradient-to-br from-emerald-500/20 to-emerald-600/10",
-        icon: "text-emerald-600",
-        border: "border-emerald-200/50",
-        hoverBorder: "hover:border-emerald-400/70",
-        hoverIconBg: "group-hover:from-emerald-500/30 group-hover:to-emerald-600/15",
-        button: "hover:bg-emerald-50 hover:border-emerald-300 dark:hover:bg-emerald-950/30 dark:hover:border-emerald-700"
+        bg: "bg-gradient-to-br from-green-600/10 to-green-700/5",
+        iconBg: "bg-gradient-to-br from-green-600/20 to-green-700/10",
+        icon: "text-green-700",
+        border: "border-green-200/50",
+        hoverBorder: "hover:border-green-400/70",
+        hoverIconBg: "group-hover:from-green-600/30 group-hover:to-green-700/15",
+        button: "hover:bg-green-50 hover:border-green-300 dark:hover:bg-green-950/30 dark:hover:border-green-700"
       }
     },
     {
