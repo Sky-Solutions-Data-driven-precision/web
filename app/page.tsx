@@ -12,9 +12,9 @@ export default function HomePage() {
       <Hero />
       <Stats />
       <Services />
-      <AISection />
       <DroneSection />
       <About />
+      <AISection />
       <CTA />
     </main>
   )
