@@ -10,11 +10,18 @@ import { Footer } from "@/components/footer"
 const exo2 = Exo_2({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sky Solutions - Data-driven precision",
-  description:
-    "Soluciones profesionales con drones para agricultura, inspecciones, topografía y más. Tecnología de vanguardia al servicio de tu empresa.",
-  keywords: "drones, agricultura, inspecciones, topografía, Argentina, Sky Solutions",
-  generator: 'v0.dev'
+  title: "Sky Solutions | Data-driven precision",
+  description: "Soluciones profesionales con drones para agricultura, inspecciones, topografía y más. Tecnología de vanguardia al servicio de tu empresa.",
+  keywords: "drones, agricultura, inspecciones, topografía, Argentina, Sky Solutions, servicios",
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Sky Solutions | Data-driven precision',
+    description: 'Soluciones profesionales con drones para agricultura, inspecciones, topografía y más.',
+    url: 'https://skysolutions.com.ar',
+    siteName: 'Sky Solutions',
+    locale: 'es_AR',
+    type: 'website',
+  }
 }
 
 export default function RootLayout({
