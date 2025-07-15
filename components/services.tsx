@@ -26,18 +26,18 @@ export function Services() {
     },
     {
       key: "livestock",
-  icon: Leaf,
-  href: "/servicios/agricultura",
-  colors: {
-    bg: "bg-gradient-to-br from-green-600/10 to-green-700/5",
-    iconBg: "bg-gradient-to-br from-green-600/20 to-green-700/10",
-    icon: "text-green-700",
-    border: "border-green-200/50",
-    hoverBorder: "hover:border-green-400/70",
-    hoverIconBg: "group-hover:from-green-600/30 group-hover:to-green-700/15",
-    button: "hover:bg-green-50 hover:border-green-300 hover:text-green-700 dark:hover:bg-green-950/30 dark:hover:border-green-700 dark:hover:text-green-300"
-      }
-    },
+      icon: Leaf,
+      href: "/servicios/agricultura",
+      colors: {
+          bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
+          iconBg: "bg-gradient-to-br from-green-500/20 to-green-600/10",
+          icon: "text-green-600",
+          border: "border-green-200/50",
+          hoverBorder: "hover:border-green-400/70",
+          hoverIconBg: "group-hover:from-green-500/30 group-hover:to-green-600/15",
+          button: "hover:bg-green-50 hover:border-green-300 dark:hover:bg-green-950/30 dark:hover:border-green-700"
+            }
+        },
     {
       key: "wind",
       icon: Wind,
