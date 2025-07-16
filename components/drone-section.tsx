@@ -1,4 +1,9 @@
+"use client"
+
+import { useTranslations } from "@/hooks/use-translations"
+
 export function DroneSection() {
+  const { t } = useTranslations()
   return (
     <section className="relative min-h-screen flex items-center dark:bg-black bg-white overflow-hidden">
       {/* Content Container */}
@@ -8,11 +13,11 @@ export function DroneSection() {
           {/* Left Content */}
           <div className="dark:text-white text-black">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Tecnología que trasciende límites
+              {t("drone.title")}
             </h2>
             
             <p className="text-xl md:text-2xl mb-8 dark:text-gray-300 text-gray-600 leading-relaxed">
-              Combinamos innovación, precisión y experiencia para llevar tus proyectos al siguiente nivel
+              {t("drone.description")}
             </p>
             
             <div className="space-y-6 mb-8">
@@ -23,8 +28,8 @@ export function DroneSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">Velocidad</h3>
-                  <p className="dark:text-gray-400 text-gray-600">Respuesta rápida para proyectos urgentes</p>
+                  <h3 className="text-lg font-semibold">{t("drone.features.speed.title")}</h3>
+                  <p className="dark:text-gray-400 text-gray-600">{t("drone.features.speed.description")}</p>
                 </div>
               </div>
               
@@ -35,8 +40,8 @@ export function DroneSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">Precisión</h3>
-                  <p className="dark:text-gray-400 text-gray-600">Cada detalle cuenta en nuestro trabajo</p>
+                  <h3 className="text-lg font-semibold">{t("drone.features.precision.title")}</h3>
+                  <p className="dark:text-gray-400 text-gray-600">{t("drone.features.precision.description")}</p>
                 </div>
               </div>
               
@@ -47,14 +52,14 @@ export function DroneSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">Innovación</h3>
-                  <p className="dark:text-gray-400 text-gray-600">Soluciones creativas para desafíos únicos</p>
+                  <h3 className="text-lg font-semibold">{t("drone.features.innovation.title")}</h3>
+                  <p className="dark:text-gray-400 text-gray-600">{t("drone.features.innovation.description")}</p>
                 </div>
               </div>
             </div>
             
             <button className="dark:bg-white dark:text-black bg-black text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300">
-              Descubrir más
+              {t("drone.cta")}
             </button>
           </div>
           

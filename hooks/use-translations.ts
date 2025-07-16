@@ -103,6 +103,25 @@ const translations = {
     interaction: {
       dragToRotate: "arrastra para rotar",
     },
+    drone: {
+      title: "Tecnología que trasciende límites",
+      description: "Combinamos innovación, precisión y experiencia para llevar tus proyectos al siguiente nivel",
+      features: {
+        speed: {
+          title: "Velocidad",
+          description: "Respuesta rápida para proyectos urgentes"
+        },
+        precision: {
+          title: "Precisión", 
+          description: "Cada detalle cuenta en nuestro trabajo"
+        },
+        innovation: {
+          title: "Innovación",
+          description: "Soluciones creativas para desafíos únicos"
+        }
+      },
+      cta: "Descubrir más"
+    },
   },
   en: {
     nav: {
@@ -203,6 +222,25 @@ const translations = {
     },
     interaction: {
       dragToRotate: "drag to rotate",
+    },
+    drone: {
+      title: "Technology that transcends limits",
+      description: "We combine innovation, precision and experience to take your projects to the next level",
+      features: {
+        speed: {
+          title: "Speed",
+          description: "Fast response for urgent projects"
+        },
+        precision: {
+          title: "Precision",
+          description: "Every detail matters in our work"
+        },
+        innovation: {
+          title: "Innovation", 
+          description: "Creative solutions for unique challenges"
+        }
+      },
+      cta: "Discover more"
     },
   },
 }
