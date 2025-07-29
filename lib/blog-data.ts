@@ -11,7 +11,8 @@ export const blogSlugs = [
   'tendencias-drones-2024',
   'ndvi-analisis-cultivos',
   'sensores-multiespectrales-guia',
-  'roi-agricultura-precision'
+  'roi-agricultura-precision',
+  'drone_arqueologia_aplicaciones',
 ]
 
 export function getBlogSlugs() {
