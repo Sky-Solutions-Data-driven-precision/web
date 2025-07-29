@@ -107,9 +107,9 @@ Bloques de código
 > Citas y blockquotes
 
 [Enlaces](https://skysolutions.com.ar)
-```
 
 2. **Agregar slug** a `lib/blog-data.ts`:
+
 ```typescript
 export const blogSlugs = [
   // ... posts existentes
