@@ -215,8 +215,13 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
 
               {/* Featured Image */}
-              <figure className="aspect-video bg-muted rounded-lg flex items-center justify-center mb-8">
-                <span className="text-muted-foreground">Imagen principal del artículo</span>
+             <figure className="aspect-video bg-muted rounded-lg mb-8">
+                <img src={post.image} alt={post.imageAlt || post.title} className="w-full h-full object-cover rounded-lg" />
+                {post.imageCredit && (
+                  <figcaption className="text-sm text-muted-foreground text-center mt-2">
+                    {post.imageCredit}
+                  </figcaption>
+                )}
               </figure>
             </div>
           </div>

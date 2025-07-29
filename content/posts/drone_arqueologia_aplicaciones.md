@@ -8,6 +8,8 @@ date: "2025-07-29"
 readTime: "12 min"
 tags: ["Arqueología", "Drones", "Patrimonio Cultural", "Fotogrametría", "Geoarqueología"]
 image: "/images/drone-arqueologia.jpg"
+imageCredit: "Foto de Anton Lukin en Unsplash"
+imageAlt: "Drone sobrevolando sitio arqueológico"
 ---
 
 # El Uso de Drones en Arqueología: Revolucionando la Documentación del Patrimonio
