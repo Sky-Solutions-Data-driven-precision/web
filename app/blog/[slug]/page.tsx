@@ -6,6 +6,7 @@ import { Calendar, User, Clock, ArrowLeft, Share2, BookOpen, Tag } from "lucide-
 import { getBlogSlugs } from "@/lib/blog-data"
 import { getPostBySlug } from "@/lib/blog"
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 // Genera las rutas estáticas para el export
 export function generateStaticParams() {
@@ -122,27 +123,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  // Intentar cargar desde Markdown primero
-  let post = getPostBySlug(params.slug)
+  // Intentar cargar desde Markdown
+  const post = getPostBySlug(params.slug)
   
-  // Si no encuentra MD, usar contenido hardcodeado como fallback
+  // Si no encuentra el post, usar la página 404 global
   if (!post) {
-    post = {
-      slug: params.slug,
-      title: "El Futuro de la Agricultura de Precisión en Argentina",
-      excerpt: "Descubre cómo los drones están revolucionando la agricultura argentina con tecnologías de mapeo multiespectral y análisis de datos avanzados.",
-      content: `<h1>El Futuro de la Agricultura de Precisión en Argentina</h1>
-      <p>La agricultura de precisión está transformando la manera en que los productores argentinos gestionan sus cultivos.</p>
-      <h2>Beneficios Comprobados</h2>
-      <p>Nuestros estudios demuestran mejoras significativas...</p>`,
-      category: "Agricultura",
-      author: "Dr. María González",
-      authorBio: "Especialista en Agricultura de Precisión con más de 15 años de experiencia.",
-      date: "15 de Enero, 2024",
-      readTime: "8 min",
-      tags: ["Agricultura de Precisión", "NDVI", "Sensores Multiespectrales", "Productividad", "Sostenibilidad"],
-      image: "/placeholder.svg?height=400&width=800",
-    }
+    notFound()
   }
 
   // ✨ NUEVO: Procesar contenido para agregar IDs a H2s
@@ -152,24 +138,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const headings = extractHeadings(processedContent)
 
   const relatedPosts = [
-    {
-      id: "ndvi-analisis-cultivos",
-      title: "Análisis NDVI: Interpretando la Salud de tus Cultivos",
-      category: "Agricultura",
-      readTime: "6 min",
-    },
-    {
-      id: "sensores-multiespectrales-guia",
-      title: "Guía Completa de Sensores Multiespectrales",
-      category: "Tecnología",
-      readTime: "10 min",
-    },
-    {
-      id: "roi-agricultura-precision",
-      title: "ROI en Agricultura de Precisión: Casos Reales",
-      category: "Agricultura",
-      readTime: "7 min",
-    },
+    // Posts relacionados se pueden generar dinámicamente o dejar vacío
+    // Para futuras versiones: implementar lógica para encontrar posts relacionados por tags/categoría
   ]
 
   // ✨ JSON-LD structured data para SEO
@@ -370,35 +340,37 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </section>
 
-        {/* Related Posts */}
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold mb-8">Artículos Relacionados</h2>
+        {/* Related Posts - Solo mostrar si hay posts relacionados */}
+        {relatedPosts.length > 0 && (
+          <section className="py-16 bg-muted/30">
+            <div className="container mx-auto px-4">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-bold mb-8">Artículos Relacionados</h2>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                {relatedPosts.map((relatedPost) => (
-                  <Card key={relatedPost.id} className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <Badge variant="outline" className="w-fit">
-                        {relatedPost.category}
-                      </Badge>
-                      <CardTitle className="text-lg">{relatedPost.title}</CardTitle>
-                      <CardDescription>{relatedPost.readTime} de lectura</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Link href={`/blog/${relatedPost.id}`}>
-                        <Button variant="outline" size="sm" className="w-full bg-transparent">
-                          Leer artículo
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                ))}
+                <div className="grid md:grid-cols-3 gap-6">
+                  {relatedPosts.map((relatedPost) => (
+                    <Card key={relatedPost.id} className="hover:shadow-lg transition-shadow">
+                      <CardHeader>
+                        <Badge variant="outline" className="w-fit">
+                          {relatedPost.category}
+                        </Badge>
+                        <CardTitle className="text-lg">{relatedPost.title}</CardTitle>
+                        <CardDescription>{relatedPost.readTime} de lectura</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <Link href={`/blog/${relatedPost.id}`}>
+                          <Button variant="outline" size="sm" className="w-full bg-transparent">
+                            Leer artículo
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </>
   )
