@@ -5,21 +5,15 @@ import { CardContent, CardDescription, CardHeader, CardTitle } from "@/component
 import { Badge } from "@/components/ui/badge"
 import { Calendar, User, ArrowRight, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { getAllPosts } from "@/lib/blog"
+import { getBlogSlugs } from "@/lib/blog-data"
 
 export default function BlogPage() {
-  const featuredPost = {
-    id: "agricultura-precision-2024",
-    title: "El Futuro de la Agricultura de Precisión en Argentina",
-    excerpt:
-      "Descubre cómo los drones están revolucionando la agricultura argentina con tecnologías de mapeo multiespectral y análisis de datos avanzados.",
-    category: "Agricultura",
-    author: "Dr. María González",
-    date: "15 de Enero, 2024",
-    readTime: "8 min",
-    image: "/placeholder.svg?height=400&width=600",
-  }
-
-  const blogPosts = [
+  // ✨ NUEVO: Obtener posts dinámicamente
+  const dynamicPosts = getAllPosts()
+  
+  // ✨ NUEVO: Posts de fallback (mantenemos algunos hardcodeados como respaldo)
+  const fallbackPosts = [
     {
       id: "inspeccion-eolicos-ia",
       title: "IA en Inspecciones de Aerogeneradores: Casos de Éxito",
@@ -88,16 +82,51 @@ export default function BlogPage() {
     },
   ]
 
-  const categories = [
-    "Todos",
-    "Agricultura",
-    "Energía Eólica",
-    "Topografía",
-    "Seguridad",
-    "Ciencia",
-    "Tecnología",
-    "Regulaciones",
-  ]
+  // ✨ NUEVO: Convertir posts de Markdown al formato esperado
+  const convertedPosts = dynamicPosts.map(post => ({
+    id: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    category: post.category,
+    author: post.author,
+    date: post.date,
+    readTime: post.readTime,
+    image: post.image || "/placeholder.svg?height=300&width=400",
+  }))
+
+  // ✨ NUEVO: Combinar posts dinámicos con fallback, priorizando los dinámicos
+  const allPosts = [...convertedPosts, ...fallbackPosts]
+  
+  // ✨ NUEVO: Eliminar duplicados por ID y mantener solo versiones únicas
+  const uniquePosts = allPosts.filter((post, index, self) => 
+    index === self.findIndex(p => p.id === post.id)
+  )
+
+  // ✨ NUEVO: Ordenar por fecha (más recientes primero)
+  const sortedPosts = uniquePosts.sort((a, b) => {
+    const dateA = new Date(a.date.replace(' de ', ' ').replace(', ', ' '))
+    const dateB = new Date(b.date.replace(' de ', ' ').replace(', ', ' '))
+    return dateB.getTime() - dateA.getTime()
+  })
+
+  // ✨ NUEVO: Post destacado (el más reciente)
+  const featuredPost = sortedPosts[0] || {
+    id: "agricultura-precision-2024",
+    title: "El Futuro de la Agricultura de Precisión en Argentina",
+    excerpt:
+      "Descubre cómo los drones están revolucionando la agricultura argentina con tecnologías de mapeo multiespectral y análisis de datos avanzados.",
+    category: "Agricultura",
+    author: "Dr. María González",
+    date: "15 de Enero, 2024",
+    readTime: "8 min",
+    image: "/placeholder.svg?height=400&width=600",
+  }
+
+  // ✨ NUEVO: Posts para la grilla (excluyendo el destacado)
+  const gridPosts = sortedPosts.slice(1, 7) // Mostrar los siguientes 6 posts
+
+  // ✨ NUEVO: Obtener categorías únicas dinámicamente
+  const allCategories = ["Todos", ...new Set(sortedPosts.map(post => post.category))]
 
   return (
     <div className="min-h-screen">
@@ -124,7 +153,7 @@ export default function BlogPage() {
       <section className="py-8 border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
+            {allCategories.map((category) => (
               <Badge
                 key={category}
                 variant={category === "Todos" ? "default" : "outline"}
@@ -147,7 +176,15 @@ export default function BlogPage() {
           <Card className="overflow-hidden hover:shadow-lg transition-shadow">
             <div className="grid lg:grid-cols-2 gap-0">
               <div className="aspect-video lg:aspect-auto bg-muted flex items-center justify-center">
-                <span className="text-muted-foreground">Imagen destacada del blog</span>
+                {featuredPost.image ? (
+                  <img 
+                    src={featuredPost.image} 
+                    alt={featuredPost.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-muted-foreground">Imagen destacada del blog</span>
+                )}
               </div>
               <div className="p-8">
                 <div className="flex items-center gap-4 mb-4">
@@ -184,13 +221,24 @@ export default function BlogPage() {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4">Últimos Artículos</h2>
+            <p className="text-muted-foreground">
+              Mostrando {gridPosts.length} de {sortedPosts.length} artículos disponibles
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {gridPosts.map((post) => (
               <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow group">
                 <div className="aspect-video bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground">Imagen del artículo</span>
+                  {post.image ? (
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-muted-foreground">Imagen del artículo</span>
+                  )}
                 </div>
 
                 <CardHeader>
@@ -232,11 +280,13 @@ export default function BlogPage() {
           </div>
 
           {/* Load More Button */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              Cargar más artículos
-            </Button>
-          </div>
+          {sortedPosts.length > 7 && (
+            <div className="text-center mt-12">
+              <Button variant="outline" size="lg">
+                Cargar más artículos ({sortedPosts.length - 7} restantes)
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
