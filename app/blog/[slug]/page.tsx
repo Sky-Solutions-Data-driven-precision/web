@@ -283,29 +283,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   <meta itemProp="author" content={post.author} />
                   <meta itemProp="publisher" content="Sky Solutions" />
                   
-                  {/* ✨ MEJORADO: Estilos completos para contenido Markdown */}
+                  {/* ✨ MEJORADO: Estilos personalizados para contenido Markdown */}
                   <div
                     itemProp="articleBody"
-                    className="prose prose-lg prose-slate dark:prose-invert max-w-none 
-                             prose-headings:text-foreground prose-headings:font-bold prose-headings:scroll-mt-20
-                             prose-h1:text-3xl prose-h1:mb-6 prose-h1:mt-8 prose-h1:border-b prose-h1:border-muted prose-h1:pb-3
-                             prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 prose-h2:border-b prose-h2:border-muted prose-h2:pb-2 prose-h2:text-primary
-                             prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-primary prose-h3:font-semibold
-                             prose-h4:text-lg prose-h4:mb-2 prose-h4:mt-4 prose-h4:font-semibold
-                             prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4 prose-p:text-base
-                             prose-ul:my-4 prose-ul:space-y-2 prose-li:text-foreground prose-li:leading-relaxed
-                             prose-ol:my-4 prose-ol:space-y-2
-                             prose-strong:text-foreground prose-strong:font-semibold
-                             prose-em:text-foreground prose-em:italic
-                             prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium
-                             prose-blockquote:border-l-primary prose-blockquote:bg-muted/50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-blockquote:my-6
-                             prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
-                             prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto
-                             prose-table:w-full prose-table:border-collapse
-                             prose-th:border prose-th:border-border prose-th:bg-muted prose-th:p-2 prose-th:text-left prose-th:font-semibold
-                             prose-td:border prose-td:border-border prose-td:p-2
-                             prose-img:rounded-lg prose-img:shadow-md prose-img:my-6
-                             prose-hr:border-muted prose-hr:my-8"
+                    className="blog-content"
                     dangerouslySetInnerHTML={{ __html: processedContent }}
                   />
 
