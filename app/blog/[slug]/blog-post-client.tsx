@@ -38,6 +38,49 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
     // Para futuras versiones: implementar lógica para encontrar posts relacionados por tags/categoría
   ]
 
+  // Función para compartir el artículo
+  const handleShare = async () => {
+    const shareData = {
+      title: post.title,
+      text: post.excerpt,
+      url: window.location.href,
+    }
+
+    try {
+      // Usar Web Share API si está disponible (móvil principalmente)
+      if (navigator.share) {
+        await navigator.share(shareData)
+      } else {
+        // Fallback: copiar URL al portapapeles
+        await navigator.clipboard.writeText(window.location.href)
+        
+        // Aquí podrías mostrar un toast/notificación
+        // Por simplicidad, usamos alert (puedes reemplazar con tu sistema de notificaciones)
+        alert('¡Enlace copiado al portapapeles!')
+      }
+    } catch (error) {
+      // Si falla todo, mostrar opciones de compartir manual
+      const url = encodeURIComponent(window.location.href)
+      const title = encodeURIComponent(post.title)
+      const text = encodeURIComponent(post.excerpt)
+      
+      // Crear un menú simple de opciones de compartir
+      const shareOptions = [
+        { name: 'Twitter', url: `https://twitter.com/intent/tweet?url=${url}&text=${title}` },
+        { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${url}` },
+        { name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${url}` },
+        { name: 'WhatsApp', url: `https://wa.me/?text=${title}%20${url}` }
+      ]
+      
+      const choice = prompt(`Selecciona cómo compartir:\n${shareOptions.map((opt, i) => `${i + 1}. ${opt.name}`).join('\n')}\n\nEscribe el número:`)
+      const selectedOption = shareOptions[parseInt(choice || '0') - 1]
+      
+      if (selectedOption) {
+        window.open(selectedOption.url, '_blank', 'width=600,height=400')
+      }
+    }
+  }
+
   return (
     <>
       {/* ✨ JSON-LD Script para structured data */}
@@ -82,7 +125,7 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
                       <Clock className="h-4 w-4" />
                       <span itemProp="timeRequired">{post.readTime} {t('blog.post.readTime')}</span>
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={handleShare}>
                       <Share2 className="h-4 w-4 mr-2" />
                       {t('blog.post.share')}
                     </Button>
