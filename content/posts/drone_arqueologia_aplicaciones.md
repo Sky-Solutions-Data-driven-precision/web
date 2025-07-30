@@ -2,7 +2,7 @@
 title: "El Uso de Drones en Arqueología: Revolucionando la Documentación del Patrimonio"
 excerpt: "Los drones han transformado la arqueología moderna, ofreciendo resoluciones submilimétricas y capacidades de análisis sin precedentes para la documentación y conservación del patrimonio cultural."
 category: "Patrimonio Cultural"
-author: "Dr. Marta Sampietro Vattuone"
+author: "Equipo Sky Solutions"
 authorBio: "Geoarqueóloga especializada en teledetección aplicada al patrimonio cultural. Investigadora CONICET con más de 20 años de experiencia en aplicaciones de sensores remotos en arqueología."
 date: "2025-07-29"
 readTime: "12 min"

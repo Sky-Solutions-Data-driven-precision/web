@@ -1,3 +1,5 @@
+'use client'
+
 import { Card } from "@/components/ui/card"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -7,8 +9,14 @@ import { Calendar, User, ArrowRight, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { getAllPosts } from "@/lib/blog"
 import { getBlogSlugs } from "@/lib/blog-data"
+import { useState, useMemo, useEffect } from "react"
 
 export default function BlogPage() {
+  // ✨ NUEVO: Estados para filtros y búsqueda
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("Todos")
+  const [visiblePosts, setVisiblePosts] = useState(6) // Cantidad de posts visibles
+
   // ✨ NUEVO: Obtener posts dinámicamente
   const dynamicPosts = getAllPosts()
   
@@ -122,8 +130,16 @@ export default function BlogPage() {
     image: "/placeholder.svg?height=400&width=600",
   }
 
-  // ✨ NUEVO: Posts para la grilla (excluyendo el destacado)
-  const gridPosts = sortedPosts.slice(1, 7) // Mostrar los siguientes 6 posts
+  // ✨ NUEVO: Posts para la grilla (excluyendo el destacado y limitando por visiblePosts)
+  const gridPosts = filteredPosts.slice(1, visiblePosts + 1) // Mostrar posts filtrados según visiblePosts
+
+  // ✨ NUEVO: Calcular posts restantes
+  const remainingPosts = Math.max(0, filteredPosts.length - visiblePosts - 1)
+
+  // ✨ NUEVO: Función para cargar más posts
+  const loadMorePosts = () => {
+    setVisiblePosts(prev => prev + 6)
+  }
 
   // ✨ NUEVO: Obtener categorías únicas dinámicamente
   const allCategories = ["Todos", ...new Set(sortedPosts.map(post => post.category))]
@@ -143,7 +159,12 @@ export default function BlogPage() {
             {/* Search Bar */}
             <div className="max-w-md mx-auto relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input placeholder="Buscar artículos..." className="pl-10" />
+              <Input 
+                placeholder="Buscar artículos..." 
+                className="pl-10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
           </div>
         </div>
@@ -156,8 +177,9 @@ export default function BlogPage() {
             {allCategories.map((category) => (
               <Badge
                 key={category}
-                variant={category === "Todos" ? "default" : "outline"}
+                variant={category === selectedCategory ? "default" : "outline"}
                 className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                onClick={() => setSelectedCategory(category)}
               >
                 {category}
               </Badge>
@@ -167,11 +189,21 @@ export default function BlogPage() {
       </section>
 
       {/* Featured Post */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Artículo Destacado</h2>
-          </div>
+      {featuredPost && (
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold mb-4">
+                {selectedCategory !== "Todos" || searchTerm ? "Resultado Destacado" : "Artículo Destacado"}
+              </h2>
+              {(selectedCategory !== "Todos" || searchTerm) && (
+                <p className="text-muted-foreground">
+                  {searchTerm && `Búsqueda: "${searchTerm}"`}
+                  {searchTerm && selectedCategory !== "Todos" && " - "}
+                  {selectedCategory !== "Todos" && `Categoría: ${selectedCategory}`}
+                </p>
+              )}
+            </div>
 
           <Card className="overflow-hidden hover:shadow-lg transition-shadow">
             <div className="grid lg:grid-cols-2 gap-0">
@@ -215,18 +247,46 @@ export default function BlogPage() {
           </Card>
         </div>
       </section>
+      )}
 
       {/* Blog Posts Grid */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Últimos Artículos</h2>
+            <h2 className="text-2xl font-bold mb-4">
+              {selectedCategory !== "Todos" || searchTerm ? "Resultados" : "Últimos Artículos"}
+            </h2>
             <p className="text-muted-foreground">
-              Mostrando {gridPosts.length} de {sortedPosts.length} artículos disponibles
+              Mostrando {gridPosts.length} de {filteredPosts.length} artículos
+              {selectedCategory !== "Todos" || searchTerm 
+                ? ` (${sortedPosts.length} total)` 
+                : " disponibles"
+              }
             </p>
+            
+            {/* Mostrar mensaje si no hay resultados */}
+            {filteredPosts.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-xl text-muted-foreground mb-4">
+                  No se encontraron artículos para tu búsqueda
+                </p>
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setSearchTerm("")
+                    setSelectedCategory("Todos")
+                  }}
+                >
+                  Limpiar filtros
+                </Button>
+              </div>
+            )}
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Grid de posts - solo mostrar si hay resultados */}
+          {filteredPosts.length > 0 && (
+            <>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {gridPosts.map((post) => (
               <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow group">
                 <div className="aspect-video bg-muted flex items-center justify-center">
@@ -277,15 +337,21 @@ export default function BlogPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+              </div>
 
-          {/* Load More Button */}
-          {sortedPosts.length > 7 && (
-            <div className="text-center mt-12">
-              <Button variant="outline" size="lg">
-                Cargar más artículos ({sortedPosts.length - 7} restantes)
-              </Button>
-            </div>
+              {/* Load More Button */}
+              {remainingPosts > 0 && (
+                <div className="text-center mt-12">
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    onClick={loadMorePosts}
+                  >
+                    Cargar más artículos ({remainingPosts} restantes)
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
