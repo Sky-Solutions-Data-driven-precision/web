@@ -14,7 +14,41 @@ export function generateStaticParams() {
   }))
 }
 
-// ✨ NUEVO: Genera metadata SEO automática para cada post
+// ✨ NUEVO: Función para extraer H2s del contenido HTML y crear anclas
+function extractHeadings(htmlContent: string) {
+  const h2Regex = /<h2[^>]*>(.*?)<\/h2>/gi
+  const headings: { id: string; title: string }[] = []
+  let match
+
+  while ((match = h2Regex.exec(htmlContent)) !== null) {
+    const title = match[1].replace(/<[^>]*>/g, '') // Remover tags HTML
+    const id = title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '') // Remover caracteres especiales
+      .replace(/\s+/g, '-') // Reemplazar espacios con guiones
+      .trim()
+    
+    headings.push({ id, title })
+  }
+
+  return headings
+}
+
+// ✨ NUEVO: Función para agregar IDs a los H2s en el HTML
+function addHeadingIds(htmlContent: string) {
+  return htmlContent.replace(/<h2([^>]*)>(.*?)<\/h2>/gi, (match, attributes, content) => {
+    const title = content.replace(/<[^>]*>/g, '')
+    const id = title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, '-')
+      .trim()
+    
+    return `<h2${attributes} id="${id}">${content}</h2>`
+  })
+}
+
+// ✨ Genera metadata SEO automática para cada post
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   
@@ -97,7 +131,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       slug: params.slug,
       title: "El Futuro de la Agricultura de Precisión en Argentina",
       excerpt: "Descubre cómo los drones están revolucionando la agricultura argentina con tecnologías de mapeo multiespectral y análisis de datos avanzados.",
-      content: `<!-- Tu contenido hardcodeado existente -->`,
+      content: `<h1>El Futuro de la Agricultura de Precisión en Argentina</h1>
+      <p>La agricultura de precisión está transformando la manera en que los productores argentinos gestionan sus cultivos.</p>
+      <h2>Beneficios Comprobados</h2>
+      <p>Nuestros estudios demuestran mejoras significativas...</p>`,
       category: "Agricultura",
       author: "Dr. María González",
       authorBio: "Especialista en Agricultura de Precisión con más de 15 años de experiencia.",
@@ -107,6 +144,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       image: "/placeholder.svg?height=400&width=800",
     }
   }
+
+  // ✨ NUEVO: Procesar contenido para agregar IDs a H2s
+  const processedContent = addHeadingIds(post.content)
+  
+  // ✨ NUEVO: Extraer headings para el índice
+  const headings = extractHeadings(processedContent)
 
   const relatedPosts = [
     {
@@ -129,7 +172,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     },
   ]
 
-  // ✨ NUEVO: JSON-LD structured data para SEO
+  // ✨ JSON-LD structured data para SEO
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -163,7 +206,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      {/* ✨ NUEVO: JSON-LD Script para structured data */}
+      {/* ✨ JSON-LD Script para structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -188,7 +231,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="max-w-4xl mx-auto">
               <div className="mb-6">
                 <Badge className="mb-4">{post.category}</Badge>
-                {/* ✨ MEJORADO: Estructura semántica HTML5 */}
                 <header>
                   <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
                   <p className="text-xl text-muted-foreground mb-6">{post.excerpt}</p>
@@ -234,27 +276,37 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <div className="grid lg:grid-cols-4 gap-8">
                 {/* Main Content */}
                 <article className="lg:col-span-3" itemScope itemType="http://schema.org/BlogPosting">
-                  {/* ✨ MEJORADO: Meta tags invisibles para SEO */}
+                  {/* ✨ Meta tags invisibles para SEO */}
                   <meta itemProp="headline" content={post.title} />
                   <meta itemProp="description" content={post.excerpt} />
                   <meta itemProp="datePublished" content={post.date} />
                   <meta itemProp="author" content={post.author} />
                   <meta itemProp="publisher" content="Sky Solutions" />
                   
+                  {/* ✨ MEJORADO: Estilos completos para contenido Markdown */}
                   <div
                     itemProp="articleBody"
                     className="prose prose-lg prose-slate dark:prose-invert max-w-none 
-                             prose-headings:text-foreground prose-headings:font-bold
-                             prose-h1:text-3xl prose-h1:mb-6 prose-h1:mt-8
-                             prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 prose-h2:border-b prose-h2:border-muted prose-h2:pb-2
-                             prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-primary
-                             prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4
-                             prose-ul:my-4 prose-li:text-foreground prose-li:mb-2
+                             prose-headings:text-foreground prose-headings:font-bold prose-headings:scroll-mt-20
+                             prose-h1:text-3xl prose-h1:mb-6 prose-h1:mt-8 prose-h1:border-b prose-h1:border-muted prose-h1:pb-3
+                             prose-h2:text-2xl prose-h2:mb-4 prose-h2:mt-8 prose-h2:border-b prose-h2:border-muted prose-h2:pb-2 prose-h2:text-primary
+                             prose-h3:text-xl prose-h3:mb-3 prose-h3:mt-6 prose-h3:text-primary prose-h3:font-semibold
+                             prose-h4:text-lg prose-h4:mb-2 prose-h4:mt-4 prose-h4:font-semibold
+                             prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-4 prose-p:text-base
+                             prose-ul:my-4 prose-ul:space-y-2 prose-li:text-foreground prose-li:leading-relaxed
+                             prose-ol:my-4 prose-ol:space-y-2
                              prose-strong:text-foreground prose-strong:font-semibold
-                             prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                             prose-blockquote:border-l-primary prose-blockquote:bg-muted/50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg
-                             prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
+                             prose-em:text-foreground prose-em:italic
+                             prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+                             prose-blockquote:border-l-primary prose-blockquote:bg-muted/50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-blockquote:my-6
+                             prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
+                             prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto
+                             prose-table:w-full prose-table:border-collapse
+                             prose-th:border prose-th:border-border prose-th:bg-muted prose-th:p-2 prose-th:text-left prose-th:font-semibold
+                             prose-td:border prose-td:border-border prose-td:p-2
+                             prose-img:rounded-lg prose-img:shadow-md prose-img:my-6
+                             prose-hr:border-muted prose-hr:my-8"
+                    dangerouslySetInnerHTML={{ __html: processedContent }}
                   />
 
                   {/* Tags */}
@@ -290,46 +342,42 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   </Card>
                 </article>
 
-                {/* Sidebar - igual que antes */}
+                {/* Sidebar */}
                 <aside className="lg:col-span-1">
                   <div className="sticky top-24 space-y-6">
-                    {/* Table of Contents */}
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <BookOpen className="h-4 w-4" />
-                          Contenido
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <nav className="space-y-2 text-sm">
-                          <Link href="#beneficios" className="block text-muted-foreground hover:text-primary">
-                            Beneficios Comprobados
-                          </Link>
-                          <Link href="#tecnologias" className="block text-muted-foreground hover:text-primary">
-                            Tecnologías Clave
-                          </Link>
-                          <Link href="#casos-exito" className="block text-muted-foreground hover:text-primary">
-                            Casos de Éxito
-                          </Link>
-                          <Link href="#futuro-ia" className="block text-muted-foreground hover:text-primary">
-                            El Futuro: Integración con IA
-                          </Link>
-                          <Link href="#conclusion" className="block text-muted-foreground hover:text-primary">
-                            Conclusión
-                          </Link>
-                        </nav>
-                      </CardContent>
-                    </Card>
+                    {/* Table of Contents - ✨ MEJORADO: Dinámico basado en H2s */}
+                    {headings.length > 0 && (
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-lg flex items-center gap-2">
+                            <BookOpen className="h-4 w-4" />
+                            Contenido
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <nav className="space-y-2 text-sm">
+                            {headings.map((heading) => (
+                              <Link 
+                                key={heading.id} 
+                                href={`#${heading.id}`} 
+                                className="block text-muted-foreground hover:text-primary transition-colors"
+                              >
+                                {heading.title}
+                              </Link>
+                            ))}
+                          </nav>
+                        </CardContent>
+                      </Card>
+                    )}
 
                     {/* CTA */}
                     <Card className="bg-primary text-primary-foreground">
                       <CardHeader>
-                        <CardTitle className="text-lg">¿Interesado en Agricultura de Precisión?</CardTitle>
+                        <CardTitle className="text-lg">¿Interesado en {post.category}?</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <p className="text-sm mb-4 opacity-90">
-                          Contactanos para una consulta gratuita sobre cómo implementar estas tecnologías en tu campo.
+                          Contáctanos para una consulta gratuita sobre cómo implementar estas tecnologías.
                         </p>
                         <Button className="w-full glow-border text-white hover:text-white">Consulta Gratuita</Button>
                       </CardContent>
