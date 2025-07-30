@@ -4,8 +4,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Home, Search, FileQuestion } from "lucide-react"
+import { useTranslations } from "@/hooks/use-translations"
 
 export default function NotFound() {
+  const { t } = useTranslations()
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-muted/30">
       <div className="container mx-auto px-4">
@@ -22,12 +25,11 @@ export default function NotFound() {
             </h1>
             
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Página no encontrada
+              {t('notFound.title')}
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-lg mx-auto">
-              Lo sentimos, la página que buscas no existe o ha sido movida. 
-              Puede que el enlace esté roto o que hayas escrito mal la URL.
+              {t('notFound.description')}
             </p>
           </div>
 
@@ -38,14 +40,14 @@ export default function NotFound() {
               <Link href="/">
                 <Button size="lg" className="glow-border text-white hover:text-white">
                   <Home className="mr-2 h-4 w-4" />
-                  Ir al Inicio
+                  {t('notFound.actions.home')}
                 </Button>
               </Link>
               
               <Link href="/blog">
                 <Button size="lg" variant="outline">
                   <Search className="mr-2 h-4 w-4" />
-                  Ver Blog
+                  {t('notFound.actions.blog')}
                 </Button>
               </Link>
             </div>
@@ -53,58 +55,58 @@ export default function NotFound() {
             {/* Enlaces útiles */}
             <Card className="text-left">
               <CardHeader>
-                <CardTitle className="text-lg">¿Qué puedes hacer?</CardTitle>
-                <CardDescription>Aquí tienes algunas opciones para continuar navegando</CardDescription>
+                <CardTitle className="text-lg">{t('notFound.help.title')}</CardTitle>
+                <CardDescription>{t('notFound.help.description')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h3 className="font-semibold mb-2">Servicios</h3>
+                    <h3 className="font-semibold mb-2">{t('notFound.links.services.title')}</h3>
                     <ul className="space-y-1 text-sm text-muted-foreground">
                       <li>
                         <Link href="/servicios/agricultura" className="hover:text-primary transition-colors">
-                          → Agricultura de Precisión
+                          → {t('notFound.links.services.agriculture')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/servicios/eolicos" className="hover:text-primary transition-colors">
-                          → Inspecciones Eólicas
+                          → {t('notFound.links.services.wind')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/servicios/topografia" className="hover:text-primary transition-colors">
-                          → Relevamientos Topográficos
+                          → {t('notFound.links.services.topography')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/servicios/seguridad" className="hover:text-primary transition-colors">
-                          → Seguridad y Monitoreo
+                          → {t('notFound.links.services.security')}
                         </Link>
                       </li>
                     </ul>
                   </div>
                   
                   <div>
-                    <h3 className="font-semibold mb-2">Información</h3>
+                    <h3 className="font-semibold mb-2">{t('notFound.links.info.title')}</h3>
                     <ul className="space-y-1 text-sm text-muted-foreground">
                       <li>
                         <Link href="/nosotros" className="hover:text-primary transition-colors">
-                          → Nosotros
+                          → {t('notFound.links.info.about')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/blog" className="hover:text-primary transition-colors">
-                          → Blog
+                          → {t('notFound.links.info.blog')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/contacto" className="hover:text-primary transition-colors">
-                          → Contacto
+                          → {t('notFound.links.info.contact')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/" className="hover:text-primary transition-colors">
-                          → Página Principal
+                          → {t('notFound.links.info.home')}
                         </Link>
                       </li>
                     </ul>
@@ -114,7 +116,7 @@ export default function NotFound() {
                 {/* Información de contacto */}
                 <div className="pt-4 border-t">
                   <p className="text-sm text-muted-foreground mb-2">
-                    ¿Necesitas ayuda? Contáctanos directamente:
+                    {t('notFound.contact.help')}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-2 text-sm">
                     <a 
@@ -122,13 +124,6 @@ export default function NotFound() {
                       className="text-primary hover:underline"
                     >
                       info@skysolutions.com.ar
-                    </a>
-                    <span className="hidden sm:inline text-muted-foreground">•</span>
-                    <a 
-                      href="tel:+5411123456789" 
-                      className="text-primary hover:underline"
-                    >
-                      +54 11 1234-5678
                     </a>
                   </div>
                 </div>
@@ -142,7 +137,7 @@ export default function NotFound() {
               className="text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Volver atrás
+              {t('notFound.actions.back')}
             </Button>
           </div>
         </div>

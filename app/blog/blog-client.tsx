@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Calendar, User, ArrowRight, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { useState, useMemo, useEffect } from "react"
+import { useTranslations } from "@/hooks/use-translations"
 
 interface BlogPost {
   id: string
@@ -25,20 +26,22 @@ interface BlogClientProps {
 }
 
 export default function BlogClient({ posts }: BlogClientProps) {
+  const { t } = useTranslations()
+  
   // ✨ Estados para filtros y búsqueda
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("Todos")
+  const [selectedCategory, setSelectedCategory] = useState(t('blog.categories.all'))
   const [visiblePosts, setVisiblePosts] = useState(6) // Cantidad de posts visibles
 
   // ✨ Obtener categorías únicas dinámicamente
-  const allCategories = ["Todos", ...new Set(posts.map(post => post.category))]
+  const allCategories = [t('blog.categories.all'), ...new Set(posts.map(post => post.category))]
 
   // ✨ Filtrar posts por categoría y búsqueda
   const filteredPosts = useMemo(() => {
     let filtered = posts
 
     // Filtro por categoría
-    if (selectedCategory !== "Todos") {
+    if (selectedCategory !== t('blog.categories.all')) {
       filtered = filtered.filter(post => post.category === selectedCategory)
     }
 
@@ -54,25 +57,15 @@ export default function BlogClient({ posts }: BlogClientProps) {
     }
 
     return filtered
-  }, [posts, selectedCategory, searchTerm])
+  }, [posts, selectedCategory, searchTerm, t])
 
   // ✨ Resetear posts visibles cuando cambian los filtros
   useEffect(() => {
     setVisiblePosts(6)
   }, [selectedCategory, searchTerm])
 
-  // ✨ Post destacado (el primero de los filtrados o el más reciente)
-  const featuredPost = filteredPosts[0] || posts[0] || {
-    id: "agricultura-precision-2024",
-    title: "El Futuro de la Agricultura de Precisión en Argentina",
-    excerpt:
-      "Descubre cómo los drones están revolucionando la agricultura argentina con tecnologías de mapeo multiespectral y análisis de datos avanzados.",
-    category: "Agricultura",
-    author: "Dr. María González",
-    date: "15 de Enero, 2024",
-    readTime: "8 min",
-    image: "/placeholder.svg?height=400&width=600",
-  }
+  // ✨ Post destacado (el primero de los filtrados)
+  const featuredPost = filteredPosts[0] || null
 
   // ✨ Posts para la grilla (excluyendo el destacado y limitando por visiblePosts)
   const gridPosts = filteredPosts.slice(1, visiblePosts + 1) // Mostrar posts filtrados según visiblePosts
@@ -91,17 +84,16 @@ export default function BlogClient({ posts }: BlogClientProps) {
       <section className="py-20 bg-gradient-to-br from-primary/10 to-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog Sky Solutions</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('blog.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Insights, tendencias y casos de éxito en el mundo de los drones profesionales. Mantente actualizado con
-              las últimas innovaciones del sector.
+              {t('blog.description')}
             </p>
 
             {/* Search Bar */}
             <div className="max-w-md mx-auto relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input 
-                placeholder="Buscar artículos..." 
+                placeholder={t('blog.search.placeholder')}
                 className="pl-10"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -135,13 +127,13 @@ export default function BlogClient({ posts }: BlogClientProps) {
           <div className="container mx-auto px-4">
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">
-                {selectedCategory !== "Todos" || searchTerm ? "Resultado Destacado" : "Artículo Destacado"}
+                {selectedCategory !== t('blog.categories.all') || searchTerm ? t('blog.featured.filtered') : t('blog.featured.title')}
               </h2>
-              {(selectedCategory !== "Todos" || searchTerm) && (
+              {(selectedCategory !== t('blog.categories.all') || searchTerm) && (
                 <p className="text-muted-foreground">
-                  {searchTerm && `Búsqueda: "${searchTerm}"`}
-                  {searchTerm && selectedCategory !== "Todos" && " - "}
-                  {selectedCategory !== "Todos" && `Categoría: ${selectedCategory}`}
+                  {searchTerm && `${t('blog.search.result')}: "${searchTerm}"`}
+                  {searchTerm && selectedCategory !== t('blog.categories.all') && " - "}
+                  {selectedCategory !== t('blog.categories.all') && `${t('blog.categories.label')}: ${selectedCategory}`}
                 </p>
               )}
             </div>
@@ -179,7 +171,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
 
                   <Link href={`/blog/${featuredPost.id}`}>
                     <Button className="glow-border text-white hover:text-white">
-                      Leer Artículo
+                      {t('blog.actions.read')}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -195,30 +187,42 @@ export default function BlogClient({ posts }: BlogClientProps) {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4">
-              {selectedCategory !== "Todos" || searchTerm ? "Resultados" : "Últimos Artículos"}
+              {selectedCategory !== t('blog.categories.all') || searchTerm ? t('blog.results.title') : t('blog.latest.title')}
             </h2>
             <p className="text-muted-foreground">
-              Mostrando {gridPosts.length} de {filteredPosts.length} artículos
-              {selectedCategory !== "Todos" || searchTerm 
-                ? ` (${posts.length} total)` 
-                : " disponibles"
+              {t('blog.results.showing')} {gridPosts.length} {t('blog.results.of')} {filteredPosts.length} {t('blog.results.articles')}
+              {selectedCategory !== t('blog.categories.all') || searchTerm 
+                ? ` (${posts.length} ${t('blog.results.total')})` 
+                : ` ${t('blog.results.available')}`
               }
             </p>
             
-            {/* Mostrar mensaje si no hay resultados */}
-            {filteredPosts.length === 0 && (
+            {/* Mostrar mensaje si no hay posts */}
+            {posts.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-xl text-muted-foreground mb-4">
-                  No se encontraron artículos para tu búsqueda
+                  {t('blog.empty.title')}
+                </p>
+                <p className="text-muted-foreground">
+                  {t('blog.empty.description')}
+                </p>
+              </div>
+            )}
+
+            {/* Mostrar mensaje si no hay resultados con filtros */}
+            {posts.length > 0 && filteredPosts.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-xl text-muted-foreground mb-4">
+                  {t('blog.noResults.title')}
                 </p>
                 <Button 
                   variant="outline" 
                   onClick={() => {
                     setSearchTerm("")
-                    setSelectedCategory("Todos")
+                    setSelectedCategory(t('blog.categories.all'))
                   }}
                 >
-                  Limpiar filtros
+                  {t('blog.noResults.clear')}
                 </Button>
               </div>
             )}
@@ -271,7 +275,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
                           size="sm"
                           className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors bg-transparent"
                         >
-                          Leer más
+                          {t('blog.actions.readMore')}
                           <ArrowRight className="ml-2 h-3 w-3" />
                         </Button>
                       </Link>
@@ -288,7 +292,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
                     size="lg"
                     onClick={loadMorePosts}
                   >
-                    Cargar más artículos ({remainingPosts} restantes)
+                    {t('blog.actions.loadMore')} ({remainingPosts} {t('blog.results.remaining')})
                   </Button>
                 </div>
               )}
@@ -300,14 +304,13 @@ export default function BlogClient({ posts }: BlogClientProps) {
       {/* Newsletter Subscription */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mantente Actualizado</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('blog.newsletter.title')}</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Suscríbete a nuestro newsletter y recibe los últimos artículos, casos de estudio y tendencias del sector
-            directamente en tu email.
+            {t('blog.newsletter.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Input placeholder="Tu email" className="bg-white text-black" />
-            <Button className="glow-border text-white hover:text-white">Suscribirse</Button>
+            <Input placeholder={t('blog.newsletter.placeholder')} className="bg-white text-black" />
+            <Button className="glow-border text-white hover:text-white">{t('blog.newsletter.subscribe')}</Button>
           </div>
         </div>
       </section>
