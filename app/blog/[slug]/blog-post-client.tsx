@@ -53,7 +53,7 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
             <Link href="/blog">
               <Button variant="ghost" className="mb-4">
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                {t('blogPost.backToBlog')}
+                {t('blog.post.backToBlog')}
               </Button>
             </Link>
           </div>
@@ -80,11 +80,11 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
-                      <span itemProp="timeRequired">{post.readTime} {t('blogPost.readTime')}</span>
+                      <span itemProp="timeRequired">{post.readTime} {t('blog.post.readTime')}</span>
                     </div>
                     <Button variant="outline" size="sm">
                       <Share2 className="h-4 w-4 mr-2" />
-                      {t('blogPost.share')}
+                      {t('blog.post.share')}
                     </Button>
                   </div>
                 </header>
@@ -128,7 +128,7 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
                   <footer className="mt-12 pt-8 border-t">
                     <div className="flex items-center gap-2 mb-4">
                       <Tag className="h-4 w-4" />
-                      <span className="font-semibold">{t('blogPost.tags')}</span>
+                      <span className="font-semibold">{t('blog.post.tags')}</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {post.tags && post.tags.map((tag) => (
@@ -166,7 +166,7 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
                         <CardHeader>
                           <CardTitle className="text-lg flex items-center gap-2">
                             <BookOpen className="h-4 w-4" />
-                            {t('blogPost.tableOfContents')}
+                            {t('blog.post.tableOfContents')}
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
@@ -188,13 +188,13 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
                     {/* CTA */}
                     <Card className="bg-primary text-primary-foreground">
                       <CardHeader>
-                        <CardTitle className="text-lg">{t('blogPost.interested')} {post.category}?</CardTitle>
+                        <CardTitle className="text-lg">{t('blog.post.interested')} {post.category}?</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <p className="text-sm mb-4 opacity-90">
-                          {t('blogPost.consultDescription')}
+                          {t('blog.post.consultDescription')}
                         </p>
-                        <Button className="w-full glow-border text-white hover:text-white">{t('blogPost.freeConsult')}</Button>
+                        <Button className="w-full glow-border text-white hover:text-white">{t('blog.post.freeConsult')}</Button>
                       </CardContent>
                     </Card>
                   </div>
@@ -209,7 +209,7 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
           <section className="py-16 bg-muted/30">
             <div className="container mx-auto px-4">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-bold mb-8">{t('blogPost.relatedPosts')}</h2>
+                <h2 className="text-2xl font-bold mb-8">{t('blog.post.relatedPosts')}</h2>
 
                 <div className="grid md:grid-cols-3 gap-6">
                   {relatedPosts.map((relatedPost) => (
@@ -219,12 +219,12 @@ export default function BlogPostClient({ post, processedContent, headings, jsonL
                           {relatedPost.category}
                         </Badge>
                         <CardTitle className="text-lg">{relatedPost.title}</CardTitle>
-                        <CardDescription>{relatedPost.readTime} {t('blogPost.readTime')}</CardDescription>
+                        <CardDescription>{relatedPost.readTime} {t('blog.post.readTime')}</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <Link href={`/blog/${relatedPost.id}`}>
                           <Button variant="outline" size="sm" className="w-full bg-transparent">
-                            {t('blogPost.readArticle')}
+                            {t('blog.post.readArticle')}
                           </Button>
                         </Link>
                       </CardContent>
