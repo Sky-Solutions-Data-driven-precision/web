@@ -15,6 +15,7 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 - **Fuentes**: Exo 2 (Google Fonts)
 - **Deploy**: GitHub Pages con export estático
 - **Analytics**: Google Tag Manager
+- **Internacionalización**: Sistema de traducciones personalizado (ES/EN)
 
 ## 📁 Estructura del Proyecto
 
@@ -22,7 +23,10 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 ├── app/                    # App Router de Next.js
 │   ├── blog/              # Sistema de blog
 │   │   ├── [slug]/        # Template de Posts dinámicos de /content/posts
-│   │   └── page.tsx       # Página principal del blog
+│   │   │   ├── page.tsx   # Server Component - genera metadata y datos
+│   │   │   └── blog-post-client.tsx # Client Component - interactividad
+│   │   ├── blog-client.tsx # Client Component - filtros y búsqueda
+│   │   └── page.tsx       # Server Component - obtiene posts
 │   ├── servicios/         # Páginas de servicios
 │   │   ├── agricultura/
 │   │   ├── eolicos/
@@ -43,9 +47,12 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 │   ├── blog-data.ts       # Gestión de slugs del blog
 │   └── blog.ts            # Procesamiento de Markdown
 ├── hooks/                 # Hooks personalizados   
-    ├── use-translations.ts # Archivo de traducciones          
-    └── ...otros hooks
+│   ├── use-translations.ts # Sistema de traducciones ES/EN          
+│   ├── use-language.ts    # Hook para cambio de idioma
+│   └── ...otros hooks
 └── public/               # Archivos estáticos
+    └── images/           # Imágenes del sitio y blog
+        └── drone-blog.jpg # Imagen de fondo del banner del blog
 ```
 
 ## 🎯 Servicios Destacados
@@ -58,12 +65,23 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 
 ## 📝 Sistema de Blog Avanzado
 
-### Arquitectura Híbrida
-El blog utiliza un **sistema híbrido** que combina:
+### Arquitectura Híbrida Server/Client
+El blog utiliza una **arquitectura moderna Next.js 14** que combina:
+- ✅ **Server Components** para SEO y performance
+- ✅ **Client Components** para interactividad (filtros, búsqueda, compartir)
 - ✅ **Markdown para nuevos posts** (fácil de escribir)
 - ✅ **Fallback hardcodeado** (compatibilidad total)
 - ✅ **Procesamiento automático** con gray-matter + marked
 - ✅ **Sitemap dinámico** que se actualiza automáticamente
+
+### Funcionalidades Interactivas
+- 🔍 **Búsqueda en tiempo real** por título, contenido, autor y categoría
+- 🏷️ **Filtrado por categorías** dinámico
+- 📑 **Paginación infinita** con "cargar más"
+- 📤 **Botón de compartir** con Web Share API y fallbacks
+- 🗂️ **Tabla de contenidos** automática basada en H2s
+- 🌐 **Soporte multiidioma** (Español/Inglés)
+- 🖼️ **Banner con imagen de fondo** (drone-blog.jpg)
 
 ### Crear un Nuevo Post
 
@@ -107,6 +125,7 @@ Bloques de código
 > Citas y blockquotes
 
 [Enlaces](https://skysolutions.com.ar)
+```
 
 2. **Agregar slug** a `lib/blog-data.ts`:
 
@@ -142,9 +161,54 @@ Editar directamente `app/blog/[slug]/page.tsx` en el objeto `post`.
 - **Posts en Markdown**: `content/posts/*.md`
 - **Configuración de slugs**: `lib/blog-data.ts`
 - **Procesador de Markdown**: `lib/blog.ts`
-- **Template de post**: `app/blog/[slug]/page.tsx`
+- **Server Component del post**: `app/blog/[slug]/page.tsx`
+- **Client Component del post**: `app/blog/[slug]/blog-post-client.tsx`
+- **Client Component del blog**: `app/blog/blog-client.tsx`
 - **Página principal del blog**: `app/blog/page.tsx`
+- **Sistema de traducciones**: `hooks/use-translations.ts`
 - **Sitemap automático**: `app/sitemap.ts`
+
+## 🌐 Sistema de Internacionalización
+
+### Idiomas Soportados
+- **Español (ES)**: Idioma por defecto
+- **Inglés (EN)**: Traducción completa
+
+### Características
+- ✅ **Traducciones completas** para todas las secciones
+- ✅ **Cambio dinámico** de idioma sin recarga
+- ✅ **Persistencia** del idioma seleccionado
+- ✅ **SEO optimizado** para ambos idiomas
+- ✅ **Filtros de blog** funcionan en ambos idiomas
+
+### Agregar Nuevas Traducciones
+
+Editar `hooks/use-translations.ts`:
+
+```typescript
+const translations = {
+  es: {
+    blog: {
+      post: {
+        newKey: "Nuevo texto en español"
+      }
+    }
+  },
+  en: {
+    blog: {
+      post: {
+        newKey: "New text in English"
+      }
+    }
+  }
+}
+```
+
+Usar en componentes:
+```typescript
+const { t } = useTranslations()
+return <span>{t('blog.post.newKey')}</span>
+```
 
 ## 🗺️ Sitemap y SEO
 
@@ -158,8 +222,10 @@ El sitemap se genera automáticamente y está disponible en:
 - ✅ Metadata optimizada para redes sociales
 - ✅ URLs amigables para SEO
 - ✅ Google Tag Manager integrado
-- ✅ Estructura de datos rica para posts
+- ✅ Estructura de datos rica para posts (JSON-LD)
 - ✅ Certificación ANAC y credibilidad técnica
+- ✅ Open Graph y Twitter Cards
+- ✅ Metadata dinámica por post
 
 ## 🚀 Desarrollo
 
@@ -183,6 +249,16 @@ npm run build
 - **gray-matter**: Parseo de frontmatter YAML
 - **marked**: Conversión de Markdown a HTML
 - **@types/marked**: Tipos de TypeScript
+
+### Arquitectura de Componentes
+
+#### Server Components (SSG/SSR)
+- `app/blog/page.tsx`: Obtiene posts y genera metadata
+- `app/blog/[slug]/page.tsx`: Procesa Markdown y SEO
+
+#### Client Components (Interactividad)
+- `blog-client.tsx`: Filtros, búsqueda, paginación
+- `blog-post-client.tsx`: Compartir, tabla de contenidos
 
 ## 🔄 Flujo de Trabajo
 
@@ -213,6 +289,7 @@ El sitio se despliega automáticamente en GitHub Pages mediante GitHub Actions c
 - **Componentes**: Sistema de diseño consistente con shadcn/ui
 - **Animaciones**: Efectos glow y transiciones suaves
 - **Typography**: Sistema prose mejorado para contenido de blog
+- **Banner del blog**: Imagen de fondo con overlay (drone-blog.jpg)
 
 ## 📱 Responsive Design
 
@@ -234,15 +311,18 @@ El proyecto funciona sin variables de entorno adicionales para simplificar el de
 
 ## 🔧 Próximas Mejoras
 
-- [ ] ~~Integración con CMS para gestión de contenido~~ ✅ **Completado con Markdown**
+- [x] ~~Integración con CMS para gestión de contenido~~ ✅ **Completado con Markdown**
+- [x] ~~Búsqueda de posts del blog~~ ✅ **Completado**
+- [x] ~~Categorías y filtros avanzados~~ ✅ **Completado**
+- [x] ~~Sistema de traducciones~~ ✅ **Completado (ES/EN)**
 - [ ] Sistema de comentarios en el blog
 - [ ] Formularios de contacto funcionales
 - [ ] Galería de proyectos con casos de estudio
 - [ ] Chat en vivo para consultas
 - [ ] Calculadora de ROI para servicios
-- [ ] Búsqueda de posts del blog
-- [ ] Categorías y filtros avanzados
 - [ ] Newsletter funcional
+- [ ] PWA (Progressive Web App)
+- [ ] Modo offline para el blog
 
 ## 📞 Contacto
 
@@ -274,3 +354,12 @@ Este proyecto está bajo la Licencia GPL v3. Ver el archivo `LICENSE` para más 
 **Estilos no se aplican:**
 - Verificar que `marked` esté instalado correctamente
 - Confirmar que las clases prose estén en el archivo CSS
+
+**Traducciones no funcionan:**
+- Verificar que la estructura en `use-translations.ts` sea correcta
+- Confirmar que las claves de traducción coincidan exactamente
+- Revisar que `useTranslations()` esté importado correctamente
+
+**Filtros del blog no funcionan:**
+- Verificar que las categorías en los posts MD coincidan con las usadas en filtros
+- Confirmar que el estado `selectedCategory` use valores fijos, no traducciones
