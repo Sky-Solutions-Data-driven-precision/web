@@ -199,7 +199,7 @@ const translations = {
       },
       contact: {
         help: "¿Necesitas ayuda? Contáctanos directamente:"
-      }
+      },
       blogPost: {
         backToBlog: "Volver al Blog",
         readTime: "de lectura",
@@ -211,7 +211,7 @@ const translations = {
         freeConsult: "Consulta Gratuita",
         relatedPosts: "Artículos Relacionados",
         readArticle: "Leer artículo"
-      },
+      }
     },
   },
   en: {
@@ -410,7 +410,7 @@ const translations = {
       },
       contact: {
         help: "Need help? Contact us directly:"
-      }
+      },
       blogPost: {
         backToBlog: "Back to Blog",
         readTime: "read",
@@ -422,7 +422,7 @@ const translations = {
         freeConsult: "Free Consultation",
         relatedPosts: "Related Articles",
         readArticle: "Read article"
-      },
+      }
     },
   },
 }
