@@ -33,6 +33,11 @@ export default function BlogClient({ posts }: BlogClientProps) {
   const [selectedCategory, setSelectedCategory] = useState(t('blog.categories.all'))
   const [visiblePosts, setVisiblePosts] = useState(6) // Cantidad de posts visibles
 
+  // ✨ Resetear categoría cuando cambia el idioma
+  useEffect(() => {
+    setSelectedCategory(t('blog.categories.all'))
+  }, [t])
+
   // ✨ Obtener categorías únicas dinámicamente
   const allCategories = [t('blog.categories.all'), ...new Set(posts.map(post => post.category))]
 

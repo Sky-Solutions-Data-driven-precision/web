@@ -200,6 +200,18 @@ const translations = {
       contact: {
         help: "¿Necesitas ayuda? Contáctanos directamente:"
       }
+      blogPost: {
+        backToBlog: "Volver al Blog",
+        readTime: "de lectura",
+        share: "Compartir",
+        tags: "Tags:",
+        tableOfContents: "Contenido",
+        interested: "¿Interesado en",
+        consultDescription: "Contáctanos para una consulta gratuita sobre cómo implementar estas tecnologías.",
+        freeConsult: "Consulta Gratuita",
+        relatedPosts: "Artículos Relacionados",
+        readArticle: "Leer artículo"
+      },
     },
   },
   en: {
@@ -399,6 +411,18 @@ const translations = {
       contact: {
         help: "Need help? Contact us directly:"
       }
+      blogPost: {
+        backToBlog: "Back to Blog",
+        readTime: "read",
+        share: "Share",
+        tags: "Tags:",
+        tableOfContents: "Contents",
+        interested: "Interested in",
+        consultDescription: "Contact us for a free consultation on how to implement these technologies.",
+        freeConsult: "Free Consultation",
+        relatedPosts: "Related Articles",
+        readArticle: "Read article"
+      },
     },
   },
 }
