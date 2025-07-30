@@ -93,8 +93,18 @@ export default function BlogClient({ posts }: BlogClientProps) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 bg-gradient-to-br from-primary/10 to-muted/30 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/drone-blog.jpg" 
+            alt="Drone technology background"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-muted/40"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('blog.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
