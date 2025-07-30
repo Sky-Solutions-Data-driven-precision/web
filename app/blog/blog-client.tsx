@@ -30,23 +30,24 @@ export default function BlogClient({ posts }: BlogClientProps) {
   
   // ✨ Estados para filtros y búsqueda
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState(t('blog.categories.all'))
+  const [selectedCategory, setSelectedCategory] = useState("all") // Usar string fijo en lugar de traducción
   const [visiblePosts, setVisiblePosts] = useState(6) // Cantidad de posts visibles
 
-  // ✨ Resetear categoría cuando cambia el idioma
-  useEffect(() => {
-    setSelectedCategory(t('blog.categories.all'))
-  }, [t])
-
-  // ✨ Obtener categorías únicas dinámicamente
-  const allCategories = [t('blog.categories.all'), ...new Set(posts.map(post => post.category))]
+  // ✨ Obtener categorías únicas dinámicamente (usando las categorías originales de los posts)
+  const originalCategories = [...new Set(posts.map(post => post.category))]
+  
+  // ✨ Crear mapeo de categorías para mostrar
+  const categoryOptions = [
+    { value: "all", label: t('blog.categories.all') },
+    ...originalCategories.map(cat => ({ value: cat, label: cat }))
+  ]
 
   // ✨ Filtrar posts por categoría y búsqueda
   const filteredPosts = useMemo(() => {
     let filtered = posts
 
     // Filtro por categoría
-    if (selectedCategory !== t('blog.categories.all')) {
+    if (selectedCategory !== "all") {
       filtered = filtered.filter(post => post.category === selectedCategory)
     }
 
@@ -62,7 +63,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
     }
 
     return filtered
-  }, [posts, selectedCategory, searchTerm, t])
+  }, [posts, selectedCategory, searchTerm])
 
   // ✨ Resetear posts visibles cuando cambian los filtros
   useEffect(() => {
@@ -81,6 +82,12 @@ export default function BlogClient({ posts }: BlogClientProps) {
   // ✨ Función para cargar más posts
   const loadMorePosts = () => {
     setVisiblePosts(prev => prev + 6)
+  }
+
+  // ✨ Función para obtener el nombre mostrado de la categoría seleccionada
+  const getSelectedCategoryLabel = () => {
+    const category = categoryOptions.find(cat => cat.value === selectedCategory)
+    return category ? category.label : selectedCategory
   }
 
   return (
@@ -112,14 +119,14 @@ export default function BlogClient({ posts }: BlogClientProps) {
       <section className="py-8 border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
-            {allCategories.map((category) => (
+            {categoryOptions.map((category) => (
               <Badge
-                key={category}
-                variant={category === selectedCategory ? "default" : "outline"}
+                key={category.value}
+                variant={category.value === selectedCategory ? "default" : "outline"}
                 className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => setSelectedCategory(category.value)}
               >
-                {category}
+                {category.label}
               </Badge>
             ))}
           </div>
@@ -132,13 +139,13 @@ export default function BlogClient({ posts }: BlogClientProps) {
           <div className="container mx-auto px-4">
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">
-                {selectedCategory !== t('blog.categories.all') || searchTerm ? t('blog.featured.filtered') : t('blog.featured.title')}
+                {selectedCategory !== "all" || searchTerm ? t('blog.featured.filtered') : t('blog.featured.title')}
               </h2>
-              {(selectedCategory !== t('blog.categories.all') || searchTerm) && (
+              {(selectedCategory !== "all" || searchTerm) && (
                 <p className="text-muted-foreground">
                   {searchTerm && `${t('blog.search.result')}: "${searchTerm}"`}
-                  {searchTerm && selectedCategory !== t('blog.categories.all') && " - "}
-                  {selectedCategory !== t('blog.categories.all') && `${t('blog.categories.label')}: ${selectedCategory}`}
+                  {searchTerm && selectedCategory !== "all" && " - "}
+                  {selectedCategory !== "all" && `${t('blog.categories.label')}: ${getSelectedCategoryLabel()}`}
                 </p>
               )}
             </div>
@@ -192,11 +199,11 @@ export default function BlogClient({ posts }: BlogClientProps) {
         <div className="container mx-auto px-4">
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4">
-              {selectedCategory !== t('blog.categories.all') || searchTerm ? t('blog.results.title') : t('blog.latest.title')}
+              {selectedCategory !== "all" || searchTerm ? t('blog.results.title') : t('blog.latest.title')}
             </h2>
             <p className="text-muted-foreground">
               {t('blog.results.showing')} {gridPosts.length} {t('blog.results.of')} {filteredPosts.length} {t('blog.results.articles')}
-              {selectedCategory !== t('blog.categories.all') || searchTerm 
+              {selectedCategory !== "all" || searchTerm 
                 ? ` (${posts.length} ${t('blog.results.total')})` 
                 : ` ${t('blog.results.available')}`
               }
@@ -224,7 +231,7 @@ export default function BlogClient({ posts }: BlogClientProps) {
                   variant="outline" 
                   onClick={() => {
                     setSearchTerm("")
-                    setSelectedCategory(t('blog.categories.all'))
+                    setSelectedCategory("all")
                   }}
                 >
                   {t('blog.noResults.clear')}
