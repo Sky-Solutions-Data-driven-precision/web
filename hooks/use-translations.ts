@@ -169,6 +169,7 @@ const translations = {
         subscribe: "Suscribirse"
       }
     },
+    notFound: {
       title: "Página no encontrada",
       description: "Lo sentimos, la página que buscas no existe o ha sido movida. Puede que el enlace esté roto o que hayas escrito mal la URL.",
       actions: {
@@ -367,6 +368,7 @@ const translations = {
         subscribe: "Subscribe"
       }
     },
+    notFound: {
       title: "Page not found",
       description: "Sorry, the page you are looking for doesn't exist or has been moved. The link might be broken or you may have typed the URL incorrectly.",
       actions: {
