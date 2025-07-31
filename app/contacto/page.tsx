@@ -1,3 +1,5 @@
+"use client"
+
 import { useTranslations } from "@/hooks/use-translations"
 
 export default function ContactoPage() {
