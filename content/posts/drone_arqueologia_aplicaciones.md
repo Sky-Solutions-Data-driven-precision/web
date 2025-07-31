@@ -1,10 +1,10 @@
 ---
-title: "El Uso de Drones en Arqueología: Revolucionando la Documentación del Patrimonio"
+title: "El uso de drones en arqueología: revolucionando la documentación del Patrimonio"
 excerpt: "Los drones han transformado la arqueología moderna, ofreciendo resoluciones submilimétricas y capacidades de análisis sin precedentes para la documentación y conservación del patrimonio cultural."
 category: "Patrimonio Cultural"
 author: "Equipo Sky Solutions"
 authorBio: "Geoarqueóloga especializada en teledetección aplicada al patrimonio cultural. Investigadora CONICET con más de 20 años de experiencia en aplicaciones de sensores remotos en arqueología."
-date: "2025-07-29"
+date: "2025-01-29"
 readTime: "12 min"
 tags: ["Arqueología", "Drones", "Patrimonio Cultural", "Fotogrametría", "Geoarqueología"]
 image: "/images/drone-arqueologia.jpg"
@@ -12,19 +12,19 @@ imageCredit: "Foto de Anton Lukin en Unsplash"
 imageAlt: "Drone sobrevolando sitio arqueológico"
 ---
 
-# El Uso de Drones en Arqueología: Revolucionando la Documentación del Patrimonio
+# El uso de drones en arqueología: revolucionando la documentación del Patrimonio
 
 La arqueología ha encontrado en los **vehículos aéreos no tripulados (VANT)** o drones una herramienta revolucionaria que está transformando la documentación, estudio y preservación del patrimonio cultural. Esta tecnología ha democratizado el acceso a imágenes aéreas de alta resolución, ofreciendo capacidades que antes estaban reservadas solo para proyectos con grandes presupuestos (Campana, 2017).
 
-## La Evolución de la Perspectiva Aérea en Arqueología
+## La evolución de la perspectiva aérea en arqueología
 
 La utilización de sensores remotos en arqueología no es nueva. Desde los años 1950, tanto en Argentina (González, 1956) como en España (Peña Monné et al., 1986), la fotografía aérea ha sido valiosa para la investigación arqueológica. Sin embargo, las limitaciones de resolución espacial de las imágenes satelitales tradicionales han creado una brecha significativa.
 
 Las técnicas tradicionales presentan restricciones importantes: Landsat TM ofrece resolución máxima de 30 metros, mientras que QuickBird proporciona 2.4 metros (Verhoeven, 2009). Los drones han llenado este vacío, proporcionando resoluciones de **centímetros por píxel** a costos accesibles (Sampietro Vattuone & Peña Monné, 2018).
 
-## Tecnología Utilizada: Equipos Principales
+## Tecnología utilizada: equipos principales
 
-La investigación ha identificado tres modelos principales efectivos en contextos arqueológicos:
+Los estudios de Sampietro Vattuone y Peña Monné (2018) identificaron, ya hace más de 7 años, tres modelos principales efectivos en contextos arqueológicos:
 
 **DJI Phantom 4 Pro**
 - Sensor CMOS de 20 Mp
@@ -43,7 +43,15 @@ La investigación ha identificado tres modelos principales efectivos en contexto
 - Diseño compacto y plegable
 - Perfecto para sitios de difícil acceso
 
+### Evolución Tecnológica Actual
+
+Si bien estos modelos representaron un hito en la aplicación arqueológica de drones, la tecnología ha evolucionado significativamente. En la actualidad, el mercado ofrece equipos especializados para aplicaciones industriales y científicas, como el **DJI Mavic 3 Enterprise** con cámaras intercambiables y capacidades de mapeo avanzadas, o la serie **DJI Matrice** que permite integrar sensores especializados como cámaras Zenmuse (P1 para fotogrametría de 45 Mp, L1 con LiDAR integrado) que ofrecen capacidades de escaneo láser para generar nubes de puntos de alta densidad sin depender únicamente de fotogrametría. 
+
+Los sistemas LiDAR actuales, como los integrados en las plataformas Matrice 300 RTK, pueden penetrar vegetación densa y generar modelos digitales de terreno con precisiones centimétricas, revolucionando especialmente la arqueología en entornos forestales donde las técnicas fotogramétricas tradicionales presentan limitaciones. Estas tecnologías han expandido las posibilidades de documentación arqueológica más allá de lo que era concebible cuando se realizaron los estudios pioneros aquí analizados.
+
 ## Aplicaciones Arqueológicas Principales
+
+Algunas de las aplicaciones más destacadas del uso de drones en arqueología incluyen:
 
 ### 1. Control Patrimonial y Conservación
 
@@ -95,19 +103,20 @@ Este sitio altomedieval (siglos VI-IX) muestra procesos de piping que están exp
 ## Ventajas Operativas
 
 ### Eficiencia
-- ✅ Reducción dramática de tiempos de campo
-- ✅ Costos operativos mínimos vs. fotografía aérea tradicional
-- ✅ Flexibilidad total en horarios y condiciones
+- Reducción dramática de tiempos de campo
+- Costos operativos mínimos vs. fotografía aérea tradicional
+- Flexibilidad total en horarios y condiciones
 
 ### Calidad de Datos
-- ✅ Resolución submétrica constante
-- ✅ Precisión georreferenciada
-- ✅ Capacidad de repetición para estudios multitemporales
+- Resolución submétrica constante
+- Precisión georreferenciada
+- Capacidad de repetición para estudios multitemporales
 
 ### Impacto Patrimonial
-- ✅ Tecnología no invasiva
-- ✅ Documentación permanente
-- ✅ Herramienta de divulgación
+- Tecnología no invasiva
+- Documentación permanente
+- Herramienta de divulgación
+- Dataset abierto para futuras investigaciones
 
 ## Perspectivas Futuras
 
