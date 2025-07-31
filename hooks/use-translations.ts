@@ -181,6 +181,28 @@ const translations = {
         readArticle: "Leer artículo"
       }
     },
+    contact: {
+      title: "Contacto",
+      info: {
+        title: "Información de Contacto",
+        email: {
+          label: "Email",
+          value: "info@skysolutions.com.ar"
+        },
+        phone: {
+          label: "Teléfono",
+          value: "+54 11 1234-5678"
+        },
+        location: {
+          label: "Ubicación", 
+          value: "Sur de Córdoba, Argentina"
+        }
+      },
+      form: {
+        title: "Formulario de Contacto",
+        description: "Formulario de contacto en construcción. Por favor, contáctanos directamente por email."
+      }
+    },
     notFound: {
       title: "Página no encontrada",
       description: "Lo sentimos, la página que buscas no existe o ha sido movida. Puede que el enlace esté roto o que hayas escrito mal la URL.",
@@ -390,6 +412,28 @@ const translations = {
         freeConsult: "Free Consultation",
         relatedPosts: "Related Articles",
         readArticle: "Read article"
+      }
+    },
+    contact: {
+      title: "Contact",
+      info: {
+        title: "Contact Information",
+        email: {
+          label: "Email",
+          value: "info@skysolutions.com.ar"
+        },
+        phone: {
+          label: "Phone",
+          value: "+54 11 1234-5678"
+        },
+        location: {
+          label: "Location",
+          value: "South of Córdoba, Argentina"
+        }
+      },
+      form: {
+        title: "Contact Form",
+        description: "Contact form under construction. Please contact us directly by email."
       }
     },
     notFound: {

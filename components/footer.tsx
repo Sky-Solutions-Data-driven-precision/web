@@ -87,15 +87,15 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                <span>info@skysolutions.com.ar</span>
+                <span>{t("contact.info.email.value")}</span>
               </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              {/* <div className="flex items-center space-x-2 text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>+54 11 1234-5678</span>
-              </div>
+                <span>{t("contact.info.phone.value")}</span>
+              </div> */}
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span>Córdoba, Argentina</span>
+                <span>{t("contact.info.location.value")}</span>
               </div>
             </div>
           </div>
