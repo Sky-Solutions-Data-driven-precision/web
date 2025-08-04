@@ -91,10 +91,13 @@ export default function SeguridadPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <Shield className="h-24 w-24 text-muted-foreground" />
-                <span className="ml-4 text-muted-foreground">Imagen: Drone de seguridad en patrullaje</span>
+           <div className="relative">
+              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src="/images/drone-security.jpg" 
+                  alt="Drone de seguridad en acción"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

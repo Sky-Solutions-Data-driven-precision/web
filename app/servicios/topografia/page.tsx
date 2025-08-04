@@ -92,9 +92,12 @@ export default function TopografiaPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <Map className="h-24 w-24 text-muted-foreground" />
-                <span className="ml-4 text-muted-foreground">Imagen: Ortomosaico topográfico</span>
+              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src="/images/drone-topografia.jpg" 
+                  alt="Drone realizando relevamiento topográfico"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

@@ -80,10 +80,13 @@ export default function CienciaPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <Microscope className="h-24 w-24 text-muted-foreground" />
-                <span className="ml-4 text-muted-foreground">Imagen: Drone recolectando datos científicos</span>
+           <div className="relative">
+              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src="/images/drone-arqueologia.jpg" 
+                  alt="Drone en sitio arqueológico"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
