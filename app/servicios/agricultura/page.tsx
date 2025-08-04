@@ -59,9 +59,15 @@ export default function AgriculturaPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <Wheat className="h-24 w-24 text-muted-foreground" />
-                <span className="ml-4 text-muted-foreground">Imagen: Campo con análisis NDVI</span>
+              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src="/images/campo-ndvi.jpg" 
+                  alt="Campo con análisis NDVI"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+                  Foto de Etienne Girardet en Unsplash
+                </div>
               </div>
             </div>
           </div>
