@@ -1,3 +1,4 @@
+import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Wind, Shield, Camera, Clock, Zap } from "lucide-react"
@@ -65,10 +66,13 @@ export default function EolicosPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <Wind className="h-24 w-24 text-muted-foreground" />
-                <span className="ml-4 text-muted-foreground">Imagen: Drone inspeccionando aerogenerador</span>
+           <div className="relative">
+              <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src="/images/aero.jpg" 
+                  alt="Aerogenerador inspeccionado con drone"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
