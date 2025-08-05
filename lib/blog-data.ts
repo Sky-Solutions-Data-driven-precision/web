@@ -3,16 +3,8 @@ import { getAllSlugs } from './blog'
 // Lista estática para GitHub Pages export
 export const blogSlugs = [
   'agricultura-precision-2024',
-  'inspeccion-eolicos-ia',
-  'topografia-construccion',
-  'seguridad-industrial-drones',
-  'investigacion-cientifica-drones',
-  'regulaciones-anac-2024',
-  'tendencias-drones-2024',
-  'ndvi-analisis-cultivos',
-  'sensores-multiespectrales-guia',
-  'roi-agricultura-precision',
   'drone_arqueologia_aplicaciones',
+  'anac-regulacion-drone',
 ]
 
 export function getBlogSlugs() {
