@@ -135,8 +135,8 @@ Esto habilita servicios avanzados como inspecciones de líneas eléctricas exten
 **Actualización importante**: La Resolución 880/2019 fue **abrogada por la Resolución 319/2025**, cuya vigencia se encuentra prorrogada según Resolución 334/2025. Esto refleja la naturaleza dinámica de la regulación aeronáutica, que se adapta constantemente a avances tecnológicos y mejores prácticas internacionales.
 
 Para operaciones actuales, es fundamental consultar el **estado vigente de la normativa** en:
-- Portal oficial ANAC: [Resoluciones y Disposiciones](https://www.argentina.gob.ar/anac/normativa/resoluciones-y-disposiciones)
-- Sección RAAC: [Regulaciones Aeronáuticas](https://www.argentina.gob.ar/raac-raiaac-progen-dnar-exenciones)
+- Portal oficial ANAC: [Resoluciones y Disposiciones](https://www.argentina.gob.ar/anac/normativa/resoluciones-y-disposiciones){:target="_blank"}
+- Sección RAAC: [Regulaciones Aeronáuticas](https://www.argentina.gob.ar/raac-raiaac-progen-dnar-exenciones){:target="_blank"}
 
 ## El ecosistema de seguridad integral
 
@@ -172,8 +172,8 @@ Cuando elegís un servicio profesional de drones, no solo contratás tecnología
 
 **Referencias normativas:**
 - Resolución ANAC 880/2019 (abrogada por Resolución 319/2025)
-- Portal oficial: [argentina.gob.ar/anac/normativa](https://www.argentina.gob.ar/anac/normativa/resoluciones-y-disposiciones)
-- Texto completo original: [Resolución 880/2019](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-880-2019-333259/texto)
-- Actualizaciones vigentes: [Estado actual de la normativa](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-880-2019-333259/actualizacion)
+- Portal oficial: [argentina.gob.ar/anac/normativa](https://www.argentina.gob.ar/anac/normativa/resoluciones-y-disposiciones){:target="_blank"}
+- Texto completo original: [Resolución 880/2019](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-880-2019-333259/texto){:target="_blank"}
+- Actualizaciones vigentes: [Estado actual de la normativa](https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-880-2019-333259/actualizacion){:target="_blank"}
 
 *¿Necesitás un servicio de drones que combine innovación técnica con cumplimiento normativo riguroso? En Sky Solutions, cada proyecto refleja años de experiencia profesional y commitment total con el marco regulatorio argentino.*
