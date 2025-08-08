@@ -240,7 +240,7 @@ La revolución normativa ya comenzó. El futuro de los drones argentinos nunca s
 - Resolución ANAC 550/2025 - RESOL-2025-550-APN-ANAC#MEC
 - RAAC Parte 100: Requisitos Generales para RPA/RPAs
 - RAAC Parte 101: Disposiciones Particulares - Categoría Abierta
-- Portal oficial: [argentina.gob.ar/anac/normativa](https://www.argentina.gob.ar/anac/normativa/resoluciones-y-disposiciones){:target="_blank"}
-- Boletín Oficial: [Resolución 550/2025](https://www.boletinoficial.gob.ar/detalleAviso/primera/329510/20250808){:target="_blank"}
+- Portal oficial: [argentina.gob.ar/anac/normativa](https://www.argentina.gob.ar/anac/normativa/resoluciones-y-disposiciones)
+- Boletín Oficial: [Resolución 550/2025](https://www.boletinoficial.gob.ar/detalleAviso/primera/329510/20250808)
 
 *¿Querés aprovechar las nuevas oportunidades que abre la desregulación inteligente? En Sky Solutions, combinamos años de experiencia con el dominio completo del nuevo marco regulatorio para ofrecerte servicios de drones más ágiles, competitivos y siempre seguros.*
