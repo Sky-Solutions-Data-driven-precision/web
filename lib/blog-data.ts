@@ -5,6 +5,7 @@ export const blogSlugs = [
   'agricultura-precision-2024',
   'drone_arqueologia_aplicaciones',
   'anac-regulacion-drone',
+  'nueva-regulacion-drones-2025',
 ]
 
 export function getBlogSlugs() {
