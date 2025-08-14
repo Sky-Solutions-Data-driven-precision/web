@@ -114,8 +114,9 @@ export default function ContactoPage() {
           '_template': 'table',
           '_captcha': false,
           '_next': 'https://skysolutions.com.ar/contacto?success=true',
-          '_autoresponse': 'true',
+          '_autoresponse': true,  // Boolean, no string
           '_autoresponse_subject': 'Hemos recibido tu consulta - Sky Solutions',
+          '_autoresponse_from': 'info@skysolutions.com.ar',
           '_autoresponse_message': `Hola ${formData.name},\n\nGracias por contactar a Sky Solutions. Hemos recibido tu consulta sobre ${services.find(s => s.value === formData.service)?.label || 'nuestros servicios'} y nos pondremos en contacto contigo dentro de las próximas 24 horas.\n\nSaludos,\nEquipo Sky Solutions\ninfo@skysolutions.com.ar`,
           
           // Metadatos útiles
@@ -223,7 +224,7 @@ export default function ContactoPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('contact.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Estamos aquí para ayudarte. Contáctanos para una consulta gratuita sobre nuestros servicios con drones.
+              {t('contact.form.headerDescription')}
             </p>
           </div>
 

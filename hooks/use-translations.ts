@@ -183,6 +183,7 @@ const translations = {
     },
     contact: {
       title: "Contacto",
+      headerDescription: "Estamos aquí para ayudarte. Contáctanos para una consulta gratuita sobre nuestros servicios con drones.",
       info: {
         title: "Información de Contacto",
         email: {
@@ -478,6 +479,7 @@ const translations = {
     },
     contact: {
       title: "Contact",
+      headerDescription: "We're here to help you. Contact us for a free consultation about our drone services.",
       info: {
         title: "Contact Information",
         email: {
