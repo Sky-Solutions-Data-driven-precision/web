@@ -38,14 +38,14 @@ export default function ContactoPage() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState("")
 
-  // Lista de servicios
+  // Lista de servicios usando traducciones
   const services = [
-    { value: "agricultura", label: "Agricultura de Precisión" },
-    { value: "eolicos", label: "Inspecciones Eólicas" },
-    { value: "topografia", label: "Relevamientos Topográficos" },
-    { value: "seguridad", label: "Seguridad y Monitoreo" },
-    { value: "ciencia", label: "Aplicaciones Científicas" },
-    { value: "otro", label: "Otro / Consulta General" }
+    { value: "agricultura", label: t('contact.form.services.agriculture') },
+    { value: "eolicos", label: t('contact.form.services.wind') },
+    { value: "topografia", label: t('contact.form.services.topography') },
+    { value: "seguridad", label: t('contact.form.services.security') },
+    { value: "ciencia", label: t('contact.form.services.science') },
+    { value: "otro", label: t('contact.form.services.other') }
   ]
 
   const handleInputChange = (field: keyof FormData, value: string | boolean) => {
@@ -62,16 +62,16 @@ export default function ContactoPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Validaciones básicas
+    // Validaciones básicas usando traducciones
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setSubmitStatus('error')
-      setErrorMessage("Por favor completa todos los campos obligatorios")
+      setErrorMessage(t('contact.form.validation.required'))
       return
     }
     
     if (!formData.acceptPrivacy) {
       setSubmitStatus('error')
-      setErrorMessage("Debes aceptar la política de privacidad para continuar")
+      setErrorMessage(t('contact.form.validation.privacy'))
       return
     }
 
@@ -79,7 +79,7 @@ export default function ContactoPage() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       setSubmitStatus('error')
-      setErrorMessage("Por favor ingresa un email válido")
+      setErrorMessage(t('contact.form.validation.email'))
       return
     }
 
@@ -96,7 +96,7 @@ export default function ContactoPage() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: '61375b78-55b5-46ee-b36f-0d8df5c80367', // 👈 Reemplazar con tu key real
+          access_key: '61375b78-55b5-46ee-b36f-0d8df5c80367',
           
           // Datos del formulario
           name: formData.name,
@@ -111,14 +111,9 @@ export default function ContactoPage() {
           from_name: 'Sky Solutions - Formulario Web',
           
           // Campos adicionales opcionales
-          '_template': 'table', // Email format más limpio
-          // '_cc': 'ventas@skysolutions.com.ar', // Copia a ventas (comentado - email no existe)
-          '_captcha': false, // Sin captcha por ahora
-          
-          // Redirect después del envío (opcional)
+          '_template': 'table',
+          '_captcha': false,
           '_next': 'https://skysolutions.com.ar/contacto?success=true',
-          
-          // Respuesta automática al cliente (opcional)
           '_autoresponse': 'true',
           '_autoresponse_subject': 'Hemos recibido tu consulta - Sky Solutions',
           '_autoresponse_message': `Hola ${formData.name},\n\nGracias por contactar a Sky Solutions. Hemos recibido tu consulta sobre ${services.find(s => s.value === formData.service)?.label || 'nuestros servicios'} y nos pondremos en contacto contigo dentro de las próximas 24 horas.\n\nSaludos,\nEquipo Sky Solutions\ninfo@skysolutions.com.ar`,
@@ -134,10 +129,7 @@ export default function ContactoPage() {
       const result = await response.json()
 
       if (response.ok && result.success) {
-        // ✅ Éxito
         setSubmitStatus('success')
-        
-        // Reset form después de mostrar éxito
         setTimeout(() => {
           setFormData({
             name: "",
@@ -149,7 +141,6 @@ export default function ContactoPage() {
             acceptPrivacy: false
           })
         }, 2000)
-
       } else {
         throw new Error(result.message || 'Error al enviar el formulario')
       }
@@ -158,7 +149,6 @@ export default function ContactoPage() {
       console.error('Error sending form:', error)
       setSubmitStatus('error')
       
-      // Mensajes de error más específicos
       if (error.message?.includes('access_key')) {
         setErrorMessage("Error de configuración del servicio. Por favor intenta más tarde.")
       } else if (error.message?.includes('rate limit')) {
@@ -183,10 +173,10 @@ export default function ContactoPage() {
                   <CheckCircle className="h-10 w-10 text-green-600 dark:text-green-400" />
                 </div>
                 <CardTitle className="text-2xl text-green-800 dark:text-green-200">
-                  ¡Mensaje Enviado Exitosamente!
+                  {t('contact.form.success.title')}
                 </CardTitle>
                 <CardDescription className="text-green-700 dark:text-green-300">
-                  Gracias por contactarnos, <strong>{formData.name}</strong>. Hemos recibido tu consulta sobre <strong>{services.find(s => s.value === formData.service)?.label || 'nuestros servicios'}</strong> y nos pondremos en contacto contigo pronto.
+                  {t('contact.form.success.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -194,13 +184,13 @@ export default function ContactoPage() {
                   <div className="bg-green-100 dark:bg-green-900 rounded-lg p-4">
                     <div className="flex items-center justify-center gap-2 text-sm text-green-600 dark:text-green-400 mb-2">
                       <Clock className="h-4 w-4" />
-                      <span className="font-semibold">Tiempo de respuesta</span>
+                      <span className="font-semibold">{t('contact.form.success.responseTime')}</span>
                     </div>
                     <p className="text-green-700 dark:text-green-300 text-sm">
-                      Responderemos a <strong>{formData.email}</strong> dentro de las próximas 24 horas en días hábiles.
+                      {t('contact.form.success.responsePromise')}
                     </p>
                     <p className="text-green-600 dark:text-green-400 text-xs mt-2">
-                      También recibirás una confirmación automática en tu email.
+                      {t('contact.form.success.autoResponse')}
                     </p>
                   </div>
                   
@@ -210,10 +200,10 @@ export default function ContactoPage() {
                       onClick={() => setSubmitStatus('idle')}
                       className="border-green-300 text-green-700 hover:bg-green-100 dark:border-green-600 dark:text-green-300 dark:hover:bg-green-900"
                     >
-                      Enviar Otro Mensaje
+                      {t('contact.form.success.actions.sendAnother')}
                     </Button>
                     <Button asChild className="bg-green-600 hover:bg-green-700">
-                      <a href="/blog">Ver Nuestro Blog</a>
+                      <a href="/blog">{t('contact.form.success.actions.viewBlog')}</a>
                     </Button>
                   </div>
                 </div>
@@ -269,8 +259,8 @@ export default function ContactoPage() {
                       <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">Teléfono</h3>
-                      <p className="text-muted-foreground">+54 9 11 1234-5678</p>
+                      <h3 className="font-semibold mb-1">{t('contact.info.phone.label')}</h3>
+                      <p className="text-muted-foreground">{t('contact.info.phone.value')}</p>
                       <p className="text-sm text-muted-foreground">Lun-Vie 9:00-18:00</p>
                     </div>
                   </div>
@@ -288,16 +278,15 @@ export default function ContactoPage() {
                 </CardContent>
               </Card>
 
-              {/* 🚀 Web3Forms Features */}
+              {/* Formulario Seguro */}
               <Card className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
                 <CardContent className="pt-6">
                   <div className="flex items-center space-x-3 mb-3">
                     <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                    <span className="font-semibold text-blue-800 dark:text-blue-200">Formulario Seguro</span>
+                    <span className="font-semibold text-blue-800 dark:text-blue-200">{t('contact.form.security.title')}</span>
                   </div>
                   <p className="text-sm text-blue-700 dark:text-blue-300">
-                    Protección anti-spam avanzada y encriptación de datos. 
-                    Tus consultas llegan directamente a nuestro equipo.
+                    {t('contact.form.security.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -307,11 +296,10 @@ export default function ContactoPage() {
                 <CardContent className="pt-6">
                   <div className="flex items-center space-x-3 mb-3">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    <span className="font-semibold">Respuesta Garantizada</span>
+                    <span className="font-semibold">{t('contact.form.guarantee.title')}</span>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Respondemos todos los mensajes dentro de las 24 horas en días hábiles. 
-                    Para urgencias, llámanos directamente.
+                    {t('contact.form.guarantee.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -322,20 +310,20 @@ export default function ContactoPage() {
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-2">
                   <Send className="h-6 w-6" />
-                  Envíanos un Mensaje
+                  {t('contact.form.title')}
                 </CardTitle>
                 <CardDescription>
-                  Completa el formulario y nos pondremos en contacto contigo pronto.
+                  {t('contact.form.description')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                {/* 🚨 Error State */}
+                {/* Error State */}
                 {submitStatus === 'error' && (
                   <div className="mb-6 p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg">
                     <div className="flex items-center space-x-2">
                       <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
                       <span className="text-red-800 dark:text-red-200 font-medium">
-                        Error al enviar el mensaje
+                        {t('contact.form.submit.error')}
                       </span>
                     </div>
                     <p className="text-red-700 dark:text-red-300 text-sm mt-1">
@@ -348,24 +336,24 @@ export default function ContactoPage() {
                   {/* Nombre y Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Nombre completo *</Label>
+                      <Label htmlFor="name">{t('contact.form.fields.name')} *</Label>
                       <Input
                         id="name"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
-                        placeholder="Tu nombre completo"
+                        placeholder={t('contact.form.placeholders.name')}
                         required
                         className={submitStatus === 'error' && !formData.name ? 'border-red-300' : ''}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email">{t('contact.form.fields.email')} *</Label>
                       <Input
                         id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="tu@email.com"
+                        placeholder={t('contact.form.placeholders.email')}
                         required
                         className={submitStatus === 'error' && !formData.email ? 'border-red-300' : ''}
                       />
@@ -375,31 +363,31 @@ export default function ContactoPage() {
                   {/* Teléfono y Empresa */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Teléfono</Label>
+                      <Label htmlFor="phone">{t('contact.form.fields.phone')}</Label>
                       <Input
                         id="phone"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
-                        placeholder="+54 9 11 1234-5678"
+                        placeholder={t('contact.form.placeholders.phone')}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company">Empresa</Label>
+                      <Label htmlFor="company">{t('contact.form.fields.company')}</Label>
                       <Input
                         id="company"
                         value={formData.company}
                         onChange={(e) => handleInputChange('company', e.target.value)}
-                        placeholder="Nombre de tu empresa"
+                        placeholder={t('contact.form.placeholders.company')}
                       />
                     </div>
                   </div>
 
                   {/* Servicio de Interés */}
                   <div className="space-y-2">
-                    <Label htmlFor="service">Servicio de interés</Label>
+                    <Label htmlFor="service">{t('contact.form.fields.service')}</Label>
                     <Select onValueChange={(value) => handleInputChange('service', value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Selecciona un servicio" />
+                        <SelectValue placeholder={t('contact.form.placeholders.service')} />
                       </SelectTrigger>
                       <SelectContent>
                         {services.map((service) => (
@@ -413,12 +401,12 @@ export default function ContactoPage() {
 
                   {/* Mensaje */}
                   <div className="space-y-2">
-                    <Label htmlFor="message">Mensaje *</Label>
+                    <Label htmlFor="message">{t('contact.form.fields.message')} *</Label>
                     <Textarea
                       id="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
-                      placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                      placeholder={t('contact.form.placeholders.message')}
                       rows={5}
                       required
                       className={submitStatus === 'error' && !formData.message ? 'border-red-300' : ''}
@@ -434,8 +422,7 @@ export default function ContactoPage() {
                       className={submitStatus === 'error' && !formData.acceptPrivacy ? 'border-red-300' : ''}
                     />
                     <Label htmlFor="privacy" className="text-sm leading-relaxed">
-                      Acepto la <a href="/privacidad" className="text-primary hover:underline">política de privacidad</a> y 
-                      autorizo el tratamiento de mis datos personales para responder a mi consulta.
+                      {t('contact.form.fields.privacy')}
                     </Label>
                   </div>
 
@@ -449,18 +436,18 @@ export default function ContactoPage() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Enviando mensaje...
+                        {t('contact.form.submit.sending')}
                       </>
                     ) : (
                       <>
                         <Send className="mr-2 h-4 w-4" />
-                        Enviar Mensaje
+                        {t('contact.form.submit.idle')}
                       </>
                     )}
                   </Button>
                   
                   <p className="text-xs text-muted-foreground text-center">
-                    * Campos obligatorios. Responderemos en menos de 24 horas.
+                    {t('contact.form.footer')}
                   </p>
                 </form>
               </CardContent>
@@ -471,22 +458,21 @@ export default function ContactoPage() {
           <div className="mt-16 text-center">
             <Card className="bg-gradient-to-r from-primary/10 to-blue-500/10 border-primary/20">
               <CardContent className="pt-8">
-                <h2 className="text-2xl font-bold mb-4">¿Necesitas una respuesta inmediata?</h2>
+                <h2 className="text-2xl font-bold mb-4">{t('contact.form.cta.title')}</h2>
                 <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Para consultas urgentes o proyectos que requieren atención inmediata, 
-                  no dudes en llamarnos directamente.
+                  {t('contact.form.cta.description')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" variant="outline" asChild>
                     <a href="tel:+5491112345678">
                       <Phone className="mr-2 h-4 w-4" />
-                      Llamar Ahora
+                      {t('contact.form.cta.callNow')}
                     </a>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
                     <a href="https://wa.me/5491112345678" target="_blank" rel="noopener noreferrer">
                       <Phone className="mr-2 h-4 w-4" />
-                      WhatsApp
+                      {t('contact.form.cta.whatsapp')}
                     </a>
                   </Button>
                 </div>
