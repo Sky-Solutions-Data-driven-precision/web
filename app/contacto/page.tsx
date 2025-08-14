@@ -224,7 +224,7 @@ export default function ContactoPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('contact.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t('contact.form.headerDescription')}
+              {t('contact.headerDescription')}
             </p>
           </div>
 
