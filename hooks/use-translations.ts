@@ -199,8 +199,70 @@ const translations = {
         }
       },
       form: {
-        title: "Formulario de Contacto",
-        description: "Formulario de contacto en construcción. Por favor, contáctanos directamente por email."
+        title: "Envíanos un Mensaje",
+        description: "Completa el formulario y nos pondremos en contacto contigo pronto.",
+        fields: {
+          name: "Nombre completo",
+          email: "Email",
+          phone: "Teléfono",
+          company: "Empresa",
+          service: "Servicio de interés",
+          message: "Mensaje",
+          privacy: "Acepto la política de privacidad y autorizo el tratamiento de mis datos personales para responder a mi consulta."
+        },
+        placeholders: {
+          name: "Tu nombre completo",
+          email: "tu@email.com",
+          phone: "+54 9 11 1234-5678",
+          company: "Nombre de tu empresa",
+          service: "Selecciona un servicio",
+          message: "Cuéntanos sobre tu proyecto o consulta..."
+        },
+        validation: {
+          required: "Por favor completa todos los campos obligatorios",
+          email: "Por favor ingresa un email válido",
+          privacy: "Debes aceptar la política de privacidad para continuar"
+        },
+        services: {
+          agriculture: "Agricultura de Precisión",
+          wind: "Inspecciones Eólicas",
+          topography: "Relevamientos Topográficos",
+          security: "Seguridad y Monitoreo",
+          science: "Aplicaciones Científicas",
+          other: "Otro / Consulta General"
+        },
+        submit: {
+          idle: "Enviar Mensaje",
+          sending: "Enviando mensaje...",
+          success: "¡Mensaje Enviado Exitosamente!",
+          error: "Error al enviar el mensaje"
+        },
+        success: {
+          title: "¡Mensaje Enviado Exitosamente!",
+          description: "Gracias por contactarnos. Hemos recibido tu consulta y nos pondremos en contacto contigo pronto.",
+          responseTime: "Tiempo de respuesta",
+          responsePromise: "Responderemos dentro de las próximas 24 horas en días hábiles.",
+          autoResponse: "También recibirás una confirmación automática en tu email.",
+          actions: {
+            sendAnother: "Enviar Otro Mensaje",
+            viewBlog: "Ver Nuestro Blog"
+          }
+        },
+        cta: {
+          title: "¿Necesitas una respuesta inmediata?",
+          description: "Para consultas urgentes o proyectos que requieren atención inmediata, no dudes en llamarnos directamente.",
+          callNow: "Llamar Ahora",
+          whatsapp: "WhatsApp"
+        },
+        security: {
+          title: "Formulario Seguro",
+          description: "Protección anti-spam avanzada y encriptación de datos. Tus consultas llegan directamente a nuestro equipo."
+        },
+        guarantee: {
+          title: "Respuesta Garantizada",
+          description: "Respondemos todos los mensajes dentro de las 24 horas en días hábiles. Para urgencias, llámanos directamente."
+        },
+        footer: "* Campos obligatorios. Responderemos en menos de 24 horas."
       }
     },
     notFound: {
@@ -432,8 +494,70 @@ const translations = {
         }
       },
       form: {
-        title: "Contact Form",
-        description: "Contact form under construction. Please contact us directly by email."
+        title: "Send us a Message",
+        description: "Complete the form and we will get in touch with you soon.",
+        fields: {
+          name: "Full name",
+          email: "Email",
+          phone: "Phone",
+          company: "Company",
+          service: "Service of interest",
+          message: "Message",
+          privacy: "I accept the privacy policy and authorize the processing of my personal data to respond to my inquiry."
+        },
+        placeholders: {
+          name: "Your full name",
+          email: "your@email.com",
+          phone: "+54 9 11 1234-5678",
+          company: "Your company name",
+          service: "Select a service",
+          message: "Tell us about your project or inquiry..."
+        },
+        validation: {
+          required: "Please complete all required fields",
+          email: "Please enter a valid email",
+          privacy: "You must accept the privacy policy to continue"
+        },
+        services: {
+          agriculture: "Precision Agriculture",
+          wind: "Wind Turbine Inspections",
+          topography: "Topographic Surveys",
+          security: "Security & Monitoring",
+          science: "Scientific Applications",
+          other: "Other / General Inquiry"
+        },
+        submit: {
+          idle: "Send Message",
+          sending: "Sending message...",
+          success: "Message Sent Successfully!",
+          error: "Error sending message"
+        },
+        success: {
+          title: "Message Sent Successfully!",
+          description: "Thank you for contacting us. We have received your inquiry and will get in touch with you soon.",
+          responseTime: "Response time",
+          responsePromise: "We will respond within the next 24 hours on business days.",
+          autoResponse: "You will also receive an automatic confirmation in your email.",
+          actions: {
+            sendAnother: "Send Another Message",
+            viewBlog: "View Our Blog"
+          }
+        },
+        cta: {
+          title: "Need an immediate response?",
+          description: "For urgent inquiries or projects that require immediate attention, don't hesitate to call us directly.",
+          callNow: "Call Now",
+          whatsapp: "WhatsApp"
+        },
+        security: {
+          title: "Secure Form",
+          description: "Advanced anti-spam protection and data encryption. Your inquiries reach our team directly."
+        },
+        guarantee: {
+          title: "Response Guaranteed",
+          description: "We respond to all messages within 24 hours on business days. For emergencies, call us directly."
+        },
+        footer: "* Required fields. We will respond in less than 24 hours."
       }
     },
     notFound: {
