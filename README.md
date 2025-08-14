@@ -16,6 +16,7 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 - **Deploy**: GitHub Pages con export estático
 - **Analytics**: Google Tag Manager
 - **Internacionalización**: Sistema de traducciones personalizado (ES/EN)
+- **Formularios**: Web3Forms para contacto sin backend
 
 ## 📁 Estructura del Proyecto
 
@@ -27,6 +28,8 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 │   │   │   └── blog-post-client.tsx # Client Component - interactividad
 │   │   ├── blog-client.tsx # Client Component - filtros y búsqueda
 │   │   └── page.tsx       # Server Component - obtiene posts
+│   ├── contacto/          # Página de contacto
+│   │   └── page.tsx       # Formulario funcional con Web3Forms
 │   ├── servicios/         # Páginas de servicios
 │   │   ├── agricultura/
 │   │   ├── eolicos/
@@ -62,6 +65,75 @@ Sitio web corporativo de Sky Solutions, empresa especializada en soluciones prof
 - **Relevamientos Topográficos**: Mapeo 3D, cálculos volumétricos
 - **Seguridad y Monitoreo**: Vigilancia perimetral, respuesta a emergencias
 - **Aplicaciones Científicas**: Investigación, recolección de datos académicos
+
+## 📧 Sistema de Contacto Avanzado
+
+### Formulario Profesional con Web3Forms
+El formulario de contacto utiliza una **arquitectura sin backend** que combina:
+- ✅ **Web3Forms** para procesamiento de formularios (250 emails/mes gratis)
+- ✅ **Validación completa** del lado del cliente
+- ✅ **Estados de carga** y confirmación profesionales
+- ✅ **Respuesta automática** personalizada al cliente
+- ✅ **Protección anti-spam** avanzada
+- ✅ **Responsive design** optimizado
+- ✅ **Traducciones completas** (ES/EN)
+
+### Funcionalidades del Formulario
+- 📝 **Campos especializados** para servicios de drones
+- 🔒 **Seguridad empresarial** con encriptación
+- 📧 **Confirmación automática** con datos del cliente
+- ⚡ **Entrega instantánea** a info@skysolutions.com.ar
+- 🌐 **Multiidioma** con traducciones dinámicas
+- 📱 **Totalmente responsive** para móviles
+- ✅ **Validación robusta** de campos obligatorios
+
+### Configuración del Formulario
+
+#### Setup de Web3Forms
+1. **Registrarse en [web3forms.com](https://web3forms.com)** con info@skysolutions.com.ar
+2. **Obtener Access Key** del dashboard
+3. **Configurar en** `app/contacto/page.tsx`:
+
+```typescript
+access_key: 'TU_ACCESS_KEY_AQUI',
+```
+
+#### Características Incluidas
+```typescript
+// Respuesta automática personalizada
+'_autoresponse': true,
+'_autoresponse_subject': 'Hemos recibido tu consulta - Sky Solutions',
+'_autoresponse_from': 'info@skysolutions.com.ar',
+
+// Formato de tabla para emails más limpios
+'_template': 'table',
+
+// Protección anti-spam
+'_captcha': false, // Puede cambiarse a true si es necesario
+
+// Metadatos útiles para seguimiento
+'source': 'Website Contact Form',
+'timestamp': new Date().toISOString(),
+'user_agent': navigator.userAgent,
+'page_url': window.location.href
+```
+
+#### Traducciones del Formulario
+Todas las traducciones están en `hooks/use-translations.ts`:
+
+```typescript
+contact: {
+  headerDescription: "Estamos aquí para ayudarte...",
+  form: {
+    fields: { /* campos traducidos */ },
+    placeholders: { /* placeholders traducidos */ },
+    validation: { /* mensajes de error */ },
+    services: { /* lista de servicios */ },
+    submit: { /* estados del botón */ },
+    success: { /* pantalla de éxito */ }
+  }
+}
+```
 
 ## 📝 Sistema de Blog Avanzado
 
@@ -125,6 +197,7 @@ Bloques de código
 > Citas y blockquotes
 
 [Enlaces](https://skysolutions.com.ar)
+```
 
 2. **Agregar slug** a `lib/blog-data.ts`:
 
@@ -179,6 +252,7 @@ Editar directamente `app/blog/[slug]/page.tsx` en el objeto `post`.
 - ✅ **Persistencia** del idioma seleccionado
 - ✅ **SEO optimizado** para ambos idiomas
 - ✅ **Filtros de blog** funcionan en ambos idiomas
+- ✅ **Formulario de contacto** completamente traducido
 
 ### Agregar Nuevas Traducciones
 
@@ -187,15 +261,15 @@ Editar `hooks/use-translations.ts`:
 ```typescript
 const translations = {
   es: {
-    blog: {
-      post: {
+    contact: {
+      form: {
         newKey: "Nuevo texto en español"
       }
     }
   },
   en: {
-    blog: {
-      post: {
+    contact: {
+      form: {
         newKey: "New text in English"
       }
     }
@@ -206,7 +280,7 @@ const translations = {
 Usar en componentes:
 ```typescript
 const { t } = useTranslations()
-return <span>{t('blog.post.newKey')}</span>
+return <span>{t('contact.form.newKey')}</span>
 ```
 
 ## 🗺️ Sitemap y SEO
@@ -233,6 +307,11 @@ El sitemap se genera automáticamente y está disponible en:
 npm install
 ```
 
+### Componentes UI necesarios
+```bash
+npx shadcn-ui@latest add select checkbox label textarea
+```
+
 ### Desarrollo local
 ```bash
 npm run dev
@@ -244,10 +323,11 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 npm run build
 ```
 
-### Dependencias del Blog
+### Dependencias Principales
 - **gray-matter**: Parseo de frontmatter YAML
 - **marked**: Conversión de Markdown a HTML
 - **@types/marked**: Tipos de TypeScript
+- **shadcn/ui**: Sistema de componentes UI
 
 ### Arquitectura de Componentes
 
@@ -258,6 +338,7 @@ npm run build
 #### Client Components (Interactividad)
 - `blog-client.tsx`: Filtros, búsqueda, paginación
 - `blog-post-client.tsx`: Compartir, tabla de contenidos
+- `app/contacto/page.tsx`: Formulario de contacto completo
 
 ## 🔄 Flujo de Trabajo
 
@@ -279,6 +360,7 @@ El sitio se despliega automáticamente en GitHub Pages mediante GitHub Actions c
 - **Google Tag Manager**: GTM-5DQKBMB7
 - **Dominio**: skysolutions.com.ar
 - **SSL**: Configurado automáticamente por GitHub Pages
+- **Formularios**: Web3Forms para tracking de conversiones
 
 ## 🎨 Diseño y UI
 
@@ -289,6 +371,7 @@ El sitio se despliega automáticamente en GitHub Pages mediante GitHub Actions c
 - **Animaciones**: Efectos glow y transiciones suaves
 - **Typography**: Sistema prose mejorado para contenido de blog
 - **Banner del blog**: Imagen de fondo con overlay (drone-blog.jpg)
+- **Formularios**: Diseño profesional con validación visual
 
 ## 📱 Responsive Design
 
@@ -296,6 +379,8 @@ El sitio está completamente optimizado para:
 - 📱 Móviles (< 768px)
 - 💻 Tablets (768px - 1024px)
 - 🖥️ Desktop (> 1024px)
+
+Todos los componentes, incluyendo el formulario de contacto, son totalmente responsive.
 
 ## 🛠️ Configuración Técnica
 
@@ -306,7 +391,7 @@ El sitio está completamente optimizado para:
 - `.github/workflows/deploy.yml`: GitHub Actions para deploy
 
 ### Variables de Entorno
-El proyecto funciona sin variables de entorno adicionales para simplificar el deploy en GitHub Pages.
+El proyecto funciona sin variables de entorno adicionales para simplificar el deploy en GitHub Pages. Web3Forms usa Access Key pública.
 
 ## 🔧 Próximas Mejoras
 
@@ -314,8 +399,8 @@ El proyecto funciona sin variables de entorno adicionales para simplificar el de
 - [x] ~~Búsqueda de posts del blog~~ ✅ **Completado**
 - [x] ~~Categorías y filtros avanzados~~ ✅ **Completado**
 - [x] ~~Sistema de traducciones~~ ✅ **Completado (ES/EN)**
+- [x] ~~Formularios de contacto funcionales~~ ✅ **Completado con Web3Forms**
 - [ ] Sistema de comentarios en el blog
-- [ ] Formularios de contacto funcionales
 - [ ] Galería de proyectos con casos de estudio
 - [ ] Chat en vivo para consultas
 - [ ] Calculadora de ROI para servicios
@@ -326,8 +411,9 @@ El proyecto funciona sin variables de entorno adicionales para simplificar el de
 ## 📞 Contacto
 
 - **Email**: info@skysolutions.com.ar
+- **Formulario web**: [skysolutions.com.ar/contacto](https://skysolutions.com.ar/contacto)
 - **Sitio web**: [skysolutions.com.ar](https://skysolutions.com.ar)
-- **Ubicación**: Buenos Aires, Argentina
+- **Ubicación**: Sur de Córdoba, Argentina
 
 ## 📄 Licencia
 
@@ -344,20 +430,23 @@ Este proyecto está bajo la Licencia GPL v3. Ver el archivo `LICENSE` para más 
 **Error al hacer build:**
 - Verificar que todos los slugs en `lib/blog-data.ts` tengan archivos MD correspondientes
 - Asegurar que el frontmatter YAML esté bien formateado
+- Confirmar que los componentes shadcn/ui estén instalados
 
 **Post no aparece:**
 - Verificar que el slug esté en `lib/blog-data.ts`
 - Confirmar que el archivo MD existe en `content/posts/`
 - Revisar que el frontmatter tenga todos los campos obligatorios
 
-**Estilos no se aplican:**
-- Verificar que `marked` esté instalado correctamente
-- Confirmar que las clases prose estén en el archivo CSS
+**Formulario de contacto no funciona:**
+- Verificar que el Access Key de Web3Forms sea correcto
+- Confirmar que el email esté verificado en Web3Forms
+- Revisar que todos los componentes UI estén instalados correctamente
 
 **Traducciones no funcionan:**
 - Verificar que la estructura en `use-translations.ts` sea correcta
 - Confirmar que las claves de traducción coincidan exactamente
 - Revisar que `useTranslations()` esté importado correctamente
+- Verificar que la traducción esté en la ruta correcta (ej: `contact.headerDescription` no `contact.form.headerDescription`)
 
 **Filtros del blog no funcionan:**
 - Verificar que las categorías en los posts MD coincidan con las usadas en filtros
