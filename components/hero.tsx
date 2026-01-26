@@ -32,12 +32,12 @@ export function Hero() {
       </div>
 
       {/* Botón flotante medio-derecha - Cambia según estado */}
-      <div className="absolute top-1/2 right-8 -translate-y-1/2 z-20 pointer-events-auto">
+      <div className="absolute top-[30%] md:top-1/2 right-4 md:right-8 -translate-y-1/2 z-20 pointer-events-auto">
         <Button
           onClick={toggle3DInteraction}
           size="lg"
           variant={is3DInteractive ? "default" : "outline"}
-          className={`flex flex-col items-center gap-2 py-6 px-6 transition-all duration-300 ${
+          className={`flex flex-col items-center gap-2 py-4 px-4 md:py-6 md:px-6 transition-all duration-300 ${
             is3DInteractive 
               ? 'bg-primary hover:bg-primary/90 text-white border-primary' 
               : 'bg-black/50 backdrop-blur-sm border-white/30 text-white hover:bg-white/10'
@@ -45,13 +45,13 @@ export function Hero() {
         >
           {is3DInteractive ? (
             <>
-              <X className="h-6 w-6" />
-              <span className="text-xs font-medium whitespace-nowrap">cerrar modelo 3D</span>
+              <X className="h-5 w-5 md:h-6 md:w-6" />
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">cerrar modelo 3D</span>
             </>
           ) : (
             <>
-              <Orbit className="h-6 w-6" />
-              <span className="text-xs font-medium whitespace-nowrap">habilitar modelo 3D</span>
+              <Orbit className="h-5 w-5 md:h-6 md:w-6" />
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">habilitar modelo 3D</span>
             </>
           )}
         </Button>
