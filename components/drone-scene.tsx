@@ -44,13 +44,13 @@ export function DroneScene() {
         </div>
 
         {/* Indicador de interactividad - arriba del mundo */}
+        {/* COMENTADO: Ya hay botón en el hero
         <div className="absolute top-[17%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
           <div className={`relative w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-dashed animate-spin ${
             theme === 'light'
               ? 'border-blue-400/60'
               : 'border-blue-300/60'
           }`} style={{ animationDuration: '8s' }}>
-            {/* Puntos en el círculo */}
             <div className={`absolute w-1.5 h-1.5 rounded-full top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
               theme === 'light' ? 'bg-blue-500' : 'bg-blue-400'
             }`}></div>
@@ -64,7 +64,6 @@ export function DroneScene() {
               theme === 'light' ? 'bg-blue-400' : 'bg-blue-300'
             }`}></div>
             
-            {/* Icono central */}
             <div className={`absolute inset-0 flex items-center justify-center text-xs md:text-sm ${
               theme === 'light' ? 'text-blue-600' : 'text-blue-300'
             }`}>
@@ -74,7 +73,6 @@ export function DroneScene() {
             </div>
           </div>
           
-          {/* Texto explicativo */}
           <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-1 text-center ${
             theme === 'light' ? 'text-blue-600' : 'text-blue-300'
           }`}>
@@ -83,8 +81,10 @@ export function DroneScene() {
             </div>
           </div>
         </div>
+        */}
 
        {/* Zona de scroll de página - centrada verticalmente */}
+       {/* COMENTADO: Ya hay botón en el hero
         <div className="absolute right-4 md:right-8 top-1/3 md:top-1/2 transform -translate-y-1/2 pointer-events-auto z-20">
           <div 
             className={`backdrop-blur-sm rounded-xl p-2 md:p-3 border transition-all duration-300 hover:scale-105 cursor-pointer ${
@@ -107,6 +107,7 @@ export function DroneScene() {
             </div>
           </div>
         </div>
+        */
 
         {/* Gradientes de borde más suaves */}
         <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b pointer-events-none ${
