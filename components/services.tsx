@@ -9,49 +9,8 @@ import Link from "next/link"
 export function Services() {
   const { t } = useTranslations()
 
-  const services = [
-    {
-      key: "agriculture",
-      icon: Wheat,
-      href: "/servicios/agricultura",
-      colors: {
-        bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
-        iconBg: "bg-gradient-to-br from-green-500/20 to-green-600/10",
-        icon: "text-green-600",
-        border: "border-green-200/50",
-        hoverBorder: "hover:border-green-400/70",
-        hoverIconBg: "group-hover:from-green-500/30 group-hover:to-green-600/15",
-        button: "hover:bg-green-50 hover:border-green-300 dark:hover:bg-green-950/30 dark:hover:border-green-700"
-      }
-    },
-    {
-      key: "livestock",
-      icon: Leaf,
-      href: "/servicios/agricultura",
-      colors: {
-          bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
-          iconBg: "bg-gradient-to-br from-green-500/20 to-green-600/10",
-          icon: "text-green-600",
-          border: "border-green-200/50",
-          hoverBorder: "hover:border-green-400/70",
-          hoverIconBg: "group-hover:from-green-500/30 group-hover:to-green-600/15",
-          button: "hover:bg-green-50 hover:border-green-300 dark:hover:bg-green-950/30 dark:hover:border-green-700"
-            }
-        },
-    {
-      key: "wind",
-      icon: Wind,
-      href: "/servicios/eolicos",
-      colors: {
-        bg: "bg-gradient-to-br from-blue-500/10 to-blue-600/5",
-        iconBg: "bg-gradient-to-br from-blue-500/20 to-blue-600/10",
-        icon: "text-blue-600",
-        border: "border-blue-200/50",
-        hoverBorder: "hover:border-blue-400/70",
-        hoverIconBg: "group-hover:from-blue-500/30 group-hover:to-blue-600/15",
-        button: "hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950/30 dark:hover:border-blue-700"
-      }
-    },
+  // Servicios prioritarios - MÁS GRANDES
+  const priorityServices = [
     {
       key: "science",
       icon: Microscope,
@@ -78,6 +37,52 @@ export function Services() {
         hoverBorder: "hover:border-orange-400/70",
         hoverIconBg: "group-hover:from-orange-500/30 group-hover:to-orange-600/15",
         button: "hover:bg-orange-50 hover:border-orange-300 dark:hover:bg-orange-950/30 dark:hover:border-orange-700"
+      }
+    }
+  ]
+
+  // Servicios secundarios - MÁS PEQUEÑOS
+  const secondaryServices = [
+    {
+      key: "agriculture",
+      icon: Wheat,
+      href: "/servicios/agricultura",
+      colors: {
+        bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
+        iconBg: "bg-gradient-to-br from-green-500/20 to-green-600/10",
+        icon: "text-green-600",
+        border: "border-green-200/50",
+        hoverBorder: "hover:border-green-400/70",
+        hoverIconBg: "group-hover:from-green-500/30 group-hover:to-green-600/15",
+        button: "hover:bg-green-50 hover:border-green-300 dark:hover:bg-green-950/30 dark:hover:border-green-700"
+      }
+    },
+    {
+      key: "livestock",
+      icon: Leaf,
+      href: "/servicios/agricultura",
+      colors: {
+        bg: "bg-gradient-to-br from-green-500/10 to-green-600/5",
+        iconBg: "bg-gradient-to-br from-green-500/20 to-green-600/10",
+        icon: "text-green-600",
+        border: "border-green-200/50",
+        hoverBorder: "hover:border-green-400/70",
+        hoverIconBg: "group-hover:from-green-500/30 group-hover:to-green-600/15",
+        button: "hover:bg-green-50 hover:border-green-300 dark:hover:bg-green-950/30 dark:hover:border-green-700"
+      }
+    },
+    {
+      key: "wind",
+      icon: Wind,
+      href: "/servicios/eolicos",
+      colors: {
+        bg: "bg-gradient-to-br from-blue-500/10 to-blue-600/5",
+        iconBg: "bg-gradient-to-br from-blue-500/20 to-blue-600/10",
+        icon: "text-blue-600",
+        border: "border-blue-200/50",
+        hoverBorder: "hover:border-blue-400/70",
+        hoverIconBg: "group-hover:from-blue-500/30 group-hover:to-blue-600/15",
+        button: "hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950/30 dark:hover:border-blue-700"
       }
     },
     {
@@ -109,27 +114,28 @@ export function Services() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("services.description")}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => {
+        {/* SERVICIOS PRIORITARIOS - Más grandes y destacados */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {priorityServices.map((service) => {
             const Icon = service.icon
             const colors = service.colors
             return (
               <Card
                 key={service.key}
-                className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 ${colors.bg} ${colors.border} ${colors.hoverBorder} hover:shadow-current/20`}
+                className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 ${colors.bg} ${colors.border} ${colors.hoverBorder} hover:shadow-current/20`}
               >
                 <CardHeader className="relative">
                   {/* Efecto de brillo sutil en hover */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-current/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
-                  <div className={`w-16 h-16 ${colors.iconBg} ${colors.hoverIconBg} rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
-                    <Icon className={`h-8 w-8 ${colors.icon} transition-transform duration-500 group-hover:scale-110`} />
+                  <div className={`w-20 h-20 ${colors.iconBg} ${colors.hoverIconBg} rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                    <Icon className={`h-10 w-10 ${colors.icon} transition-transform duration-500 group-hover:scale-110`} />
                   </div>
                   
-                  <CardTitle className="text-xl mb-3 group-hover:text-primary transition-colors duration-300">
+                  <CardTitle className="text-2xl md:text-3xl mb-4 group-hover:text-primary transition-colors duration-300">
                     {t(`services.${service.key}.title`)}
                   </CardTitle>
-                  <CardDescription className="leading-relaxed">
+                  <CardDescription className="text-base md:text-lg leading-relaxed">
                     {t(`services.${service.key}.description`)}
                   </CardDescription>
                 </CardHeader>
@@ -137,8 +143,57 @@ export function Services() {
                 <CardContent>
                   <Link href={service.href}>
                     <Button 
+                      size="lg"
                       variant="outline" 
-                      className={`w-full dynamic-border bg-transparent transition-all duration-300 ${colors.button}`}
+                      className={`w-full dynamic-border bg-transparent transition-all duration-300 text-base ${colors.button}`}
+                    >
+                      {t("common.learnMore")}
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+
+        {/* Separador visual */}
+        <div className="flex items-center justify-center mb-12">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+          <span className="px-4 text-sm text-muted-foreground font-medium">Otros servicios</span>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+        </div>
+
+        {/* SERVICIOS SECUNDARIOS - Más pequeños */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {secondaryServices.map((service) => {
+            const Icon = service.icon
+            const colors = service.colors
+            return (
+              <Card
+                key={service.key}
+                className={`group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-2 ${colors.bg} ${colors.border} ${colors.hoverBorder} hover:shadow-current/20`}
+              >
+                <CardHeader className="relative pb-3">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-current/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className={`w-14 h-14 ${colors.iconBg} ${colors.hoverIconBg} rounded-xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                    <Icon className={`h-7 w-7 ${colors.icon} transition-transform duration-500 group-hover:scale-110`} />
+                  </div>
+                  
+                  <CardTitle className="text-lg mb-2 group-hover:text-primary transition-colors duration-300">
+                    {t(`services.${service.key}.title`)}
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed line-clamp-3">
+                    {t(`services.${service.key}.description`)}
+                  </CardDescription>
+                </CardHeader>
+                
+                <CardContent className="pt-0">
+                  <Link href={service.href}>
+                    <Button 
+                      size="sm"
+                      variant="outline" 
+                      className={`w-full dynamic-border bg-transparent transition-all duration-300 text-sm ${colors.button}`}
                     >
                       {t("common.learnMore")}
                     </Button>
