@@ -32,7 +32,7 @@ export function Hero() {
       </div>
 
       {/* Botón flotante medio-derecha - Cambia según estado */}
-      <div className="absolute top-[30%] md:top-1/2 right-4 md:right-8 -translate-y-1/2 z-20 pointer-events-auto">
+      <div className="absolute top-[20%] md:top-1/2 right-4 md:right-8 -translate-y-1/2 z-20 pointer-events-auto">
         <Button
           onClick={toggle3DInteraction}
           size="lg"
