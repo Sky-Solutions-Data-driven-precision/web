@@ -31,27 +31,27 @@ export function Hero() {
         <DroneScene />
       </div>
 
-      {/* Botón flotante derecha - Cambia según estado */}
-      <div className="absolute bottom-8 right-8 z-20 pointer-events-auto">
+      {/* Botón flotante medio-derecha - Cambia según estado */}
+      <div className="absolute top-1/2 right-8 -translate-y-1/2 z-20 pointer-events-auto">
         <Button
           onClick={toggle3DInteraction}
           size="lg"
-          variant={is3DInteractive ? "destructive" : "outline"}
+          variant={is3DInteractive ? "default" : "outline"}
           className={`flex flex-col items-center gap-2 py-6 px-6 transition-all duration-300 ${
             is3DInteractive 
-              ? 'bg-red-600 hover:bg-red-700 text-white border-red-600' 
+              ? 'bg-primary hover:bg-primary/90 text-white border-primary' 
               : 'bg-black/50 backdrop-blur-sm border-white/30 text-white hover:bg-white/10'
           }`}
         >
           {is3DInteractive ? (
             <>
               <X className="h-6 w-6" />
-              <span className="text-xs font-medium">cerrar modelo 3D</span>
+              <span className="text-xs font-medium whitespace-nowrap">cerrar modelo 3D</span>
             </>
           ) : (
             <>
               <Orbit className="h-6 w-6" />
-              <span className="text-xs font-medium">habilitar modelo 3D</span>
+              <span className="text-xs font-medium whitespace-nowrap">habilitar modelo 3D</span>
             </>
           )}
         </Button>
