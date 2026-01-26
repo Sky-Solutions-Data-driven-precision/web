@@ -107,7 +107,7 @@ export function DroneScene() {
             </div>
           </div>
         </div>
-        */
+        */}
 
         {/* Gradientes de borde más suaves */}
         <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b pointer-events-none ${
