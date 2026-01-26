@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { DroneScene } from "@/components/drone-scene"
 import { useTranslations } from "@/hooks/use-translations"
-import { ChevronDown, Hand } from "lucide-react"
+import { ChevronDown, X } from "lucide-react"
 
 export function Hero() {
   const { t } = useTranslations()
@@ -31,19 +31,24 @@ export function Hero() {
         <DroneScene />
       </div>
 
-      {/* Overlay informativo cuando el 3D está activo */}
+      {/* Botón para cerrar interacción 3D - Solo visible cuando está activo */}
       {is3DInteractive && (
-        <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
-          <div className="bg-black/80 backdrop-blur-sm text-white px-6 py-3 rounded-full flex items-center gap-2 animate-pulse">
-            <Hand className="h-5 w-5" />
-            <span className="text-sm font-medium">Interactúa con el dron usando tu mouse</span>
-          </div>
+        <div className="absolute top-24 right-8 z-20">
+          <Button
+            onClick={toggle3DInteraction}
+            size="lg"
+            variant="destructive"
+            className="flex items-center gap-2 shadow-2xl"
+          >
+            <X className="h-5 w-5" />
+            Cerrar modelo 3D
+          </Button>
         </div>
       )}
 
       {/* Content - Prioridad de z-index sobre 3D cuando no está activo */}
       <div className={`relative container mx-auto px-4 text-center pointer-events-none transition-all duration-300 ${
-        is3DInteractive ? 'z-5 opacity-40' : 'z-10 opacity-100'
+        is3DInteractive ? 'z-5 opacity-20' : 'z-10 opacity-100'
       }`}>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg pointer-events-none">
@@ -65,7 +70,9 @@ export function Hero() {
                 {t("hero.cta.primary")}
               </Button>
             </Link>
+            
             <div className="flex flex-col items-center gap-2">
+              {/* Botón que cambia de función según el estado */}
               <Button
                 onClick={is3DInteractive ? toggle3DInteraction : scrollToServices}
                 size="lg"
@@ -74,6 +81,8 @@ export function Hero() {
               >
                 {is3DInteractive ? 'Cerrar modelo 3D' : t("hero.cta.secondary")}
               </Button>
+              
+              {/* Flecha y botón de interacción - Solo visible cuando NO está activo */}
               {!is3DInteractive && (
                 <>
                   <ChevronDown 
@@ -82,9 +91,10 @@ export function Hero() {
                   />
                   <button
                     onClick={toggle3DInteraction}
-                    className="text-white/70 hover:text-white text-sm underline decoration-dotted transition-colors mt-2"
+                    className="text-white/80 hover:text-white text-sm font-medium transition-colors mt-2 flex items-center gap-1 underline decoration-dotted underline-offset-4"
                   >
-                    O interactúa con el modelo 3D ↗
+                    <span>Interactuar con el modelo 3D</span>
+                    <span className="text-xs">↗</span>
                   </button>
                 </>
               )}
