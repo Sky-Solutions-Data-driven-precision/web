@@ -24,7 +24,7 @@ export function Stats() {
     },
     { 
       key: "procesamiento", 
-      icon: <Brain className={`w-16 h-16 mx-auto ${
+      icon: <Brain className={`w-14 h-14 mx-auto ${
         theme === 'light' ? 'text-primary' : 'text-white'
       }`} />
     },
@@ -43,11 +43,11 @@ export function Stats() {
     { 
       key: "conexion", 
       icon: (
-        <div className="relative mx-auto w-16 h-16 flex items-center justify-center">
-          <Wifi className={`w-16 h-16 ${
+        <div className="relative mx-auto w-14 h-14 flex items-center justify-center">
+          <Wifi className={`w-14 h-14 ${
             theme === 'light' ? 'text-primary' : 'text-white'
           }`} />
-          <span className={`absolute -bottom-2 text-sm font-bold ${
+          <span className={`absolute -bottom-2 text-xs font-bold ${
             theme === 'light' ? 'text-primary' : 'text-white'
           }`}>99.9%</span>
         </div>
