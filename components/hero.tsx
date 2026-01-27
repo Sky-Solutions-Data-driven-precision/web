@@ -46,12 +46,12 @@ export function Hero() {
           {is3DInteractive ? (
             <>
               <X className="h-5 w-5 md:h-6 md:w-6" />
-              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">cerrar modelo 3D</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t("hero.model3D.close")}</span>
             </>
           ) : (
             <>
               <Orbit className="h-5 w-5 md:h-6 md:w-6" />
-              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">habilitar modelo 3D</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t("hero.model3D.enable")}</span>
             </>
           )}
         </Button>

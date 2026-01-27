@@ -19,6 +19,10 @@ const translations = {
         primary: "Solicitar Cotización",
         secondary: "Ver Servicios",
       },
+      model3D: {
+        enable: "habilitar modelo 3D",
+        close: "cerrar modelo 3D"
+      }
     },
     services: {
       title: "Nuestros Servicios",
@@ -298,6 +302,35 @@ const translations = {
         help: "¿Necesitas ayuda? Contáctanos directamente:"
       }
     },
+    aboutPage: {
+      header: {
+        title: "Sobre Nosotros",
+        subtitle: "Innovación y precisión al servicio de tus proyectos"
+      },
+      image: {
+        alt: "Equipo Sky Solutions trabajando con drones"
+      },
+      whoWeAre: {
+        title: "Quiénes Somos",
+        content: "Somos una empresa joven radicada en el sur de Córdoba, Argentina, con el objetivo de ofrecer servicios profesionales y de calidad en el sector de tecnología de drones. Nos certificamos ante ANAC y cumplimos con todas las normativas necesarias para operar con drones en República Argentina y Latinoamérica, siguiendo las regulaciones vigentes."
+      },
+      specialization: {
+        title: "Nuestra Especialización",
+        paragraph1: "Nos especializamos en el manejo de datos relevados por drones, ofreciendo business intelligence e interpretación de datos para optimizar recursos y ampliar márgenes de utilidad. Transformamos información aérea en decisiones estratégicas para tu proyecto.",
+        paragraph2: "Nuestra especialización radica en relevamiento y manejo de datos científicos, arqueológicos, geológicos y geográficos. Sin embargo, también en nuestro abanico de servicios ponemos toda nuestra experiencia a disposición del relevamiento e interpretación de datos en sectores como industria, eólico, agropecuario, entre otros."
+      },
+      certifications: {
+        title: "Certificaciones y Cumplimiento",
+        anac: {
+          title: "Certificación ANAC",
+          description: "Operadores certificados por la Administración Nacional de Aviación Civil de Argentina."
+        },
+        regulations: {
+          title: "Normativas Vigentes",
+          description: "Cumplimiento total de regulaciones argentinas y latinoamericanas para operaciones con drones."
+        }
+      }
+    },
   },
   en: {
     nav: {
@@ -315,6 +348,10 @@ const translations = {
         primary: "Request Quote",
         secondary: "View Services",
       },
+      model3D: {
+        enable: "enable 3D model",
+        close: "close 3D model"
+      }
     },
     services: {
       title: "Our Services",
@@ -592,6 +629,35 @@ const translations = {
       },
       contact: {
         help: "Need help? Contact us directly:"
+      }
+    },
+    aboutPage: {
+      header: {
+        title: "About Us",
+        subtitle: "Innovation and precision at the service of your projects"
+      },
+      image: {
+        alt: "Sky Solutions team working with drones"
+      },
+      whoWeAre: {
+        title: "Who We Are",
+        content: "We are a young company based in southern Córdoba, Argentina, with the goal of offering professional and quality services in the drone technology sector. We are certified by ANAC and comply with all necessary regulations to operate drones in the Argentine Republic and Latin America, following current regulations."
+      },
+      specialization: {
+        title: "Our Specialization",
+        paragraph1: "We specialize in managing data collected by drones, offering business intelligence and data interpretation to optimize resources and expand profit margins. We transform aerial information into strategic decisions for your project.",
+        paragraph2: "Our specialization lies in surveying and managing scientific, archaeological, geological and geographic data. However, in our range of services we put all our experience at the disposal of data collection and interpretation in sectors such as industry, wind energy, agriculture, among others."
+      },
+      certifications: {
+        title: "Certifications and Compliance",
+        anac: {
+          title: "ANAC Certification",
+          description: "Operators certified by the National Civil Aviation Administration of Argentina."
+        },
+        regulations: {
+          title: "Current Regulations",
+          description: "Full compliance with Argentine and Latin American regulations for drone operations."
+        }
       }
     },
   },
