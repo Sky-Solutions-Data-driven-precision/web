@@ -1,0 +1,846 @@
+---
+title: "Manual de Operaciones del Explotador y Sistema de Gestión de Riesgo"
+subtitle: "Sky Solutions — CETA-RPA/RPAS"
+author: "<!-- NOMBRE_TITULAR -->"
+date: last-modified
+date-format: "DD/MM/YYYY"
+lang: es
+
+format:
+  pdf:
+    toc: true
+    toc-title: "Índice general"
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=30mm
+      - right=25mm
+    fontsize: 11pt
+    linestretch: 1.3
+    header-includes: |
+      \usepackage{fancyhdr}
+      \pagestyle{fancy}
+      \fancyhf{}
+      \fancyhead[L]{\small Sky Solutions — MOE/SGR}
+      \fancyhead[R]{\small Rev. 01 — \today}
+      \fancyfoot[C]{\thepage}
+      \renewcommand{\headrulewidth}{0.4pt}
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  docx:
+    toc: true
+    number-sections: true
+
+execute:
+  echo: false
+  warning: false
+---
+
+<!-- ============================================================
+     INSTRUCCIONES DE USO DE ESTE ARCHIVO
+     - Reemplazá todos los marcadores <!-- ... --> con la info real.
+     - Los marcadores con MAYÚSCULAS son los pendientes de completar.
+     - Antes de cada entrega a la ANAC actualizá: date, número de rev.
+       y la tabla de control de enmiendas (sección 1.3).
+     ============================================================ -->
+
+\newpage
+
+# Generalidades
+
+## Declaración de uso y autoridad del manual
+
+El presente Manual de Operaciones del Explotador (MOE) y Sistema de Gestión de Riesgo (SGR) ha sido elaborado en cumplimiento de lo establecido en la Resolución ANAC N.º 550/2025 y las RAAC Parte 100, Parte 101 y Parte 102, como requisito para la obtención del Certificado de Explotador de Trabajo Aéreo con RPA/RPAS (CETA-RPA/RPAS).
+
+Este manual es el documento rector de todas las operaciones con aeronaves pilotadas a distancia (RPA/RPAS) realizadas bajo la responsabilidad del explotador. Su observancia es obligatoria para todo el personal involucrado en las operaciones, incluyendo al piloto a distancia, observadores y personal de apoyo.
+
+La autoridad máxima sobre el contenido de este manual y la responsabilidad de mantenerlo actualizado recaen sobre el explotador titular:
+
+| | |
+|---|---|
+| **Explotador** | <!-- NOMBRE_Y_APELLIDO_COMPLETO --> |
+| **CUIL** | <!-- CUIL --> |
+| **Domicilio legal** | <!-- DOMICILIO --> |
+| **Teléfono de contacto** | <!-- TELÉFONO --> |
+| **Correo electrónico** | <!-- EMAIL --> |
+| **N.º de licencia piloto** | <!-- N_LICENCIA --> |
+| **Actividad ARCA** | 524330 — Servicios para la aeronavegación (D-883) |
+
+: Datos del explotador {tbl-colwidths="[35,65]"}
+
+**Nota:** la presentación de este manual a la ANAC para su revisión no implica que el mismo se encuentre aceptado hasta tanto la autoridad así lo notifique expresamente.
+
+## Tabla de contenido
+
+*(generada automáticamente por el sistema de composición)*
+
+## Enmiendas, revisión y distribución del manual
+
+### Procedimientos para enmienda
+
+Toda enmienda al presente manual deberá ser aprobada por el explotador antes de su implementación. Una vez aprobada, se remitirá a la Dirección de Operación de Aeronaves (DOA) de la ANAC el documento revisado para su evaluación y aceptación.
+
+### Página de control de enmiendas
+
+| Rev. | Fecha | Secciones modificadas | Motivo | Aprobado por |
+|------|-------|----------------------|--------|--------------|
+| 01 | <!-- FECHA_EMISION --> | Emisión inicial | Solicitud CETA-RPA/RPAS | <!-- NOMBRE_TITULAR --> |
+
+: Registro de enmiendas {tbl-colwidths="[8,12,30,30,20]"}
+
+### Lista de páginas efectivas
+
+El presente manual se compone de <!-- N_PÁGINAS --> páginas, incluyendo portada, índice y apéndices. Cada página indica en su encabezado la revisión vigente y la fecha de emisión.
+
+### Distribución del manual
+
+Por tratarse de una organización unipersonal, existe un único ejemplar digital controlado. El archivo fuente (formato `.qmd`) constituye el original; el PDF generado a partir de él es el ejemplar oficial para presentación.
+
+## Glosario
+
+| Término | Definición |
+|---------|-----------|
+| ANAC | Administración Nacional de Aviación Civil |
+| CETA | Certificado de Explotador de Trabajo Aéreo con RPA/RPAS |
+| CMA | Certificado Médico Aeronáutico |
+| C2 Link | Enlace de comando y control |
+| EANA S.A. | Empresa Argentina de Navegación Aérea S.A. (PSNA) |
+| IMC | Condiciones meteorológicas instrumentales (*Instrument Meteorological Conditions*) |
+| MOE | Manual de Operaciones del Explotador |
+| PSNA | Proveedor de Servicios a la Navegación Aérea |
+| RAAC | Regulaciones Argentinas de Aviación Civil |
+| RPA | Aeronave Pilotada a Distancia (*Remotely Piloted Aircraft*) |
+| RPAS | Sistema de Aeronave Pilotada a Distancia |
+| SGR | Sistema de Gestión de Riesgo |
+| VMC | Condiciones meteorológicas visuales (*Visual Meteorological Conditions*) |
+| VLOS | Operación dentro del alcance visual (*Visual Line of Sight*) |
+| BVLOS | Operación más allá del alcance visual (*Beyond Visual Line of Sight*) |
+| AGL | Sobre el nivel del terreno (*Above Ground Level*) |
+| NM | Milla náutica (1 NM = 1.852 m) |
+| AO | Argentinos Oro |
+
+: Glosario de términos {tbl-colwidths="[20,80]"}
+
+## Descripción general de la estructura del manual
+
+Este manual se organiza en diez secciones principales:
+
+1. **Generalidades:** declaración de autoridad, control documental y glosario.
+2. **Estructura del explotador:** identificación del titular y sus responsabilidades.
+3. **Instrucción y entrenamiento:** calificación del piloto y procedimientos de formación continua.
+4. **Especificaciones técnicas:** características del RPA/RPAS afectado.
+5. **Mantenimiento:** procedimientos de mantenimiento, almacenamiento y baterías.
+6. **Operaciones:** procedimientos de vuelo normales, anormales y de emergencia.
+7. **Performances:** datos de desempeño del RPA/RPAS.
+8. **Sistema de gestión de riesgo:** metodología general de identificación y mitigación de riesgos.
+9. **Autorizaciones operativas adicionales:** procedimientos específicos para cada dispensa solicitada.
+10. **Apéndices:** documentación complementaria.
+
+## Procedimientos de notificación a la ANAC
+
+El explotador notificará a la ANAC, a través del correo electrónico oficial o por TAD, cualquier cambio relevante que afecte la vigencia del CETA, incluyendo: modificación de datos personales, incorporación o baja de aeronaves, cambio en el alcance de las operaciones o suspensión temporal de actividades.
+
+---
+
+# Estructura del explotador / funciones y responsabilidades
+
+## Organización
+
+Por tratarse de una organización unipersonal, no se requiere organigrama. El explotador asume personalmente todas las funciones operativas, administrativas y de seguridad.
+
+## Datos del piloto a distancia
+
+| | |
+|---|---|
+| **Nombre y apellido** | <!-- NOMBRE_Y_APELLIDO_COMPLETO --> |
+| **CUIL** | <!-- CUIL --> |
+| **N.º de licencia** | <!-- N_LICENCIA --> |
+| **Vencimiento de licencia** | <!-- VENCIMIENTO_LICENCIA --> |
+| **N.º de CMA** | <!-- N_CMA --> |
+| **Vencimiento de CMA** | <!-- VENCIMIENTO_CMA --> |
+| **Habilitaciones** | <!-- HABILITACIONES --> |
+
+: Datos del piloto a distancia {tbl-colwidths="[40,60]"}
+
+## Responsabilidades del explotador/piloto a distancia
+
+El explotador, en su calidad de piloto al mando y responsable de la operación, asume las siguientes responsabilidades:
+
+- Garantizar el cumplimiento de toda la normativa aeronáutica vigente aplicable a RPA/RPAS.
+- Mantener actualizados su licencia, habilitaciones y CMA.
+- Asegurar que el RPA/RPAS se encuentre en condiciones aeronavegables antes de cada vuelo.
+- Gestionar las autorizaciones ante la EANA S.A. cuando la operación así lo requiera.
+- Mantener vigente la póliza de seguro con las coberturas exigidas por la normativa.
+- Registrar y reportar todo accidente o incidente a la ANAC conforme a los procedimientos establecidos.
+- Mantener actualizado el presente MOE y notificar a la ANAC toda enmienda.
+- Realizar el análisis de riesgo previo a cada operación y documentarlo.
+
+## Política general de seguridad operacional
+
+Sky Solutions adopta como principio rector la prioridad absoluta de la seguridad sobre cualquier consideración comercial u operativa. Ninguna operación se llevará a cabo si existe incertidumbre razonable sobre su seguridad, independientemente de compromisos contractuales preexistentes.
+
+El presente MOE cubre los requerimientos de la Resolución ANAC N.º 550/2025 y las RAAC Parte 100, 101 y 102.
+
+---
+
+# Políticas de instrucción y entrenamiento
+
+## Calificación del piloto a distancia
+
+El piloto a distancia cumple con los requisitos de calificación establecidos en la RAAC Parte 100:
+
+- Licencia de piloto de RPA/RPAS vigente, emitida por la ANAC.
+- Certificado Médico Aeronáutico (CMA) vigente.
+- Entrenamiento específico en los procedimientos de emergencia descritos en este manual.
+
+## Entrenamiento continuo
+
+El explotador se compromete a:
+
+- Realizar al menos un ejercicio práctico de procedimientos de emergencia por trimestre, documentando la actividad.
+- Mantenerse actualizado respecto a modificaciones normativas que afecten la operación de RPA/RPAS.
+- Completar los cursos de actualización que la ANAC establezca como requisito para la renovación de licencias y habilitaciones.
+- Realizar vuelos de práctica periódicos con los equipos afectados al CETA, en condiciones seguras y controladas, para mantener la familiaridad operativa.
+
+## Entrenamiento en procedimientos de emergencia
+
+El piloto a distancia conoce y practica regularmente los siguientes procedimientos:
+
+- Activación del modo *failsafe* y retorno automático al punto de despegue (*Return to Home*).
+- Aterrizaje de emergencia ante falla crítica de sistema.
+- Gestión de la pérdida del enlace C2.
+- Procedimientos ante condiciones meteorológicas adversas imprevistas.
+- Respuesta ante eventos médicos durante la operación.
+- Notificación de accidentes e incidentes.
+
+---
+
+# Especificaciones técnicas
+
+## RPA/RPAS afectado al CETA
+
+<!-- COMPLETAR ANTES DE LA ENTREGA: agregar una subsección por cada aeronave matriculada -->
+
+| | |
+|---|---|
+| **Fabricante** | <!-- FABRICANTE --> |
+| **Modelo** | <!-- MODELO --> |
+| **N.º de serie** | <!-- N_SERIE --> |
+| **Matrícula ANAC** | <!-- MATRÍCULA --> |
+| **Masa máxima de despegue** | <!-- MTOM --> kg |
+| **Categoría de peso** | <!-- CATEGORÍA --> |
+| **Tipo de propulsión** | <!-- ELÉCTRICA / COMBUSTIÓN --> |
+| **Autonomía de vuelo** | <!-- AUTONOMÍA --> min |
+| **Alcance máximo del enlace C2** | <!-- ALCANCE --> m |
+| **Sistema de posicionamiento** | <!-- GPS / RTK / etc. --> |
+| **Sensores / carga útil** | <!-- SENSORES --> |
+
+: Especificaciones técnicas del RPA/RPAS {tbl-colwidths="[40,60]"}
+
+**Referencia al manual del fabricante:** <!-- TÍTULO Y VERSIÓN DEL MANUAL DEL FABRICANTE -->. Se adjunta copia como Apéndice D.
+
+---
+
+# Mantenimiento RPA/RPAS
+
+## Programa de mantenimiento
+
+El mantenimiento del RPA/RPAS se realizará siguiendo estrictamente las instrucciones del fabricante contenidas en el manual de mantenimiento correspondiente (Apéndice D). Como mínimo se realizarán las siguientes verificaciones:
+
+### Inspección pre-vuelo (antes de cada operación)
+
+- Estado estructural general: chasis, brazos, hélices (grietas, deformaciones, fijaciones).
+- Estado y nivel de carga de las baterías de vuelo.
+- Calibración de la IMU y la brújula cuando el sistema lo requiera.
+- Verificación del enlace C2 y telemetría.
+- Comprobación del sistema de posicionamiento (GPS/RTK).
+- Estado y firmware actualizado del sistema de vuelo.
+- Verificación del sistema *Return to Home* y *failsafe*.
+- Estado de la carga útil (cámara, sensores) y fijaciones.
+
+### Mantenimiento periódico
+
+| Frecuencia | Tarea |
+|---|---|
+| Cada <!-- N --> horas de vuelo | <!-- TAREA SEGÚN FABRICANTE --> |
+| Cada <!-- N --> meses | <!-- TAREA SEGÚN FABRICANTE --> |
+| Anual | Inspección completa según checklist del fabricante |
+
+: Programa de mantenimiento periódico {tbl-colwidths="[30,70]"}
+
+## Mantenimiento y uso de baterías
+
+Las baterías de polímero de litio (LiPo) o de iones de litio (Li-ion) utilizadas requieren los siguientes cuidados:
+
+- **Carga:** utilizar únicamente el cargador suministrado por el fabricante. No cargar baterías dañadas, hinchadas o con celdas desequilibradas.
+- **Almacenamiento:** almacenar entre el 40% y el 60% de carga cuando no se utilicen por más de 72 horas, en lugar fresco y seco, alejado de fuentes de calor.
+- **Transporte:** en contenedor ignífugo certificado para LiPo, en bodega o equipaje de mano según las regulaciones aplicables.
+- **Baja:** retirar de servicio toda batería que presente hinchazón, daño físico, pérdida de capacidad superior al 20% de la original o que genere calor excesivo durante la carga.
+- **Protección electrostática:** manipular con precaución evitando descargas electrostáticas en los conectores.
+
+## Registro de mantenimiento
+
+Todo mantenimiento correctivo o preventivo realizado quedará registrado en el **Libro de registro del RPA/RPAS** (Apéndice E), indicando: fecha, descripción de la tarea, componentes reemplazados, horas de vuelo acumuladas y firma del responsable.
+
+## Almacenamiento y transporte
+
+- El RPA/RPAS se almacenará en su estuche o contenedor original, en ambiente seco, temperatura entre 5 °C y 40 °C, alejado de campos electromagnéticos intensos.
+- Durante el transporte terrestre se asegurará contra golpes y vibraciones.
+- Las hélices se desmontarán o protegerán para evitar daños accidentales.
+
+---
+
+# Operaciones RPA/RPAS
+
+## Planificación del vuelo
+
+Antes de cada operación, el piloto a distancia deberá:
+
+1. Verificar el espacio aéreo en el área de operación mediante la aplicación oficial de la ANAC u otras herramientas autorizadas (Dronedash, SkyVector, etc.).
+2. Consultar el pronóstico meteorológico para el día y franja horaria de la operación.
+3. Identificar y registrar en el formulario de análisis de riesgo: zona de despegue y aterrizaje, obstáculos, rutas de escape, zonas de aterrizaje de emergencia y público circundante.
+4. Confirmar la vigencia de todas las habilitaciones, seguros y matrículas.
+5. Solicitar autorización a la EANA S.A. cuando la operación así lo requiera (ver Sección 9), con la antelación mínima que ésta establezca.
+6. Notificar al propietario o responsable del predio donde se realizará la operación, cuando corresponda.
+
+## Procedimientos de pre-vuelo
+
+### Lista de chequeo pre-vuelo
+
+| # | Ítem | Verificación |
+|---|------|--------------|
+| 1 | Matrícula del RPA/RPAS | Vigente ☐ |
+| 2 | Licencia del piloto | Vigente ☐ |
+| 3 | CMA del piloto | Vigente ☐ |
+| 4 | Seguro de ley | Vigente ☐ |
+| 5 | Análisis de riesgo completado | Sí ☐ |
+| 6 | Autorización EANA S.A. (si aplica) | Obtenida ☐ / N/A ☐ |
+| 7 | Pronóstico meteorológico evaluado | Aceptable ☐ |
+| 8 | Zona de operación inspeccionada | Sí ☐ |
+| 9 | Baterías cargadas y en buen estado | Sí ☐ |
+| 10 | Inspección estructural del RPA | OK ☐ |
+| 11 | Hélices sin daños y correctamente fijadas | OK ☐ |
+| 12 | Carga útil fijada correctamente | OK ☐ / N/A ☐ |
+| 13 | Enlace C2 y telemetría verificados | OK ☐ |
+| 14 | GPS/RTK con fix adecuado | OK ☐ |
+| 15 | *Return to Home* configurado y probado | OK ☐ |
+| 16 | *Failsafe* configurado y probado | OK ☐ |
+| 17 | Calibración de IMU/brújula (si requerida) | OK ☐ / N/A ☐ |
+| 18 | Área libre de personas no autorizadas | Confirmado ☐ |
+| 19 | Interferencias RF evaluadas | Sin interferencias ☐ |
+| 20 | Combustible/batería suficiente para la operación + reserva | Confirmado ☐ |
+
+: Lista de chequeo pre-vuelo
+
+## Procedimientos de vuelo normal
+
+- El despegue y aterrizaje se realizarán desde zonas despejadas, firmes y sin vegetación alta que pueda interferir con las hélices.
+- Se mantendrá en todo momento la aeronave dentro del alcance visual del piloto (VLOS), salvo que se cuente con la autorización operativa A-9 o similar habilitada.
+- Se respetarán los límites de altitud, distancia a infraestructuras y espacios aéreos establecidos en la normativa y en las autorizaciones vigentes.
+- Las maniobras se realizarán a velocidades que permitan reacción y corrección ante situaciones imprevistas.
+- Se mantendrá un margen de batería/combustible de reserva de al menos el 20% de la carga inicial, reservado exclusivamente para el retorno y el aterrizaje.
+
+## Procedimientos ante pérdida del enlace C2
+
+1. Verificar la causa (interferencias, distancia, obstáculos).
+2. Si el sistema tiene *failsafe* configurado, éste activará automáticamente el *Return to Home*: no intervenir hasta que el RPA esté visible y en condiciones de retomar el control.
+3. Si el RPA no regresa en el tiempo de vuelo restante estimado, avisar a personas circundantes y despejar la zona de aterrizaje prevista.
+4. Registrar el evento en el libro de registro y evaluar la causa antes del siguiente vuelo.
+
+## Procedimientos de aborto y emergencia
+
+- **Falla crítica de sistema durante el vuelo:** activar aterrizaje de emergencia en el lugar más seguro disponible, avisar verbalmente a las personas en la zona.
+- **Pérdida de control de altitud:** activar modo de aterrizaje automático, si no responde, intentar un aterrizaje forzado en zona despejada.
+- **Incendio de batería en tierra:** alejar el RPA de personas e inflamables, no intentar apagar con agua; utilizar tierra, arena o extintor de polvo.
+- **Evento meteorológico repentino (viento fuerte, tormenta):** aterrizaje inmediato; nunca continuar el vuelo por compromisos comerciales.
+
+## Procedimientos ante condiciones meteorológicas adversas
+
+**Límites meteorológicos estándar para la operación:**
+
+| Parámetro | Límite máximo |
+|---|---|
+| Velocidad de viento | <!-- VIENTO_MAX --> km/h (según especificaciones del fabricante) |
+| Precipitación | Sin lluvia, nieve ni granizo |
+| Visibilidad mínima | 1.500 m (operaciones VLOS diurnas) |
+| Temperatura de operación | Entre <!-- T_MIN --> °C y <!-- T_MAX --> °C (según fabricante) |
+
+: Límites meteorológicos de operación {tbl-colwidths="[50,50]"}
+
+Para operaciones nocturnas o en condiciones especiales, ver los procedimientos específicos en la Sección 9 (A-9).
+
+## Procedimientos de gestión de combustible/batería
+
+- Calcular el consumo estimado de la misión considerando peso de carga útil, altitud, temperatura y viento.
+- Añadir una reserva mínima del 20% sobre el consumo estimado.
+- Si durante el vuelo se alcanza el nivel de reserva, iniciar retorno inmediato.
+- Nunca reutilizar una batería sin verificar su temperatura y estado visual previo.
+
+## Procedimientos de evaluación de interferencias de radiofrecuencia
+
+- Antes de cada vuelo, comprobar el número de satélites disponibles y la calidad del fix GPS/RTK.
+- Evitar operar en proximidad de antenas de alta potencia, líneas de alta tensión o instalaciones de radar militar.
+- Si durante la inspección pre-vuelo se detectan interferencias (comportamiento errático del RPA en tierra, pérdida de señal), suspender la operación.
+
+## Designación y calificación del personal
+
+Por tratarse de una organización unipersonal, el explotador cumple todas las funciones. En caso de incorporar observadores para operaciones específicas, deberán:
+
+- Recibir instrucción básica en los procedimientos de emergencia de este manual.
+- Conocer las señales de comunicación tierra-tierra con el piloto.
+- No interferir con las decisiones del piloto durante el vuelo.
+
+## Obligaciones posteriores al vuelo
+
+- Inspeccionar el RPA/RPAS al aterrizar: hélices, estructura, batería/motor.
+- Registrar en el libro de vuelo: fecha, lugar, duración, condiciones generales y cualquier anomalía observada.
+- Cargar las baterías de acuerdo al procedimiento establecido (Sección 5.2).
+- Archivar el formulario de análisis de riesgo de la operación realizada.
+- Notificar a la ANAC todo accidente o incidente según los procedimientos vigentes.
+
+## Protocolo de seguridad ante eventos médicos
+
+- El piloto contará en el lugar de operación con un botiquín de primeros auxilios básico.
+- En caso de emergencia médica propia o de un tercero, aterrizar el RPA de inmediato en el lugar más seguro disponible y llamar al sistema de emergencias (SAMU: 107 / Emergencias: 911).
+- No volar bajo efectos de medicamentos que afecten la capacidad de reacción, alcohol u otras sustancias.
+
+---
+
+# Performances RPA/RPAS
+
+<!-- COMPLETAR ANTES DE LA ENTREGA con los datos de performance del fabricante -->
+
+| Parámetro de performance | Valor |
+|---|---|
+| Masa máxima de despegue (MTOM) | <!-- MTOM --> kg |
+| Velocidad máxima de vuelo | <!-- V_MAX --> km/h |
+| Velocidad de ascenso máx. | <!-- V_ASCENSO --> m/s |
+| Velocidad de descenso máx. | <!-- V_DESCENSO --> m/s |
+| Altitud operativa máxima | <!-- ALT_MAX --> m MSL |
+| Autonomía máxima (sin carga útil) | <!-- AUTONOMÍA_MAX --> min |
+| Autonomía operativa (con carga útil) | <!-- AUTONOMÍA_OP --> min |
+| Distancia máxima de control | <!-- DIST_MAX --> m |
+| Temperatura de operación | <!-- T_MIN --> °C a <!-- T_MAX --> °C |
+| Resistencia al viento | hasta <!-- VIENTO_MAX --> km/h |
+| Grado de protección IP | <!-- IP_RATING --> |
+
+: Datos de performance del RPA/RPAS {tbl-colwidths="[55,45]"}
+
+**Referencia:** datos extraídos del manual del fabricante (Apéndice D). En caso de discrepancia, prevalece el documento del fabricante.
+
+---
+
+# Sistema de gestión de riesgo
+
+## Marco metodológico
+
+El sistema de gestión de riesgo (SGR) de Sky Solutions sigue la metodología establecida en el Anexo 19 de la OACI y el Documento 9859 (Manual de Gestión de Seguridad Operacional), adaptada a la escala de las operaciones de un explotador unipersonal de RPA/RPAS.
+
+El proceso de gestión de riesgo consta de tres etapas:
+
+1. **Identificación de peligros:** reconocer elementos que puedan causar daño.
+2. **Evaluación del riesgo:** determinar la probabilidad y severidad de cada peligro, asignando un nivel de riesgo.
+3. **Mitigación:** establecer barreras y controles para reducir el riesgo a un nivel tolerable.
+
+## Matriz de evaluación de riesgo
+
+### Probabilidad
+
+| Nivel | Descripción | Criterio |
+|---|---|---|
+| 5 — Frecuente | Probable que ocurra muchas veces | Más de una vez por operación |
+| 4 — Ocasional | Probable que ocurra varias veces | Una vez cada varias operaciones |
+| 3 — Remoto | Improbable, pero posible | Una vez cada muchas operaciones |
+| 2 — Improbable | Muy poco probable | Podría ocurrir en circunstancias excepcionales |
+| 1 — Extremadamente improbable | Casi inconcebible | No se ha registrado en operaciones equivalentes |
+
+: Escala de probabilidad
+
+### Severidad
+
+| Nivel | Descripción | Consecuencias |
+|---|---|---|
+| A — Catastrófico | Múltiples muertes / destrucción total del RPA | Accidente grave con víctimas fatales |
+| B — Peligroso | Lesiones graves / daño mayor al RPA | Accidente con lesiones severas |
+| C — Mayor | Lesiones menores / daño significativo | Incidente con daños materiales importantes |
+| D — Menor | Sin lesiones / daño leve | Incidente sin consecuencias graves |
+| E — Insignificante | Sin consecuencias | Anomalía menor, sin daño |
+
+: Escala de severidad
+
+### Índice de riesgo
+
+|  | **A — Catastrófico** | **B — Peligroso** | **C — Mayor** | **D — Menor** | **E — Insignificante** |
+|---|---|---|---|---|---|
+| **5 — Frecuente** | 5A | 5B | 5C | 5D | 5E |
+| **4 — Ocasional** | 4A | 4B | 4C | 4D | 4E |
+| **3 — Remoto** | 3A | 3B | 3C | 3D | 3E |
+| **2 — Improbable** | 2A | 2B | 2C | 2D | 2E |
+| **1 — Ext. improbable** | 1A | 1B | 1C | 1D | 1E |
+
+: Matriz de riesgo
+
+**Criterios de aceptabilidad:**
+
+- 🔴 **Intolerable** (5A, 4A, 5B, 3A, 4B, 5C): la operación no se realiza sin implementar barreras de mitigación eficaces.
+- 🟡 **Tolerable con mitigación** (2A, 3B, 4C, 2B, 3C, 4D, 5D, 5E): la operación puede realizarse solo si se aplican las medidas de mitigación previstas.
+- 🟢 **Aceptable** (1A, 1B, 1C, 2C, 1D, 2D, 3D, 3E, 4E, 1E, 2E): el riesgo es aceptable con las medidas de control estándar.
+
+## Análisis de riesgo operacional general
+
+El explotador completará el formulario de análisis de riesgo (Apéndice F) antes de cada operación. Este análisis incluirá como mínimo:
+
+| Elemento a evaluar | Descripción |
+|---|---|
+| Zona de despegue y aterrizaje | Identificación, croquis y alternativas |
+| Ruta de operación | Trayectoria prevista, altitud y modo de vuelo |
+| Obstáculos en ruta | Edificios, tendidos, árboles, torres |
+| Presencia de personas | Público, trabajadores, transeúntes |
+| Condiciones meteorológicas | Viento, visibilidad, temperatura, precipitación |
+| Espacio aéreo | Proximidad a aeródromos, corredores, zonas restringidas |
+| Interferencias RF | Fuentes de RF en la zona de operación |
+| Lugares de aterrizaje de emergencia | Al menos una alternativa identificada |
+| Autorizaciones necesarias | EANA S.A. u otras según la operación |
+
+: Elementos del análisis de riesgo pre-operacional
+
+---
+
+# Autorizaciones operativas adicionales
+
+## Autorizaciones solicitadas
+
+Sky Solutions solicita las siguientes autorizaciones operativas adicionales:
+
+| Código | Descripción | Ref. RAAC | EANA S.A. |
+|--------|-------------|-----------|-----------|
+| A-1 | Operación en zonas pobladas / sobre multitudes | Punto 100.15 (c) | No |
+| A-2 | Operaciones por encima de 400 ft (122 m) AGL en espacio aéreo no controlado | Punto 100.15 (e) | Sí |
+| A-3 | Operaciones dentro de 5 km de umbral de pista, por encima de 43 m | Punto 100.15 (h) | Sí |
+| A-4 | Operaciones en la superficie de aproximación o ascenso en el despegue de pistas | Punto 100.17 (a) | Sí |
+| A-5 | Operaciones a menos de ½ NM del límite lateral de corredores VFR | Punto 100.17 (b) | Sí |
+| A-6 | Operaciones en helipuertos (radio < 2 NM / >150 ft) | Punto 100.17 (c) | Sí |
+| A-7 | Operaciones en corredores visuales y helicorredores | Punto 100.17 (d) | Sí |
+| A-8 | Operaciones desde vehículos en movimiento | Punto 100.17 (l) | No |
+| A-9 | Operaciones nocturnas o en condiciones IMC | Punto 100.17 (m) | No |
+
+: Autorizaciones operativas adicionales solicitadas
+
+**Nota 1:** todas las operaciones se realizarán según los procedimientos y el sistema de gestión de riesgo definidos en este manual.
+
+**Nota 2:** las operaciones que requieren autorización de EANA S.A. sólo se llevarán a cabo luego de obtener dicho permiso, cumpliendo las condiciones y limitaciones que ésta imponga.
+
+## A-1 — Operación en zonas pobladas / sobre multitudes
+
+**Referencia normativa:** RAAC Punto 100.15 (c)
+
+**Justificación operativa:** las aplicaciones de Sky Solutions en relevamiento topográfico, arqueología y agricultura pueden desarrollarse en entornos semi-urbanos o en proximidad de personas. La presencia controlada en zonas pobladas es inherente a servicios como documentación de obras, monitoreo de infraestructura o aplicaciones científicas en campus.
+
+**Análisis de riesgo (A-1):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Impacto del RPA sobre personas | 3 | B | 3B 🟡 | Perímetro de seguridad, vuelo a altitud segura, modos automáticos desactivados en zonas con público | 2C 🟢 |
+| Caída de componentes | 2 | C | 2C 🟢 | Inspección pre-vuelo rigurosa, hélices con protección si el equipo lo permite | 1D 🟢 |
+| Colisión con obstáculos urbanos | 3 | C | 3C 🟡 | Reconocimiento previo de la zona, vuelo a altitud superior a los obstáculos identificados | 2D 🟢 |
+| Reacción adversa de público | 3 | D | 3D 🟡 | Señalización del área, comunicación previa con responsables del predio | 2E 🟢 |
+
+: Análisis de riesgo A-1
+
+**Procedimientos específicos A-1:**
+
+1. Establecer un perímetro de seguridad de al menos <!-- DISTANCIA_SEGURIDAD --> m alrededor de la zona de operación, delimitado con conos, cinta de señalización u otro medio visible.
+2. Designar, cuando sea posible, un colaborador que controle el acceso al perímetro y avise al piloto sobre movimientos de personas.
+3. Nunca sobrevolar directamente a personas que no sean parte del equipo de operación y que no hayan sido informadas.
+4. Para vuelos sobre multitudes, el RPA deberá contar con protección de hélices o características de diseño que minimicen el riesgo de lesión en caso de impacto.
+5. Registrar en el formulario de análisis de riesgo (Apéndice F) la estimación de personas presentes y las medidas adoptadas.
+
+## A-2 — Operaciones por encima de 400 ft (122 m) AGL en espacio aéreo no controlado
+
+**Referencia normativa:** RAAC Punto 100.15 (e)
+
+**Justificación operativa:** los relevamientos topográficos y la inspección de infraestructura de gran altura (turbinas eólicas, torres, líneas de transmisión) pueden requerir altitudes superiores a los 122 m AGL para garantizar la cobertura completa de la misión.
+
+**Procedimiento de autorización EANA S.A.:**
+
+El explotador solicitará autorización a EANA S.A. con la antelación requerida (mínimo <!-- N_DÍAS_EANA --> días hábiles antes de la operación) a través del sistema/medio que EANA S.A. prescriba, indicando:
+
+- Fecha, hora y duración estimada de la operación.
+- Coordenadas del área de operación (lat/lon centro y radio, o polígono).
+- Altitud máxima solicitada (ft AGL y ft MSL).
+- Tipo y matrícula del RPA/RPAS.
+- Datos de contacto del piloto durante la operación.
+
+La operación sólo se iniciará una vez recibida la autorización de EANA S.A. y dentro de los términos que ésta establezca.
+
+**Análisis de riesgo (A-2):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Conflicto con aeronave tripulada | 3 | A | 3A 🔴 | Autorización previa de EANA S.A., operación solo en espacio aéreo no controlado, luces de anticolisión activas | 1B 🟢 |
+| Pérdida de control del RPA a gran altitud | 2 | B | 2B 🟡 | Verificación de enlace C2 al máximo de alcance antes de superar 122 m, *failsafe* configurado | 1C 🟢 |
+| Condiciones de viento severo a mayor altitud | 3 | C | 3C 🟡 | Consulta de pronóstico de viento en altura, no operar con viento mayor al límite del fabricante | 2D 🟢 |
+| Pérdida de contacto visual (VLOS) | 3 | C | 3C 🟡 | Uso de binoculares, marcas de identificación visual en el RPA, limitación de distancia horizontal | 2D 🟢 |
+
+: Análisis de riesgo A-2
+
+**Procedimientos específicos A-2:**
+
+1. Solicitar y obtener autorización de EANA S.A. antes de planificar la operación en detalle.
+2. Verificar que el espacio aéreo en el área sea no controlado hasta la altitud solicitada mediante cartas aeronáuticas actualizadas.
+3. Activar las luces de anticolisión del RPA para toda la duración del vuelo.
+4. Mantener el RPA dentro del alcance visual durante todo el vuelo, utilizando binoculares si es necesario.
+5. Definir una altitud de vuelo segura que garantice separación con el terreno y obstáculos.
+6. Establecer un procedimiento de descenso inmediato ante detección visual o auditiva de aeronave tripulada en la zona.
+
+## A-3 — Operaciones dentro de 5 km de umbral de pista, por encima de 43 m
+
+**Referencia normativa:** RAAC Punto 100.15 (h)
+
+**Justificación operativa:** determinados relevamientos topográficos o de infraestructura pueden ubicarse dentro del radio de 5 km de aeródromos, requiriendo operar por encima de los 43 m permitidos por defecto en esa zona.
+
+**Procedimiento de autorización EANA S.A.:** idéntico al descrito en A-2, con la adición de que se deberá indicar explícitamente la distancia al umbral de pista más cercano y el aeródromo de referencia. En algunos casos, la autorización podrá requerirse conjuntamente con el jefe del aeródromo.
+
+**Análisis de riesgo (A-3):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Conflicto con aeronave en aproximación o despegue | 4 | A | 4A 🔴 | Autorización EANA S.A. y/o jefe de aeródromo, monitoreo de frecuencia de aeródromo | 1A 🟢 |
+| Intrusión en superficie de aproximación | 3 | A | 3A 🔴 | Definición precisa de coordenadas y altitud, verificación con carta aeronáutica | 1B 🟢 |
+| Pérdida de visual del RPA en entorno aeroportuario | 2 | C | 2C 🟢 | Luces de anticolisión, marcas visuales en el RPA | 1D 🟢 |
+
+: Análisis de riesgo A-3
+
+**Procedimientos específicos A-3:**
+
+1. Identificar el aeródromo o pista más cercana y calcular la distancia exacta al umbral de pista.
+2. Solicitar autorización a EANA S.A. y al jefe del aeródromo con la antelación requerida.
+3. Monitorear la frecuencia de comunicaciones del aeródromo (si es aeródromo con torre) durante toda la operación.
+4. Estar preparado para un descenso y aterrizaje inmediato ante instrucción de control de tránsito aéreo o EANA S.A.
+5. No iniciar o continuar el vuelo si se observan aeronaves en aproximación o despegue desde el aeródromo cercano.
+
+## A-4 — Operaciones en la superficie de aproximación o ascenso en el despegue de pistas
+
+**Referencia normativa:** RAAC Punto 100.17 (a)
+
+**Justificación operativa:** en casos excepcionales, relevamientos de infraestructura aeroportuaria o lindes de aeródromos pueden requerir ingresar a las superficies limitadoras de obstáculos.
+
+**Procedimiento de autorización EANA S.A.:** ídem A-3. Esta autorización requiere coordinación directa con EANA S.A. y el jefe del aeródromo. La operación solo se realizará en períodos de baja o nula actividad aérea, según lo establecido por las autoridades del aeródromo.
+
+**Análisis de riesgo (A-4):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Colisión con aeronave en movimiento | 3 | A | 3A 🔴 | Operación solo durante períodos sin movimiento aéreo confirmado por el aeródromo; coordinación permanente | 1A 🟢 |
+| Ingreso no autorizado en área de movimiento | 2 | B | 2B 🟡 | Autorización escrita del jefe del aeródromo, acompañamiento de personal del aeródromo | 1C 🟢 |
+| Falla del RPA sobre pista o calles de rodaje | 2 | B | 2B 🟡 | Inspección previa exhaustiva, *failsafe* hacia zona segura predefinida | 1C 🟢 |
+
+: Análisis de riesgo A-4
+
+**Procedimientos específicos A-4:**
+
+1. Obtener autorización escrita de EANA S.A. y del jefe del aeródromo para la operación específica.
+2. Operar únicamente durante períodos confirmados como sin actividad aérea en las pistas afectadas (NOTAM o cierre temporal si corresponde).
+3. Ser acompañado por personal designado del aeródromo durante toda la operación.
+4. Configurar el *Return to Home* hacia una zona fuera de las superficies de vuelo del aeródromo.
+5. Mantener comunicación por radio con la torre o AFIS del aeródromo durante toda la operación.
+
+## A-5 — Operaciones a menos de ½ NM del límite lateral de corredores VFR
+
+**Referencia normativa:** RAAC Punto 100.17 (b)
+
+**Justificación operativa:** determinadas áreas de relevamiento pueden ubicarse en proximidad de corredores VFR establecidos. La autorización permite operar en esa franja con los procedimientos de seguridad adecuados.
+
+**Procedimiento de autorización EANA S.A.:** idéntico al descrito en A-2, especificando el corredor VFR de referencia y la distancia al límite lateral.
+
+**Análisis de riesgo (A-5):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Conflicto con aeronave VFR en corredor | 3 | A | 3A 🔴 | Autorización EANA S.A., luces de anticolisión, monitoreo de frecuencia VFR | 1B 🟢 |
+| Ingreso accidental al corredor | 3 | B | 3B 🔴 | Uso de GPS con límites geográficos configurados, altitud de operación diferenciada del corredor | 1C 🟢 |
+
+: Análisis de riesgo A-5
+
+**Procedimientos específicos A-5:**
+
+1. Identificar con precisión el límite lateral del corredor VFR en la zona de operación, usando cartas aeronáuticas vigentes.
+2. Configurar alertas de límite geográfico en la estación de control del RPA si el sistema lo permite.
+3. Operar a altitudes que garanticen separación vertical con el tránsito en el corredor.
+4. Monitorear la frecuencia asignada al corredor VFR durante la operación.
+5. Ante tráfico aéreo visual o auditivamente detectado en el corredor, descender y aterrizar de inmediato.
+
+## A-6 — Operaciones en helipuertos (radio < 2 NM / > 150 ft)
+
+**Referencia normativa:** RAAC Punto 100.17 (c)
+
+**Justificación operativa:** relevamientos o inspecciones de infraestructura hospitalaria, de emergencia o industrial pueden ubicarse dentro del radio de influencia de helipuertos.
+
+**Procedimiento de autorización EANA S.A.:** idéntico al descrito en A-2. Se deberá también notificar y coordinar con el operador del helipuerto.
+
+**Análisis de riesgo (A-6):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Conflicto con helicóptero en aproximación/despegue | 4 | A | 4A 🔴 | Autorización EANA S.A., coordinación con operador del helipuerto, monitoreo de actividad | 1A 🟢 |
+| Turbulencia por descarga de rotor de helicóptero | 3 | C | 3C 🟡 | No operar simultáneamente con movimientos de helicópteros; coordinación previa | 1D 🟢 |
+
+: Análisis de riesgo A-6
+
+**Procedimientos específicos A-6:**
+
+1. Contactar al operador del helipuerto con antelación suficiente para coordinar la ventana de operación.
+2. Obtener autorización de EANA S.A. especificando el helipuerto de referencia y la distancia al mismo.
+3. No iniciar el vuelo ni continuarlo si hay movimiento de helicópteros en el helipuerto.
+4. Establecer un protocolo de comunicación directo con el operador del helipuerto para señal de "all clear" antes de cada vuelo.
+
+## A-7 — Operaciones en corredores visuales y helicorredores
+
+**Referencia normativa:** RAAC Punto 100.17 (d)
+
+**Justificación operativa:** en contextos urbanos o periurbanos donde los corredores visuales y helicorredores estructuran el espacio aéreo de baja cota, determinados servicios (por ejemplo, relevamientos en zonas metropolitanas) pueden requerir cruzar o ingresar temporalmente a estos espacios.
+
+**Procedimiento de autorización EANA S.A.:** idéntico al descrito en A-2. La operación en estas zonas requiere coordinación estrecha con EANA S.A. y se realizará según las condiciones y limitaciones específicas que ésta imponga para cada operación.
+
+**Análisis de riesgo (A-7):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Conflicto con tráfico en el corredor | 4 | A | 4A 🔴 | Autorización explícita de EANA S.A., operación en franja horaria de baja actividad, coordinación por radio | 1A 🟢 |
+| Colisión con infraestructura del corredor | 3 | B | 3B 🔴 | Cartografía actualizada, altitud de seguridad, velocidad reducida | 1C 🟢 |
+
+: Análisis de riesgo A-7
+
+**Procedimientos específicos A-7:**
+
+1. Solicitar autorización específica a EANA S.A. para cada operación dentro de un corredor, indicando el tramo, la altitud y la duración.
+2. Operar preferentemente en franjas horarias de menor tránsito aéreo, según indicación de EANA S.A.
+3. Mantener comunicación permanente con EANA S.A. durante la operación dentro del corredor.
+4. Definir un punto de salida del corredor como zona de aterrizaje de emergencia ante cualquier contingencia.
+
+## A-8 — Operaciones desde vehículos en movimiento
+
+**Referencia normativa:** RAAC Punto 100.17 (l)
+
+**Justificación operativa:** el seguimiento de líneas de infraestructura (caminos, tendidos, canales de riego) o la inspección de cultivos en extensas superficies puede optimizarse mediante el lanzamiento y operación del RPA desde un vehículo terrestre en movimiento.
+
+**Análisis de riesgo (A-8):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Pérdida de control durante despegue/aterrizaje desde vehículo | 3 | B | 3B 🔴 | Uso de plataforma estabilizada, velocidad del vehículo ≤ 15 km/h durante maniobras, copiloto de tierra | 2C 🟢 |
+| Colisión del RPA con el vehículo | 3 | B | 3B 🔴 | Distancia mínima de seguridad establecida, aterrizaje solo con vehículo detenido | 2C 🟢 |
+| Pérdida de VLOS por movimiento del vehículo | 3 | C | 3C 🟡 | Observador en el vehículo manteniendo contacto visual con el RPA | 2D 🟢 |
+| Interferencias de RF del vehículo | 2 | C | 2C 🟢 | Verificación pre-vuelo de interferencias, enlace C2 confirmado antes de cada maniobra | 1D 🟢 |
+
+: Análisis de riesgo A-8
+
+**Procedimientos específicos A-8:**
+
+1. El despegue y el aterrizaje solo se realizarán con el vehículo completamente detenido, en terreno nivelado y estable.
+2. Un segundo tripulante (conductor) operará el vehículo durante el vuelo; el piloto del RPA no conducirá simultáneamente.
+3. Se establecerá una distancia mínima de seguridad horizontal y vertical entre el RPA y el vehículo durante el vuelo.
+4. Verificar el enlace C2 y la ausencia de interferencias desde el vehículo antes de cada despegue.
+5. En caso de pérdida de contacto visual con el RPA, el vehículo se detendrá de inmediato.
+
+## A-9 — Operaciones nocturnas o en condiciones IMC
+
+**Referencia normativa:** RAAC Punto 100.17 (m)
+
+**Justificación operativa:** la inspección de turbinas eólicas puede requerir evaluación térmica nocturna para detectar anomalías de temperatura. Asimismo, determinadas aplicaciones científicas o de seguridad pueden requerir operaciones en horario nocturno.
+
+**Análisis de riesgo (A-9):**
+
+| Peligro | Probabilidad | Severidad | Riesgo inicial | Medidas de mitigación | Riesgo residual |
+|---|---|---|---|---|---|
+| Pérdida de contacto visual con el RPA | 4 | B | 4B 🔴 | Luces de anticolisión visibles a ≥ 5 km, telemetría en tiempo real, zona iluminada | 2C 🟢 |
+| Ilusión visual del piloto por oscuridad | 3 | B | 3B 🔴 | Entrenamiento específico en operaciones nocturnas, uso de telemetría, vuelo asistido por altímetro | 2C 🟢 |
+| Colisión con obstáculos no visibles | 3 | B | 3B 🔴 | Reconocimiento diurno previo de la zona, mapa de obstáculos, altitud de seguridad nocturna aumentada | 2C 🟢 |
+| Desorientación espacial del piloto | 2 | B | 2B 🟡 | El piloto mantiene referencia por telemetría y luces del RPA; vuelo automatizado cuando sea posible | 1C 🟢 |
+| Condiciones IMC no previstas | 2 | A | 2A 🟡 | Consulta de pronóstico actualizado hasta 1 hora antes, procedimiento de aterrizaje inmediato ante deterioro | 1B 🟢 |
+
+: Análisis de riesgo A-9
+
+**Procedimientos específicos A-9:**
+
+1. **Entrenamiento:** el piloto deberá haber realizado al menos <!-- N --> vuelos nocturnos de práctica antes de realizar operaciones nocturnas comerciales, documentados en el libro de vuelo.
+2. **Luces de anticolisión:** el RPA estará equipado con luces de anticolisión visibles a no menos de 5 km. La intensidad podrá reducirse solo si las condiciones de operación lo ameritan y previo análisis de riesgo documentado.
+3. **Iluminación del área:** el área de operación y especialmente la zona de despegue/aterrizaje deberán estar suficientemente iluminadas para que el piloto y los observadores puedan reconocer los obstáculos en el terreno.
+4. **Reconocimiento diurno previo:** antes de toda operación nocturna se realizará un reconocimiento diurno de la zona, identificando obstáculos, perímetro de seguridad y zonas de aterrizaje de emergencia.
+5. **Telemetría continua:** el piloto monitoreará permanentemente los datos de telemetría (altitud, velocidad, orientación, nivel de batería) para compensar la pérdida de referencias visuales.
+6. **Comunicaciones:** se establecerá comunicación permanente con un observador en tierra durante toda la operación nocturna.
+7. **Condiciones IMC:** si durante una operación nocturna se presentan condiciones IMC no previstas (niebla, precipitación, reducción de visibilidad), se procederá a aterrizar de inmediato en el lugar más seguro disponible.
+8. **Pronóstico actualizado:** se consultará el pronóstico meteorológico menos de 1 hora antes del inicio de la operación nocturna.
+
+## Procedimientos de contacto con EANA S.A.
+
+Para todas las autorizaciones que requieren intervención de EANA S.A. (A-2, A-3, A-4, A-5, A-6, A-7), el explotador seguirá el siguiente procedimiento:
+
+1. Acceder al sistema de solicitudes de EANA S.A.: [https://www.eana.com.ar](https://www.eana.com.ar) o el canal que ésta prescriba.
+2. Completar la solicitud con los datos de la operación planificada con la antelación mínima requerida.
+3. Conservar el número de expediente o autorización obtenido.
+4. No iniciar la operación sin contar con la autorización en formato escrito (correo electrónico, PDF u otro soporte verificable).
+5. Durante la operación, tener disponible en formato digital o impreso la autorización de EANA S.A.
+6. Respetar estrictamente las condiciones (altitud, área, horario, frecuencias de radio) que EANA S.A. establezca para cada operación.
+
+---
+
+# Apéndices
+
+## Apéndice A — Póliza de seguro
+
+*(adjuntar copia vigente)*
+
+## Apéndice B — Licencia del piloto a distancia y CMA
+
+*(adjuntar copias vigentes)*
+
+## Apéndice C — Certificados de matrícula de los RPA/RPAS
+
+*(adjuntar certificados — completar cuando se incorporen los equipos)*
+
+## Apéndice D — Manual del fabricante del RPA/RPAS
+
+*(adjuntar o referenciar documento)*
+
+## Apéndice E — Libro de registro de mantenimiento del RPA/RPAS
+
+*(formato libre; registrar cada intervención con fecha, tarea y firma)*
+
+## Apéndice F — Formulario de análisis de riesgo pre-operacional
+
+*(completar antes de cada operación)*
+
+| Campo | Detalle |
+|---|---|
+| Fecha y hora de operación | |
+| Lugar (coordenadas o dirección) | |
+| Tipo de operación | |
+| RPA/RPAS utilizado (matrícula) | |
+| Condiciones meteorológicas previstas | |
+| Espacio aéreo: clase y restricciones | |
+| Autorización EANA S.A. N.º | |
+| Altitud máxima prevista | |
+| Presencia de personas en la zona | |
+| Obstáculos identificados | |
+| Zona de aterrizaje de emergencia | |
+| Peligros identificados | |
+| Medidas de mitigación aplicadas | |
+| Nivel de riesgo residual | |
+| Decisión: PROCEDE / NO PROCEDE | |
+| Firma del piloto | |
+
+: Formulario de análisis de riesgo pre-operacional
+
+## Apéndice G — Declaración jurada de aptitud económica
+
+*(adjuntar formulario ANAC firmado)*
+
+---
+
+*Fin del documento — Sky Solutions — MOE/SGR Rev. 01*
