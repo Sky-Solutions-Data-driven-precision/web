@@ -7,7 +7,7 @@ authorBio: "Especialistas en operaciones de drones con certificación ANAC. Más
 date: "2026-03-12"
 readTime: "10 min"
 tags: ["Regulación Drones Córdoba", "Fitosanitarios RPA", "Agricultura de Precisión", "Normativa Agropecuaria", "Operario RPA", "Registro Aplicadores Aéreos", "Drones Pulverización", "Ley 9164 Córdoba", "Expoagro 2026", "Bioagroindustria"]
-image: "/images/drones-agropecuarios-cordoba.png"
+image: "/images/drones-agropecuarios-cordoba.jpg"
 imageAlt: "Drone realizando aplicación fitosanitaria en cultivos de Córdoba bajo el nuevo marco regulatorio provincial"
 ---
 
@@ -35,21 +35,24 @@ La resolución establece que los equipos que realicen aplicaciones agropecuarias
 
 Este registro consolida la trazabilidad del equipo y su operador dentro de la cadena de aplicación fitosanitaria, algo que el marco aeronáutico nacional no contempla con especificidad agropecuaria.
 
+Un punto práctico importante para la transición: la resolución contempla que la verificación técnica periódica de los equipos recién será exigible **a partir del año de publicación**. Hasta que se habiliten las instalaciones de inspección técnica, la inscripción se realiza mediante una **declaración jurada** del solicitante sobre el estado operativo del RPA. La verificación, una vez implementada, tendrá vigencia de dos años.
+
 ### 2. Nueva figura: Operario de Fitosanitarios con RPA
 
-Se incorpora oficialmente la figura del **Operario de Fitosanitarios con RPA**, quien deberá contar con **capacitación específica** y será responsable de la correcta preparación y manejo de los productos utilizados en las aplicaciones.
+Se incorpora oficialmente la figura del **Operario de Fitosanitarios con RPA**, quien deberá contar con **capacitación específica** y será responsable de la correcta preparación y manejo de los productos utilizados en las aplicaciones. El curso habilitante tendrá una **vigencia de dos años** y deberá renovarse a su vencimiento; será dictado por el Ministerio de Bioagroindustria o por entidades con convenio específico.
 
-Esta distinción es relevante: el piloto de drone (habilitado por ANAC) y el operario de fitosanitarios pueden ser la misma persona o roles diferenciados, pero la responsabilidad técnica sobre los productos aplicados recae específicamente en quien tenga esta certificación provincial. Esto profesionaliza aún más la cadena de responsabilidades en cada vuelo agropecuario.
+Esta distinción es relevante: el piloto de drone (habilitado por ANAC) y el operario de fitosanitarios pueden ser la misma persona o roles diferenciados, pero la responsabilidad técnica sobre los productos aplicados recae específicamente en quien tenga esta certificación provincial. El operario es corresponsable en la aplicación e imputable por la correcta técnica de preparación del caldo conforme a lo indicado en la Receta Fitosanitaria Digital. Esto profesionaliza aún más la cadena de responsabilidades en cada vuelo agropecuario.
 
-### 3. Distancias mínimas de resguardo
+### 3. Distancias mínimas de resguardo según clase toxicológica
 
-La normativa fija **distancias mínimas de resguardo** respecto de:
-- Zonas urbanas
-- Escuelas rurales
-- Centros de salud
-- Otros sitios sensibles
+La normativa fija distancias mínimas obligatorias respecto de plantas urbanas, establecimientos educativos, centros de salud y demás sitios sensibles. Los valores son concretos y se diferencian según la clase toxicológica del producto a aplicar:
 
-Estas restricciones complementan —y en algunos casos endurecen— las prohibiciones operacionales ya existentes en el marco de ANAC, adaptándolas específicamente al contexto de aplicaciones con agroquímicos y biológicos.
+| Clase toxicológica | Banda | Distancia mínima |
+|---|---|---|
+| Ia, Ib y II | 🔴 Roja / 🟡 Amarilla | **1.500 metros** |
+| III y IV | 🔵 Azul / 🟢 Verde | **500 metros** |
+
+Estas restricciones complementan —y en varios casos endurecen— las prohibiciones operacionales del marco ANAC, adaptándolas específicamente al contexto de aplicaciones con agroquímicos y biológicos. La resolución también establece que los equipos deben circular por zonas pobladas **descargados y perfectamente limpios** de productos, para evitar contaminaciones y perjuicios a terceros (art. 9).
 
 ### 4. Receta Fitosanitaria Digital obligatoria
 
@@ -61,19 +64,14 @@ La resolución prevé controles y fiscalizaciones por parte del Ministerio de Bi
 
 ## Resolución oficial
 
-Podés consultar y descargar el texto completo de la resolución directamente desde el sitio del Ministerio de Bioagroindustria:
+El texto completo de la resolución está disponible para consulta y descarga:
 
-<div style="margin: 2rem 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
-  <iframe 
-    src="https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf" 
-    width="100%" 
-    height="600px" 
-    style="border: none; display: block;"
-    title="Resolución drones agropecuarios - Ministerio de Bioagroindustria Córdoba">
-  </iframe>
+<div style="margin: 2rem 0;">
+  <a href="/Resolucion-drones.pdf" target="_blank" rel="noopener"
+     style="display:inline-flex; align-items:center; gap:0.5rem; padding: 0.75rem 1.5rem; background:#1c3e7f; color:white; border-radius:6px; text-decoration:none; font-weight:600; font-family:inherit;">
+    📄 Ver resolución oficial completa (PDF)
+  </a>
 </div>
-
-*Si el documento no carga en tu dispositivo, podés [descargarlo directamente aquí](https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf){:target="_blank"}.*
 
 ## Anuncio oficial del Ministerio de Bioagroindustria
 
@@ -117,7 +115,7 @@ Los drones ya demostraron su capacidad para mejorar la precisión en las aplicac
 ## Más información y fuentes
 
 - 🔗 [Portal oficial del Ministerio de Bioagroindustria de Córdoba](https://bioagroindustria.cba.gov.ar/index.php/cordoba-regula-las-aplicaciones-con-drones-en-la-produccion-agropecuaria/){:target="_blank"}
-- 📄 [Resolución completa en PDF](https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf){:target="_blank"}
+- 📄 [Resolución completa en PDF](/Resolucion-drones.pdf){:target="_blank"}
 - 📋 [Resolución ANAC 550/2025 — marco aeronáutico nacional](https://www.boletinoficial.gob.ar/detalleAviso/primera/329510/20250808){:target="_blank"}
 - 🌿 [Ley Provincial N°9164 — productos fitosanitarios Córdoba](https://www.cba.gov.ar/){:target="_blank"}
 
