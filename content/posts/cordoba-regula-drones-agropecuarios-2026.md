@@ -114,11 +114,13 @@ Los drones ya demostraron su capacidad para mejorar la precisión en las aplicac
 
 ## Más información y fuentes
 
-- 🔗 [Portal oficial del Ministerio de Bioagroindustria de Córdoba](https://bioagroindustria.cba.gov.ar/index.php/cordoba-regula-las-aplicaciones-con-drones-en-la-produccion-agropecuaria/){:target="_blank"}
-- 📄 <a href="https://bioagroindustria.cba.gov.ar" target="_blank">Resolución completa en PDF</a>
-- 📋 [Resolución ANAC 550/2025 — marco aeronáutico nacional](https://www.boletinoficial.gob.ar/detalleAviso/primera/329510/20250808){:target="_blank"}
-- 🌿 [Ley Provincial N°9164 — productos fitosanitarios Córdoba](http://web2.cba.gov.ar/web/leyes.nsf/0/7D956CE717057CCA03257234006576A6?OpenDocument&Highlight=0,9164){:target="_blank"}
+<ul>
+  <li>🔗 <a href="https://bioagroindustria.cba.gov.ar" target="_blank" rel="noopener noreferrer">Portal oficial del Ministerio de Bioagroindustria de Córdoba</a></li>
+  <li>📄 <a href="https://bioagroindustria.cba.gov.ar" target="_blank" rel="noopener noreferrer">Resolución completa en PDF</a></li>
+  <li>📋 <a href="https://www.boletinoficial.gob.ar" target="_blank" rel="noopener noreferrer">Resolución ANAC 550/2025 — marco aeronáutico nacional</a></li>
+  <li>🌿 <a href="http://web2.cba.gov.ar" target="_blank" rel="noopener noreferrer">Ley Provincial N°9164 — productos fitosanitarios Córdoba</a></li>
+</ul>
 
 ---
 
-*¿Necesitás adecuarte al nuevo marco regulatorio para ofrecer servicios de aplicación con drones en Córdoba? En Sky Solutions te acompañamos en todo el proceso: desde la certificación ANAC hasta la articulación con los requisitos provinciales de Bioagroindustria.*
+*¿Requerís servicios profesionales y certificados para tu empresa? ¿Necesitás adecuarte al nuevo marco regulatorio para ofrecer servicios de aplicación con drones en Córdoba? En Sky Solutions te acompañamos en todo el proceso: desde la certificación ANAC hasta la articulación con los requisitos provinciales de Bioagroindustria.*
