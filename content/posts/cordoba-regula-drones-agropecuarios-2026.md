@@ -7,13 +7,13 @@ authorBio: "Especialistas en operaciones de drones con certificación ANAC. Más
 date: "2026-03-12"
 readTime: "10 min"
 tags: ["Regulación Drones Córdoba", "Fitosanitarios RPA", "Agricultura de Precisión", "Normativa Agropecuaria", "Operario RPA", "Registro Aplicadores Aéreos", "Drones Pulverización", "Ley 9164 Córdoba", "Expoagro 2026", "Bioagroindustria"]
-image: "/images/drones-agropecuarios-cordoba.jpg"
+image: "/images/drones-agropecuarios-cordoba.png"
 imageAlt: "Drone realizando aplicación fitosanitaria en cultivos de Córdoba bajo el nuevo marco regulatorio provincial"
 ---
 
 # Córdoba regula el uso de drones para aplicaciones fitosanitarias: lo que necesitás saber
 
-El 12 de marzo de 2026, en el marco de **Expoagro 2026**, el ministro de Bioagroindustria de Córdoba, Sergio Busso, firmó la resolución que establece el primer marco normativo provincial específico para la **aplicación de productos químicos o biológicos de uso agropecuario mediante aeronaves pilotadas a distancia (RPA/RPAS)**, es decir, drones.
+El mes de marzo de 2026, en el marco de **Expoagro 2026**, el ministro de Bioagroindustria de Córdoba, Sergio Busso, firmó la resolución que establece el primer marco normativo provincial específico para la **aplicación de productos químicos o biológicos de uso agropecuario mediante aeronaves pilotadas a distancia (RPA/RPAS)**, es decir, drones.
 
 La medida convierte a Córdoba en una de las primeras provincias argentinas en articular explícitamente el uso de drones con su normativa fitosanitaria existente, complementando el nuevo marco nacional (Resolución ANAC 550/2025) con requisitos específicos para el sector productivo provincial.
 
@@ -115,9 +115,9 @@ Los drones ya demostraron su capacidad para mejorar la precisión en las aplicac
 ## Más información y fuentes
 
 - 🔗 [Portal oficial del Ministerio de Bioagroindustria de Córdoba](https://bioagroindustria.cba.gov.ar/index.php/cordoba-regula-las-aplicaciones-con-drones-en-la-produccion-agropecuaria/){:target="_blank"}
-- 📄 [Resolución completa en PDF](/Resolucion-drones.pdf){:target="_blank"}
+- 📄 <a href="https://bioagroindustria.cba.gov.ar" target="_blank">Resolución completa en PDF</a>
 - 📋 [Resolución ANAC 550/2025 — marco aeronáutico nacional](https://www.boletinoficial.gob.ar/detalleAviso/primera/329510/20250808){:target="_blank"}
-- 🌿 [Ley Provincial N°9164 — productos fitosanitarios Córdoba](https://www.cba.gov.ar/){:target="_blank"}
+- 🌿 [Ley Provincial N°9164 — productos fitosanitarios Córdoba](http://web2.cba.gov.ar/web/leyes.nsf/0/7D956CE717057CCA03257234006576A6?OpenDocument&Highlight=0,9164){:target="_blank"}
 
 ---
 
