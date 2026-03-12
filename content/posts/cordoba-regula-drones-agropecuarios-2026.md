@@ -1,0 +1,126 @@
+---
+title: "Córdoba regula el uso de drones para aplicaciones fitosanitarias: lo que necesitás saber"
+excerpt: "El ministro Busso firmó en Expoagro la resolución que establece el primer marco normativo provincial para el uso de drones en aplicaciones agropecuarias. Registro obligatorio, figura del Operario RPA y distancias de resguardo: todo lo que cambia en Córdoba."
+category: "Normativa y Regulación"
+author: "Equipo Sky Solutions"
+authorBio: "Especialistas en operaciones de drones con certificación ANAC. Más de 5 años de experiencia en servicios comerciales, agricultura de precisión y consultoría normativa para operadores de RPAs en Argentina."
+date: "2026-03-12"
+readTime: "10 min"
+tags: ["Regulación Drones Córdoba", "Fitosanitarios RPA", "Agricultura de Precisión", "Normativa Agropecuaria", "Operario RPA", "Registro Aplicadores Aéreos", "Drones Pulverización", "Ley 9164 Córdoba", "Expoagro 2026", "Bioagroindustria"]
+image: "/images/drones-agropecuarios-cordoba.png"
+imageAlt: "Drone realizando aplicación fitosanitaria en cultivos de Córdoba bajo el nuevo marco regulatorio provincial"
+---
+
+# Córdoba regula el uso de drones para aplicaciones fitosanitarias: lo que necesitás saber
+
+El 12 de marzo de 2026, en el marco de **Expoagro 2026**, el ministro de Bioagroindustria de Córdoba, Sergio Busso, firmó la resolución que establece el primer marco normativo provincial específico para la **aplicación de productos químicos o biológicos de uso agropecuario mediante aeronaves pilotadas a distancia (RPA/RPAS)**, es decir, drones.
+
+La medida convierte a Córdoba en una de las primeras provincias argentinas en articular explícitamente el uso de drones con su normativa fitosanitaria existente, complementando el nuevo marco nacional (Resolución ANAC 550/2025) con requisitos específicos para el sector productivo provincial.
+
+## El contexto: por qué era necesaria esta regulación
+
+El crecimiento exponencial del uso de drones en la agricultura argentina generó una situación que se venía postergando: los operadores tenían el marco aeronáutico nacional (ANAC), pero carecían de regulación fitosanitaria provincial específica. Esto creaba zonas grises en cuanto a responsabilidades, habilitaciones y estándares de aplicación.
+
+La resolución se enmarca en la **Ley Provincial N°9164** sobre productos químicos o biológicos de uso agropecuario, con la cual Córdoba fue pionera nacional hace más de dos décadas. Incorporar los drones a ese ecosistema normativo no solo era lógico: era necesario para garantizar aplicaciones seguras, trazables y ambientalmente responsables.
+
+## Los cinco ejes de la nueva regulación
+
+### 1. Creación de la subcategoría RPA en el Registro de Aplicadores Aéreos
+
+La resolución establece que los equipos que realicen aplicaciones agropecuarias deberán inscribirse en una nueva subcategoría **"RPA"** dentro del Registro de Aplicadores Aéreos provincial. La habilitación tendrá **carácter anual** y requerirá:
+
+- Documentación emitida por la autoridad aeronáutica nacional (ANAC)
+- Acreditación de personal capacitado para la operación
+- Cumplimiento de los requisitos técnicos establecidos por el Ministerio de Bioagroindustria
+
+Este registro consolida la trazabilidad del equipo y su operador dentro de la cadena de aplicación fitosanitaria, algo que el marco aeronáutico nacional no contempla con especificidad agropecuaria.
+
+### 2. Nueva figura: Operario de Fitosanitarios con RPA
+
+Se incorpora oficialmente la figura del **Operario de Fitosanitarios con RPA**, quien deberá contar con **capacitación específica** y será responsable de la correcta preparación y manejo de los productos utilizados en las aplicaciones.
+
+Esta distinción es relevante: el piloto de drone (habilitado por ANAC) y el operario de fitosanitarios pueden ser la misma persona o roles diferenciados, pero la responsabilidad técnica sobre los productos aplicados recae específicamente en quien tenga esta certificación provincial. Esto profesionaliza aún más la cadena de responsabilidades en cada vuelo agropecuario.
+
+### 3. Distancias mínimas de resguardo
+
+La normativa fija **distancias mínimas de resguardo** respecto de:
+- Zonas urbanas
+- Escuelas rurales
+- Centros de salud
+- Otros sitios sensibles
+
+Estas restricciones complementan —y en algunos casos endurecen— las prohibiciones operacionales ya existentes en el marco de ANAC, adaptándolas específicamente al contexto de aplicaciones con agroquímicos y biológicos.
+
+### 4. Receta Fitosanitaria Digital obligatoria
+
+Cada aplicación deberá respaldarse con una **Receta Fitosanitaria Digital** emitida por un ingeniero agrónomo habilitado. Este requisito refuerza la supervisión profesional agronómica sobre las decisiones de aplicación, garantizando que el uso del drone esté siempre subordinado a un criterio técnico validado y registrado digitalmente.
+
+### 5. Controles, fiscalizaciones y plazo de adecuación
+
+La resolución prevé controles y fiscalizaciones por parte del Ministerio de Bioagroindustria como autoridad de aplicación. Para facilitar la transición, se otorga un **plazo de 180 días** para que los operadores actuales se adecuen a todos los requisitos, incluyendo la capacitación obligatoria para quienes desempeñen el rol de Operario de Fitosanitarios con RPA.
+
+## Resolución oficial
+
+Podés consultar y descargar el texto completo de la resolución directamente desde el sitio del Ministerio de Bioagroindustria:
+
+<div style="margin: 2rem 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+  <iframe 
+    src="https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf" 
+    width="100%" 
+    height="600px" 
+    style="border: none; display: block;"
+    title="Resolución drones agropecuarios - Ministerio de Bioagroindustria Córdoba">
+  </iframe>
+</div>
+
+*Si el documento no carga en tu dispositivo, podés [descargarlo directamente aquí](https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf){:target="_blank"}.*
+
+## Anuncio oficial del Ministerio de Bioagroindustria
+
+El Ministerio de Bioagroindustria de Córdoba comunicó la medida a través de sus canales oficiales:
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DVwB4nBEb8O/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;"><div style="padding:16px;"><a href="https://www.instagram.com/p/DVwB4nBEb8O/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"><div style="display: flex; flex-direction: row; align-items: center;"><div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div><div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"><div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div><div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div><div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="https://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"><div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div><p style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center;"><a href="https://www.instagram.com/p/DVwB4nBEb8O/?utm_source=ig_embed&utm_campaign=loading" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida de Ministerio de Bioagroindustria (@minagricba)</a></p></div></blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+</div>
+
+## La articulación con el marco nacional ANAC
+
+Esta resolución provincial no opera de forma aislada: se suma y complementa la **Resolución ANAC 550/2025**, que desde agosto del año pasado simplificó radicalmente el régimen nacional para drones, creando la Categoría Abierta para operaciones de bajo riesgo sin autorización previa.
+
+El esquema ahora es de dos capas bien definidas:
+
+- **Capa aeronáutica (ANAC)**: habilitación del piloto, certificación del equipo y gestión del espacio aéreo
+- **Capa fitosanitaria (Ministerio de Bioagroindustria Córdoba)**: registro de aplicadores, acreditación del Operario RPA, trazabilidad agronómica vía Receta Fitosanitaria Digital
+
+Para operar legalmente en aplicaciones agropecuarias en Córdoba, un servicio profesional debe cumplir **ambas capas**. Quien solo tenga habilitación ANAC pero no esté inscripto en el Registro provincial de Aplicadores Aéreos subcategoría RPA, no estará en cumplimiento normativo completo.
+
+## ¿Qué implica para los operadores del sector?
+
+Para quienes ya prestan servicios de aplicación con drones en la provincia, el mensaje es claro: hay 180 días para regularizar la situación completa. Los pasos concretos son:
+
+1. **Verificar habilitación ANAC vigente** bajo la nueva Resolución 550/2025 (Categoría Abierta o Específica según el equipo)
+2. **Tramitar inscripción en la subcategoría RPA** del Registro de Aplicadores Aéreos provincial
+3. **Capacitarse como Operario de Fitosanitarios con RPA** o acreditar personal capacitado para ese rol
+4. **Asegurarse de operar siempre con Receta Fitosanitaria Digital** emitida por ingeniero agrónomo habilitado
+
+Para nuevos operadores que quieran ingresar al segmento de aplicaciones agropecuarias, este marco deja en claro desde el inicio cuáles son los requisitos completos.
+
+## El valor del marco claro para la agricultura de precisión
+
+La declaración del ministro Busso al momento de la firma resume bien el espíritu de la medida: *"Los drones son una herramienta cada vez más utilizada en la producción agropecuaria. Con esta resolución establecemos reglas claras para su uso en la provincia, promoviendo la innovación tecnológica pero siempre con el objetivo de garantizar aplicaciones responsables, seguras y que cuiden el medio ambiente."*
+
+Lejos de ser un obstáculo, un marco normativo claro es precisamente lo que permite la adopción masiva y responsable de una tecnología. La incertidumbre regulatoria históricamente frenó la inversión y profesionalización del sector; la claridad la potencia.
+
+Los drones ya demostraron su capacidad para mejorar la precisión en las aplicaciones, optimizar el uso de insumos y reducir el impacto ambiental respecto de la aplicación terrestre o aérea tradicional. Con este marco, Córdoba apuesta a que esos beneficios se materialicen bajo estándares profesionales verificables.
+
+## Más información y fuentes
+
+- 🔗 [Portal oficial del Ministerio de Bioagroindustria de Córdoba](https://bioagroindustria.cba.gov.ar/index.php/cordoba-regula-las-aplicaciones-con-drones-en-la-produccion-agropecuaria/){:target="_blank"}
+- 📄 [Resolución completa en PDF](https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf){:target="_blank"}
+- 📋 [Resolución ANAC 550/2025 — marco aeronáutico nacional](https://www.boletinoficial.gob.ar/detalleAviso/primera/329510/20250808){:target="_blank"}
+- 🌿 [Ley Provincial N°9164 — productos fitosanitarios Córdoba](https://www.cba.gov.ar/){:target="_blank"}
+
+---
+
+*¿Necesitás adecuarte al nuevo marco regulatorio para ofrecer servicios de aplicación con drones en Córdoba? En Sky Solutions te acompañamos en todo el proceso: desde la certificación ANAC hasta la articulación con los requisitos provinciales de Bioagroindustria.*
