@@ -8,6 +8,8 @@ date: "2026-03-12"
 readTime: "10 min"
 tags: ["Regulación Drones Córdoba", "Fitosanitarios RPA", "Agricultura de Precisión", "Normativa Agropecuaria", "Operario RPA", "Registro Aplicadores Aéreos", "Drones Pulverización", "Ley 9164 Córdoba", "Expoagro 2026", "Bioagroindustria"]
 image: "/images/drones-agropecuarios-cordoba.png"
+imageCredit: "Foto: Ministerio de Bioagroindustria Córdoba (@minagricba)"
+imageCreditUrl: "https://www.instagram.com/minagricba"
 imageAlt: "Drone realizando aplicación fitosanitaria en cultivos de Córdoba bajo el nuevo marco regulatorio provincial"
 ---
 
@@ -116,10 +118,36 @@ Los drones ya demostraron su capacidad para mejorar la precisión en las aplicac
 
 <ul>
   <li>🔗 <a href="https://bioagroindustria.cba.gov.ar" target="_blank" rel="noopener noreferrer">Portal oficial del Ministerio de Bioagroindustria de Córdoba</a></li>
-  <li>📄 <a href="https://bioagroindustria.cba.gov.ar" target="_blank" rel="noopener noreferrer">Resolución completa en PDF</a></li>
-  <li>📋 <a href="https://www.boletinoficial.gob.ar" target="_blank" rel="noopener noreferrer">Resolución ANAC 550/2025 — marco aeronáutico nacional</a></li>
-  <li>🌿 <a href="http://web2.cba.gov.ar" target="_blank" rel="noopener noreferrer">Ley Provincial N°9164 — productos fitosanitarios Córdoba</a></li>
+  <li>📄 <a href="https://bioagroindustria.cba.gov.ar/wp-content/uploads/Resolucion-drones.pdf" target="_blank" rel="noopener noreferrer">Resolución completa en PDF</a></li>
+  <li>📋 <a href="https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-550-2025-416149" target="_blank" rel="noopener noreferrer">Resolución ANAC 550/2025 — marco aeronáutico nacional</a></li>
+  <li>🌿 <a href="http://web2.cba.gov.ar/web/leyes.nsf/0/7D956CE717057CCA03257234006576A6?OpenDocument&Highlight=0,9164" target="_blank" rel="noopener noreferrer">Ley Provincial N°9164 — productos fitosanitarios Córdoba</a></li>
 </ul>
+
+## Preguntas frecuentes
+ 
+### ¿Necesito autorización provincial para fumigar con drone en Córdoba?
+ 
+Sí. Además de la habilitación aeronáutica nacional (ANAC), necesitás inscribir tu equipo en el Registro de Aplicadores Aéreos subcategoría RPA del Ministerio de Bioagroindustria de Córdoba. Esa inscripción es anual y requiere documentación ANAC vigente, al menos un Operario de Fitosanitarios con RPA acreditado y, pasado el año de implementación, verificación técnica del equipo. Hasta entonces, alcanza con declaración jurada del estado operativo.
+ 
+### ¿A qué distancia de un pueblo o escuela puedo aplicar con drone?
+ 
+Depende de la clase toxicológica del producto. Para productos de banda azul o verde (clases III y IV) la distancia mínima es de **500 metros** desde el límite urbano o el punto sensible. Para productos de banda roja o amarilla (clases Ia, Ib y II) la restricción sube a **1.500 metros**. Estas distancias aplican también respecto de centros de salud y cualquier otro sitio que la autoridad considere sensible.
+ 
+### ¿Qué es el Operario de Fitosanitarios con RPA y quién puede serlo?
+ 
+Es la figura creada por esta resolución para regular el manejo de productos agroquímicos en operaciones con drones. Puede ser la misma persona que el piloto al mando o alguien distinto, pero debe ser mayor de 18 años, aprobar un curso específico habilitado por el Ministerio de Bioagroindustria y renovar esa capacitación cada dos años. Es corresponsable de la correcta preparación del caldo y del cumplimiento de la Receta Fitosanitaria Digital.
+ 
+### ¿Esta regulación aplica también a drones de mapeo o relevamiento?
+ 
+No. La resolución provincial regula exclusivamente la **aplicación de productos químicos o biológicos agropecuarios** con RPA. Los servicios de mapeo, fotogrametría, relevamiento NDVI, monitoreo de cultivos o inspección que no impliquen aplicar fitosanitarios quedan fuera de su alcance. Para esas operaciones en Córdoba, el único marco aplicable sigue siendo el aeronáutico nacional (Resolución ANAC 550/2025).
+ 
+### ¿Qué documentación me pueden pedir en una fiscalización?
+ 
+La autoridad de aplicación puede requerir en cualquier momento y lugar: constancia de inscripción y habilitación en los registros provinciales, Recetas Fitosanitarias Digitales de las operaciones realizadas, autorizaciones y registros emitidos por ANAC, acreditación de propiedad o tenencia del equipo, carné del Operario de Fitosanitarios con RPA y documentación técnica del sistema de aplicación. También pueden inspeccionar físicamente el equipo y el lugar donde se almacenen los productos.
+ 
+### ¿Cuánto tiempo tengo para regularizarme si ya opero con drones en Córdoba?
+ 
+La resolución otorga un plazo de **180 días** desde su publicación para acreditar la capacitación del Operario de Fitosanitarios con RPA. Es el plazo más crítico porque sin ese rol acreditado no se puede completar la inscripción en el registro provincial. Si todavía no iniciaste el proceso, conviene no esperar al límite: los cupos de capacitación en los primeros meses suelen ser acotados.
 
 ---
 
